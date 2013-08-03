@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -58,8 +59,10 @@ public class Controller extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);   
 		
-		int size_height = 480;
-		int size_width = 800;
+		DisplayMetrics displayMetrics = new DisplayMetrics(); 
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		int size_height = displayMetrics.heightPixels;
+		int size_width = displayMetrics.widthPixels;
 		
 		// vals for set
 		if (ConCommon.is2P) {
