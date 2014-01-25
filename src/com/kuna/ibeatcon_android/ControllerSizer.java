@@ -63,20 +63,12 @@ public class ControllerSizer {
 		r_scr.right = GetZoomSizeVal(r_scr.right, zoomsize);
 		
 		// convert to real size
-		r_scr.left = r_scr.left*conv_width/100;
-		r_scr.top = r_scr.top*conv_height/100;
-		r_scr.right = r_scr.right*conv_height/100;
+		r_scr.left *= conv_width/100;
+		r_scr.top *= conv_height/100;
+		r_scr.right *= conv_height/100;
 		
 		return r_scr;
 		
-	}
-	
-	public Rect GetScrRect(int conv_width, int conv_height) {
-		Rect r = GetScrDataRect(conv_width, conv_height);
-		r.right *= (double)75/90;
-		r.left -= r.right;
-		r.top -= r.right;
-		return r;
 	}
 	
 	public Rect GetScrPanelRect(int conv_width, int conv_height) {

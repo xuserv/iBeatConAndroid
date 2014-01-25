@@ -31,7 +31,10 @@ public class Join extends Activity {
 			@Override
 			public void onClick(View v) {
 				// network initalize
-				ConCommon.cc = new ConClient(t.getText().toString(), 2001);
+				if (!ConCommon.debug_noconnect)
+					ConCommon.cc = new ConClient(t.getText().toString(), 2001);
+				else
+					h.obtainMessage(1, 0, 0, 0).sendToTarget();
 			}
 		});
         

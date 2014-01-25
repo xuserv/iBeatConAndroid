@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
 import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -23,36 +26,40 @@ import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
 public class Controller extends Activity {
-	public boolean isScratchPressed = false;
-	public boolean[] isButtonPressed = new boolean[7];
-	public double initialRadian=0;
+	public static boolean isScratchPressed = false;
+	public static boolean[] isButtonPressed = new boolean[7];
 	
-	public Rect r_scr;
-	public Rect r_button[] = new Rect[7];
+	public static Rect r_scr;
+	public static Rect r_button[] = new Rect[7];
 	public int id_scr;
-	public double scr_angle=0;
-	public double scr_tangle=0;
-	public double angleDiff = 0;
 	private ControllerSizer cs = new ControllerSizer();
+	private CanvasView cv;
+	private boolean isScrkeyPressed = false;
 	
 	public ImageView obj_scr;
 	public TextView[] obj_btn = new TextView[7];
 	
-	public int[] normalRes = new int[2];
-	public int[] pressedRes = new int[2];
 	public int[] pressKey = {32,33,34,35,36,37,38};
 	public int[] releaseKey = {64,65,66,67,68,69,70};
 	
+	private Thread mScratch = null;
+	private boolean doScratchThread = false;
+	private double mScratchSpeed = 0;
+	private double mScratchFriction = 1;
+	public static double mScratchRotation = 0;
+	
+	private double mTouchAngle = -1;	// backup
+	
 	@Override
 	public void onBackPressed() {
-		ConCommon.cc.Close();
+		if (!ConCommon.debug_noconnect)
+			ConCommon.cc.Close();
+		doScratchThread = false;
 		super.onBackPressed();
 	}
 	
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		AbsoluteLayout ll = new AbsoluteLayout(this);
 		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -72,89 +79,16 @@ public class Controller extends Activity {
 		}
 		cs.SetZoomSize(ConCommon.zoomval);
 		
+		// set rects for touch event
 		r_scr = cs.GetScrDataRect(size_width, size_height);
 		r_button = cs.GetButtonRect(size_width, size_height);
 		
-		Rect r_scr_panel = cs.GetScrPanelRect(size_width, size_height);
-		TextView b_scr_panel = new TextView(this);
-		b_scr_panel.setBackgroundResource(R.drawable.sc_panel);
-		ll.addView(b_scr_panel, new AbsoluteLayout.LayoutParams( r_scr_panel.right*2, r_scr_panel.right*2, r_scr_panel.left, r_scr_panel.top));
+		// create canvas for drawing
+		cv = new CanvasView(this);
+		this.setContentView(cv);
 		
-		Rect r_scr_body = cs.GetScrRect(size_width, size_height);
-		final ImageView b_scr = new ImageView(this);
-		b_scr.setImageBitmap( BitmapFactory.decodeResource(getResources(), R.drawable.scratch) );
-		/*b_scr.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					isScratchPressed = true;
-					initialRadian = getRadianOfPointer(,,event.getX(), event.getY());
-				}
-				
-				if (event.getAction() == MotionEvent.ACTION_UP ||
-						event.getAction() == MotionEvent.ACTION_CANCEL) {
-					isScratchPressed = false;
-				}
-				return false;
-			}
-		});*/
-		//Log.i("SCRATCH", String.format("%d,%d,%d", r_scr_body.left, r_scr_body.top, r_scr_body.right));
-		ll.addView(b_scr, new AbsoluteLayout.LayoutParams( r_scr_body.right*2, r_scr_body.right*2,r_scr_body.left, r_scr_body.top));
-		obj_scr = b_scr;
-		
-		// need interval...
-		
-		// add button
-		for (int i=0; i<7; i++) {
-			final TextView b = new TextView(this);
-			int left = r_button[i].left;
-			int top = r_button[i].top;
-			int width = r_button[i].width();
-			int height = r_button[i].height();
-			
-			Log.i("BUTTON", String.format("%d, %d, %d, %d",left, top, width,height));
-			
-			final int pressedRes;
-			final int normalRes;
-			if (i % 2 == 0) {
-				normalRes = R.drawable.whb;
-				pressedRes = R.drawable.whp;
-			} else {
-				normalRes = R.drawable.bkb;
-				pressedRes = R.drawable.bkp;
-			}
-			
-			b.setBackgroundResource(normalRes);
-			/*
-			b.setOnTouchListener(new OnTouchListener() {
-				
-				@Override
-				public boolean onTouch(View v, MotionEvent event) {
-					if (event.getAction() == MotionEvent.ACTION_DOWN ||
-							event.getAction() == MotionEvent.ACTION_HOVER_ENTER) {
-						b.setBackgroundResource(pressedRes);
-					}
-					if (event.getAction() == MotionEvent.ACTION_UP ||
-							event.getAction() == MotionEvent.ACTION_HOVER_EXIT ||
-							event.getAction() == MotionEvent.ACTION_CANCEL) {
-						b.setBackgroundResource(normalRes);
-					}	
-					return false;
-				}
-			});*/
-			
-			ll.addView(b, new AbsoluteLayout.LayoutParams(width, height, left, top));
-			obj_btn[i] = b;
-		}
-		
-		this.setContentView(ll);
-		
-		// value init
-		normalRes[0] = R.drawable.whb;
-		normalRes[1] = R.drawable.bkb;
-		pressedRes[0] = R.drawable.whp;
-		pressedRes[1] = R.drawable.bkp;
-		
+		// start scratching controller
+		UpdateControllerPosition();
 	};
 	
 	@Override
@@ -169,16 +103,22 @@ public class Controller extends Activity {
 			if (!isScratchPressed) {
 				if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
 					id_scr = ind;
-					scr_tangle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+					mTouchAngle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+					mScratchSpeed = 0;	// just press to stop signal ...?
 					isScratchPressed = true;
-					Log.i("SCRATCH", "START");
-					
-					ConCommon.cc.Send(42);
 				}
 			}
 		}
 		if (Actval == MotionEvent.ACTION_MOVE && id_scr == ind) {
-			
+			if (isScratchPressed) {
+				double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+				double angleDiff = getRadianDiff(mTouchAngle, angle);
+				
+				//Log.v("SCR", Double.toString(angleDiff));
+				mScratchSpeed = angleDiff;
+				
+				mTouchAngle = angle;
+			}
 		}
 		if ((Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP) && id_scr == ind) {
 			if (isScratchPressed) {
@@ -187,9 +127,6 @@ public class Controller extends Activity {
 				// angleDiff = last scratch move
 				
 				isScratchPressed = false;
-				Log.i("SCRATCH", "END");
-				
-				ConCommon.cc.Send(74);
 			}
 		}
 		
@@ -216,13 +153,15 @@ public class Controller extends Activity {
 	
 	
 	// common function
+	public void SendData(int i) {
+		if (!ConCommon.debug_noconnect)
+			ConCommon.cc.Send( i );
+	}
 	public void PressButton(int i) {
-		ConCommon.cc.Send( pressKey[i] );
-		obj_btn[i].setBackgroundResource( pressedRes[ i%2 ] );
+		SendData(pressKey[i]);
 	}
 	public void ReleaseButton(int i) {
-		ConCommon.cc.Send( releaseKey[i] );
-		obj_btn[i].setBackgroundResource( normalRes[ i%2 ] );
+		SendData(releaseKey[i]);
 	}
 	public void CmpPrs(boolean[] org, boolean[] diff) {
 		for (int i=0; i<7; i++) {
@@ -236,7 +175,7 @@ public class Controller extends Activity {
 	public double getRadianDiff(double sRad, double eRad) {
 		double r = eRad - sRad;
 		if (r > Math.PI) r=r-Math.PI*2;
-		if (r < -Math.PI) r=Math.PI*2-r;
+		if (r < -Math.PI) r=Math.PI*2+r;
 		return r;
 	}
 	
@@ -246,6 +185,58 @@ public class Controller extends Activity {
 	}
 	
 	public void UpdateControllerPosition() {
+		mScratch = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					while (doScratchThread) {
+						// reduce scratch speed
+						if (mScratchSpeed > 0) {
+							mScratchSpeed -= mScratchFriction*0.1;
+							if (mScratchSpeed < 0) mScratchSpeed = 0;
+						} else if (mScratchSpeed < 0) {
+							mScratchSpeed += mScratchFriction*0.1;
+							if (mScratchSpeed > 0) mScratchSpeed = 0;
+						}
+						
+						// change rotation value
+						mScratchRotation += mScratchSpeed*3;
+						
+						// check scratch
+						if (mScratchSpeed > 1) {
+							SendData(42);
+							Log.v("Scratch", "PRESS");
+							isScrkeyPressed = true;
+						}
+						if (mScratchSpeed < -1) {
+							SendData(42);
+							Log.v("Scratch", "PRESS");
+							isScrkeyPressed = true;
+						}
+						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
+							SendData(74);
+							Log.v("Scratch", "UP");
+							isScrkeyPressed = false;
+						}
+
+						Thread.sleep(1000/30);
+					}
+				} catch (Exception e) {
+					Log.v("ERROR", e.toString());
+				}
+			}
+		});
+		doScratchThread = true;
+		
+		mScratch.start();
+	}
+	
+	public float CalculateTorque(float radianDiff) {
+		return (float) ((radianDiff - mScratchSpeed) / (1 + mScratchFriction*0.1));
+	}
+	
+	public void AddTorqueToScratch(float val) {
+		mScratchSpeed += val;
 	}
 	
 	public double GetDist(float x1, float y1, float x2, float y2) {

@@ -12,6 +12,8 @@ public class ConCommon {
 	
 	public static boolean is2P = false;
 	public static int zoomval = 100;
+	public static boolean debug = false;
+	public static boolean debug_noconnect = false;
 	
 	public static void SendMessage(int msg) {
 		for (int i=0; i<HandlerStack.size(); i++)
