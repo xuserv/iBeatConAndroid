@@ -7,12 +7,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Join extends Activity {
 	
@@ -25,11 +27,24 @@ public class Join extends Activity {
         
         // attach event
         final Activity _this = this;
+        SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
+        String ip = setting.getString("ip", "");
+        if (ip != "") {
+                TextView t = (TextView)findViewById(R.id.edit_address);
+                t.setText(ip);
+        } else {
+                Toast.makeText(getApplicationContext(), "Please Enter Your PC IP Address in Textbox.", Toast.LENGTH_SHORT).show();             
+        }
         final TextView t = (TextView) findViewById(R.id.edit_address);
         Button b = (Button) findViewById(R.id.btn_join);
         b.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+                String ip_input = t.getText().toString();
+                SharedPreferences ip_save = getSharedPreferences("settings", MODE_PRIVATE);
+                SharedPreferences.Editor editor = ip_save.edit();
+                editor.putString("ip", ip_input);
+                editor.commit();
 				// network initalize
 				if (!ConCommon.debug_noconnect)
 					ConCommon.cc = new ConClient(t.getText().toString(), 2001);
