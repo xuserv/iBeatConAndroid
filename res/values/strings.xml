@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iBeatCon_Android</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_welcome">iBeatCon for Android (130803)</string>
+    <string name="str_join">Please Enter IP Address</string>
+
+</resources>
