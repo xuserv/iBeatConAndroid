@@ -105,6 +105,7 @@ public class Controller extends Activity {
     	switch (item.getItemId()) {
     	case R.id.settings:
     		startActivity(new Intent(this, Settings.class));
+    		finish();
     		return true;
     	default:
     		return super.onOptionsItemSelected(item);

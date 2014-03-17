@@ -24,7 +24,6 @@ public class Join extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_join);
         
         // attach event
         final Activity _this = this;
@@ -33,15 +32,16 @@ public class Join extends Activity {
         String ZoomValue = setting.getString("zoom", "");
         side_mode = setting.getBoolean("side_mode", false);
         if (ip != "") {
-        		Log.i("", ip);
-        		Log.i("", ZoomValue);
+        		Log.i("IP Address : ", ip);
+        		Log.i("Zoom Value : ", ZoomValue);
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
         		ConCommon.cc = new ConClient(ip, 2001);
         } else {
-                Toast.makeText(getApplicationContext(), "Please Enter Your PC IP Address in Textbox.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), Settings.class);
-                startActivity(intent);
+        		Toast.makeText(getApplicationContext(), "[FIRST RUN]" + "\r\n" + "Please Setting Your iBeatCon!", Toast.LENGTH_SHORT).show();
+        		Intent intent = new Intent(getApplicationContext(), Settings.class);
+        		startActivity(intent);
+        		finish();
         }
         
         h = new Handler() {
@@ -55,8 +55,10 @@ public class Join extends Activity {
     				finish();
         		}
         		if (msg.what == -1) {
-        			Toast.makeText(getApplicationContext(), "Cannot Connect into iBeatCon Server." + "\r\n" + "Please Make Sure Server Program is Currently Running.", Toast.LENGTH_SHORT).show();
-					finish();
+        			Toast.makeText(getApplicationContext(), "[!] Cannot Conntect into iBeatCon Server" + "\r\n" + "Please Make Sure Server Program is Currently Running" + "\r\n" + "or Your IP has been changed.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), Settings.class);
+                    startActivity(intent);
+                    finish();
         		}
         		super.handleMessage(msg);
         	}
