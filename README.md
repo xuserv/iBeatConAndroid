@@ -7,7 +7,7 @@ Original iOS Application and Sever Developer : @Harunene
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device (On Same Wi-Fi Network) / PC (with iBeatCon Server 0.9.2|On Same Network) / BMS Player (Like LR2 | Ruv-It!)
+Android Device (On Same Network) / PC (with iBeatCon Server 0.9.2 | On Same Network) / BMS Player (Like LR2 | Ruv-It!)
 
 # ChangeLog
 * 130126 - Scratch Finished and Rewrite View Source Code. (@kuna)
@@ -22,4 +22,4 @@ Android Device (On Same Wi-Fi Network) / PC (with iBeatCon Server 0.9.2|On Same 
 4. Re-Open iBeatCon for Android Application.
 5. Enjoy It.
 
-[!] Please make your Your PC Firewall Setting allow 2001 Port and both device (PC & Android) is on same network.
+[!] Please make sure your PC Firewall Setting allow 2001 Port and both device (PC & Android) is on same network.
