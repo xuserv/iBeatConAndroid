@@ -1,10 +1,24 @@
 iBeatCon for Android
 ===============
 
-Harunene님의 클라이언트와 연동됩니다.
+This is Android Port of iBeatCon which Simulate beatmaniaIIDX Controller with iOS Device.
 
-스크래치 돌리는 부분을 만들어야 하는데 너무 귀찮습니다 누가 만들어 주세요 ...
+Original iOS Application and Sever Developer : @Harunene
 
-* 130126 - 스크래치 돌리는 부분 완성 및 View 구현 코드 뒤집어엎음 (SurfaceView)
-* 130127 - 스크래치 박힘 현상 고침
-* 140128 - remember IP settings from now on (thx to @xuserv)
+Compatible Android Application Developer : @kuna
+
+Requirement : Android Device (On Same Wi-Fi Network) / PC (with iBeatCon Server 0.9.2|On Same Network) / BMS Player (Like LR2 | Ruv-It!)
+
+ChangeLog :
+* 130126 - Scratch Finished and Rewrite View Source Code. (@kuna)
+* 130127 - Fix Scratch pinned. (@kuna)
+* 140128 - IP Setting Implement. (@xuserv)
+* 140317 - Add Setting and Key-only mode Feature.
+
+HOW TO USE :
+1. Download iBeatCon_Android.apk and Install your Phone.
+2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open)
+3. Open iBeatCon for Android Application and  Set your IP and select 2P Mode or Key-Only Mode then Tab "Finish and Save"
+4. Re-Open iBeatCon for Android Application.
+5. Enjoy It.
+[!] Please make your Your PC Firewall Setting allow 2001 Port and both device (PC & Android) is on same network.
