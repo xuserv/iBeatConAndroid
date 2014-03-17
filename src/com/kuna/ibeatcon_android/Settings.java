@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class Settings extends Activity {
 	
 	private boolean side_mode;
+	private boolean keyonly_mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,16 @@ public class Settings extends Activity {
         final SharedPreferences settings = getSharedPreferences("settings", MODE_PRIVATE);
         final SharedPreferences.Editor settings2 = settings.edit();
         final CheckBox cb = (CheckBox) findViewById(R.id.cb_2p);
+        final CheckBox cb2 = (CheckBox) findViewById(R.id.cb_ko);
         final TextView t = (TextView) findViewById(R.id.edit_address);
         final TextView zv = (TextView) findViewById(R.id.edit_zoom);
         
         side_mode = settings.getBoolean("side_mode", false);
+        keyonly_mode = settings.getBoolean("keyonly_mode", false);
+        
+        if (keyonly_mode == true) {
+        	cb2.toggle();
+        }
         
         if (side_mode == true) {
         	cb.toggle();
@@ -52,6 +59,12 @@ public class Settings extends Activity {
         			settings2.putBoolean("side_mode", true);        			
         		} else {
         			settings2.putBoolean("side_mode", false);
+        		}
+        		
+        		if (cb2.isChecked()) {
+        			settings2.putBoolean("keyonly_mode", true);
+        		} else {
+        			settings2.putBoolean("keyonly_mode", false);
         		}
         		
         		settings2.commit();

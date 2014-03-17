@@ -40,12 +40,13 @@ public final class R {
     public static final class id {
         public static final int btn_join=0x7f080004;
         public static final int cb_2p=0x7f080003;
+        public static final int cb_ko=0x7f080005;
         public static final int edit_address=0x7f080002;
-        public static final int edit_zoom=0x7f080006;
-        public static final int settings=0x7f080007;
+        public static final int edit_zoom=0x7f080007;
+        public static final int settings=0x7f080008;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080001;
-        public static final int textView3=0x7f080005;
+        public static final int textView3=0x7f080006;
     }
     public static final class layout {
         public static final int activity_join=0x7f030000;

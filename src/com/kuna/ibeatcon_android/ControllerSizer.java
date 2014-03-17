@@ -40,6 +40,17 @@ public class ControllerSizer {
 		
 	}
 	
+	public void Preset_Keyonly() {
+		r_scr = new Rect(0,0,0,0);
+		r_button[0] = new Rect(12,55,28,42);
+		r_button[1] = new Rect(22,7,28,42);
+		r_button[2] = new Rect(32,55,28,42);
+		r_button[3] = new Rect(42,7,28,42);
+		r_button[4] = new Rect(52,55,28,42);
+		r_button[5] = new Rect(62,7,28,42);
+		r_button[6] = new Rect(72,55,28,42);
+	}
+	
 	//
 	public void SetZoomSize(int val) {
 		zoomsize = val;

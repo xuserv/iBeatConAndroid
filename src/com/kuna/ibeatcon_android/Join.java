@@ -20,6 +20,7 @@ public class Join extends Activity {
 	
 	public Handler h;
 	private boolean side_mode;
+	private boolean keyonly_mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,11 @@ public class Join extends Activity {
         String ip = setting.getString("ip", "");
         String ZoomValue = setting.getString("zoom", "");
         side_mode = setting.getBoolean("side_mode", false);
+        keyonly_mode = setting.getBoolean("keyonly_mode", false);
         if (ip != "") {
         		Log.i("IP Address : ", ip);
         		Log.i("Zoom Value : ", ZoomValue);
+        		ConCommon.keyonly = keyonly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
         		ConCommon.cc = new ConClient(ip, 2001);
@@ -55,7 +58,7 @@ public class Join extends Activity {
     				finish();
         		}
         		if (msg.what == -1) {
-        			Toast.makeText(getApplicationContext(), "[!] Cannot Conntect into iBeatCon Server" + "\r\n" + "Please Make Sure Server Program is Currently Running" + "\r\n" + "or Your IP has been changed.", Toast.LENGTH_SHORT).show();
+        			Toast.makeText(getApplicationContext(), "[!] Cannot Connect into iBeatCon Server" + "\r\n" + "Please Make Sure Server Program is Currently Running" + "\r\n" + "or Your IP has been changed.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), Settings.class);
                     startActivity(intent);
                     finish();

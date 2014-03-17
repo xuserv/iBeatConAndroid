@@ -11,6 +11,7 @@ public class ConCommon {
 	public static Stack<Handler> HandlerStack = new Stack<Handler>();
 	
 	public static boolean is2P = false;
+	public static boolean keyonly = false;
 	public static int zoomval = 100;
 	public static boolean debug = false;
 	public static boolean debug_noconnect = false;

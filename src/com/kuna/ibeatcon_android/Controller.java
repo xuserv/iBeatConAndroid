@@ -73,11 +73,14 @@ public class Controller extends Activity {
 		int size_height = displayMetrics.heightPixels;
 		int size_width = displayMetrics.widthPixels;
 		
-		// vals for set
-		if (ConCommon.is2P) {
-			cs.Preset_2P_S();
+		if (ConCommon.keyonly == true) {
+			cs.Preset_Keyonly();
 		} else {
-			cs.Preset_1P_S();
+			if (ConCommon.is2P) {
+				cs.Preset_2P_S();
+			} else {
+				cs.Preset_1P_S();
+			}
 		}
 		cs.SetZoomSize(ConCommon.zoomval);
 		
@@ -199,9 +202,11 @@ public class Controller extends Activity {
 	}
 	public void PressButton(int i) {
 		SendData(pressKey[i]);
+		Log.v("Button", i + " PRESSED");
 	}
 	public void ReleaseButton(int i) {
 		SendData(releaseKey[i]);
+		Log.v("Button", i + " RELEASED");
 	}
 	public void CmpPrs(boolean[] org, boolean[] diff) {
 		for (int i=0; i<7; i++) {
