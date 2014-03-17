@@ -7,13 +7,13 @@ Original iOS Application and Sever Developer : @Harunene
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device (On Same Network) / PC (with iBeatCon Server 0.9.2 | On Same Network) / BMS Player (Like LR2 | Ruv-It!)
+Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It!)
 
 # ChangeLog
-* 130126 - Scratch Finished and Rewrite View Source Code. (@kuna)
-* 130127 - Fix Scratch pinned. (@kuna)
-* 140128 - IP Setting Implement. (@xuserv)
-* 140317 - Add Setting and Key-only mode Feature.
+* 130126 - Scratch Feature Finished and Rewrite View Source Code. (@kuna)
+* 130127 - Fix Scratch issue. (@kuna)
+* 140128 - IP Save Feature Implement. (@xuserv)
+* 140317 - Add Setting and Key-only mode Feature. (@xuserv)
 
 # HOW TO USE
 1. Download iBeatCon_Android.apk and Install your Phone.
@@ -22,4 +22,4 @@ Android Device (On Same Network) / PC (with iBeatCon Server 0.9.2 | On Same Netw
 4. Re-Open iBeatCon for Android Application.
 5. Enjoy It.
 
-[!] Please make sure your PC Firewall Setting allow 2001 Port and both device (PC & Android) is on same network.
+[!] Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
