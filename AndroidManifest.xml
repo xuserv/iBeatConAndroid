@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kuna.ibeatcon_android"
-    android:versionCode="3"
-    android:versionName="140417-alpha-xuserv" >
+    android:versionCode="4"
+    android:versionName="140418" >
 
     <uses-sdk
         android:minSdkVersion="8" />
