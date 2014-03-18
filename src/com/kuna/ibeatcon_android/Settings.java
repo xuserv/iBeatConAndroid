@@ -68,6 +68,8 @@ public class Settings extends Activity {
         		}
         		
         		settings2.commit();
+        		Intent intent = new Intent(getApplicationContext(), Join.class);
+        		startActivity(intent);
         		finish();
 			}
 		});

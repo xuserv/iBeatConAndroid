@@ -73,14 +73,19 @@ public class Controller extends Activity {
 		int size_height = displayMetrics.heightPixels;
 		int size_width = displayMetrics.widthPixels;
 		
-		if (ConCommon.keyonly == true) {
-			cs.Preset_Keyonly();
-		} else {
-			if (ConCommon.is2P) {
-				cs.Preset_2P_S();
-			} else {
-				cs.Preset_1P_S();
-			}
+		
+		switch(displayMetrics.densityDpi) {
+		default:
+				if (ConCommon.keyonly == true) {
+					cs.Preset_Keyonly();
+				} else {
+					if (ConCommon.is2P) {
+						cs.Preset_2P_S();
+					} else {
+						cs.Preset_1P_S();
+					}
+				}
+				break;
 		}
 		cs.SetZoomSize(ConCommon.zoomval);
 		
