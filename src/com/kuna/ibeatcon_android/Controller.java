@@ -76,14 +76,12 @@ public class Controller extends Activity {
 		
 		switch(displayMetrics.densityDpi) {
 		default:
-				if (ConCommon.keyonly == true) {
+				if (ConCommon.keyonly) {
 					cs.Preset_Keyonly();
-				} else {
-					if (ConCommon.is2P) {
+				} else if (ConCommon.is2P) {
 						cs.Preset_2P_S();
-					} else {
+				} else {
 						cs.Preset_1P_S();
-					}
 				}
 				break;
 		}
