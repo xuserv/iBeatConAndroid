@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import android.util.Log;
 
 public class ConClient {
-	private Socket s;
+	private InetSocketAddress s;
+	private Socket s2;
 	public boolean Initalized = false;
 	public String _msg;
 	
@@ -28,12 +30,14 @@ public class ConClient {
 			@Override
 			public void run() {
 				try {
-					s = new Socket(ip, port);
-					s.setTcpNoDelay(true);
+					s = new InetSocketAddress(ip, port);
+					s2 = new Socket();
+					s2.connect(s, 3000);
+					s2.setTcpNoDelay(true);
 					
 					// After Initalization, Run recv thread & activate send method
-					br = new BufferedReader( new InputStreamReader(s.getInputStream()) );
-					bw = new BufferedWriter ( new OutputStreamWriter(s.getOutputStream()));
+					br = new BufferedReader( new InputStreamReader(s2.getInputStream()) );
+					bw = new BufferedWriter ( new OutputStreamWriter(s2.getOutputStream()));
 
 					ConCommon.SendMessage(1);
 				} catch (UnknownHostException e) {
@@ -92,7 +96,7 @@ public class ConClient {
 			Initalized = false;
 			bw.close();
 			br.close();
-			s.close();
+			s2.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

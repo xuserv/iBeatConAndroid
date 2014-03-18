@@ -25,7 +25,7 @@ public class ControllerSizer {
 	}
 	
 	public void Preset_2P_S() {
-		r_scr = new Rect(115,10,60,0);
+		r_scr = new Rect(110,10,60,0);
 		r_button[0] = new Rect(7,55,28,42);
 		r_button[1] = new Rect(17,7,28,42);
 		r_button[2] = new Rect(27,55,28,42);

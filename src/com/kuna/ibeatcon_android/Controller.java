@@ -109,7 +109,7 @@ public class Controller extends Activity {
     	case R.id.settings:
     		startActivity(new Intent(this, Settings.class));
     		finish();
-    		return true;
+    		return true;   		
     	default:
     		return super.onOptionsItemSelected(item);
     	}

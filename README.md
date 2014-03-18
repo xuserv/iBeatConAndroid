@@ -16,7 +16,7 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 140317 - Add Setting and Key-only mode Feature. (@xuserv)
 
 # HOW TO USE
-* [!] Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
+[!] Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
 1. Download iBeatCon_Android.apk and Install your Android Device.
 2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open).
 3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Key-Only Mode then Tab "Finish and Save".
