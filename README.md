@@ -1,4 +1,4 @@
-iBeatCon for Android
+﻿iBeatCon for Android
 ===============
 This is a Android ported version of iBeatCon which simulates beatmaniaIIDX Controller on iOS Device
 
