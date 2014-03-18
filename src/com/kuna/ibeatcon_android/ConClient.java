@@ -41,7 +41,7 @@ public class ConClient {
 
 					ConCommon.SendMessage(1);
 				} catch (UnknownHostException e) {
-					_msg = "유효하지 않은 주소입니다.";
+					_msg = "Invalid IP Address";
 					Initalized = false;
 					e.printStackTrace();
 					ConCommon.SendMessage(-1);
