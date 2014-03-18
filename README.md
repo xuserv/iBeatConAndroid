@@ -17,9 +17,9 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 
 # HOW TO USE
 * [!] Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
-1. Download iBeatCon_Android.apk and Install your Phone.
-2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open)
-3. Open iBeatCon for Android Application and  Set your IP and select 2P Mode or Key-Only Mode then Tab "Finish and Save"
+1. Download iBeatCon_Android.apk and Install your Android Device.
+2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open).
+3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Key-Only Mode then Tab "Finish and Save".
 4. Re-Open iBeatCon for Android Application.
 5. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key in Scratch (left or Right).
 6. Enjoy It.
