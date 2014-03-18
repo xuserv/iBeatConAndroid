@@ -21,5 +21,5 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open).
 3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Key-Only Mode then Tab "Finish and Save".
 4. Re-Open iBeatCon for Android Application.
-5. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key in Scratch (left or Right).
+5. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key in Scratch (left or right).
 6. Enjoy It.
