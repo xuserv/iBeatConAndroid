@@ -13,6 +13,7 @@ import android.view.SurfaceView;
 import android.view.View;
 
 public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
+	public Bitmap[] startRes = new Bitmap[2];
 	public Bitmap[] normalRes = new Bitmap[2];
 	public Bitmap[] pressedRes = new Bitmap[2];
 	public Bitmap scrPanel;
@@ -28,10 +29,13 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 		super(context);
 		
 		// value init
+		startRes[0] = getBitmapFromResId(R.drawable.rdn);
+		startRes[1] = getBitmapFromResId(R.drawable.rdp);
 		normalRes[0] = getBitmapFromResId(R.drawable.whb);
 		normalRes[1] = getBitmapFromResId(R.drawable.bkb);
 		pressedRes[0] = getBitmapFromResId(R.drawable.whp);
 		pressedRes[1] = getBitmapFromResId(R.drawable.bkp);
+		
 		scrPanel = getBitmapFromResId(R.drawable.sc_panel);
 		scratch = getBitmapFromResId(R.drawable.scratch);
 		light_white = getBitmapFromResId(R.drawable.white_light);
@@ -55,16 +59,26 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 						
 						canvas.drawColor(Color.WHITE);
 						
+						// draw start
+						Bitmap b;
+						if (Controller.isStartPressed) {
+							b = startRes[1];
+						} else {
+							b = startRes[0];
+						}
+						
+						canvas.drawBitmap(b, null, Controller.r_start, null);
+						
 						// draw buttons
 						for (int i=0; i<7; i++) {
-							Bitmap b;
+							Bitmap b2;
 							if (Controller.isButtonPressed[i]) {
-								b = pressedRes[i%2];
+								b2 = pressedRes[i%2];
 							} else {
-								b = normalRes[i%2];
+								b2 = normalRes[i%2];
 							}
 							
-							canvas.drawBitmap(b, null, Controller.r_button[i], null);
+							canvas.drawBitmap(b2, null, Controller.r_button[i], null);
 						}
 						
 						/** scratch part */
@@ -132,7 +146,7 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 			mThread.start();
 			Log.v("INFO" ,"SurfaceView Started");
 		} catch (Exception e) {
-			// resume doestn work...
+			// resume doesn't work...
 			isThreadRunning = false;
 			mThread = null;
 			InitThread();

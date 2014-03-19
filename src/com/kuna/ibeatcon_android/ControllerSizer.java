@@ -4,12 +4,14 @@ import android.graphics.Rect;
 import android.util.Log;
 
 public class ControllerSizer {
+	public Rect r_start; // x, y, width, height
 	public Rect r_scr;						// cent_x, cent_y, radius(height), (null)
 	public Rect r_button[] = new Rect[7];	// x, y, width(height), height(height)
 	private int zoomsize=100;
 	
 	// presets
 	public void Preset_1P_S() {
+		r_start = new Rect(0,0,0,0);
 		r_scr = new Rect(-10,10,60,0);
 		r_button[0] = new Rect(17,55,28,42);
 		r_button[1] = new Rect(27,7,28,42);
@@ -21,10 +23,19 @@ public class ControllerSizer {
 	}
 	
 	public void Preset_1P_M() {
-		
+		r_start = new Rect(87,7,15,15);
+		r_scr = new Rect(-10,10,60,0);
+		r_button[0] = new Rect(17,55,28,42);
+		r_button[1] = new Rect(27,7,28,42);
+		r_button[2] = new Rect(37,55,28,42);
+		r_button[3] = new Rect(47,7,28,42);
+		r_button[4] = new Rect(57,55,28,42);
+		r_button[5] = new Rect(67,7,28,42);
+		r_button[6] = new Rect(77,55,28,42);
 	}
 	
 	public void Preset_2P_S() {
+		r_start = new Rect(0,0,0,0);
 		r_scr = new Rect(110,10,60,0);
 		r_button[0] = new Rect(7,55,28,42);
 		r_button[1] = new Rect(17,7,28,42);
@@ -37,10 +48,19 @@ public class ControllerSizer {
 	}
 	
 	public void Preset_2P_M() {
-		
+		r_start = new Rect(0,0,0,0);
+		r_scr = new Rect(110,10,60,0);
+		r_button[0] = new Rect(7,55,28,42);
+		r_button[1] = new Rect(17,7,28,42);
+		r_button[2] = new Rect(27,55,28,42);
+		r_button[3] = new Rect(37,7,28,42);
+		r_button[4] = new Rect(47,55,28,42);
+		r_button[5] = new Rect(57,7,28,42);
+		r_button[6] = new Rect(67,55,28,42);
 	}
 	
 	public void Preset_Keyonly() {
+		r_start = new Rect(0,0,0,0);
 		r_scr = new Rect(0,0,0,0);
 		r_button[0] = new Rect(12,55,28,42);
 		r_button[1] = new Rect(22,7,28,42);
@@ -80,6 +100,24 @@ public class ControllerSizer {
 		
 		return r_scr;
 		
+	}
+	
+	public Rect GetStartRect(int conv_width, int conv_height) {
+		Rect r_start = new Rect();
+		r_start.set(this.r_start);
+		
+		// proc zoom size
+		r_start.top = SetZoomSizeAttr(r_start.top, zoomsize);
+		r_start.left = SetZoomSizeAttr(r_start.left, zoomsize);
+		r_start.right = GetZoomSizeVal(r_start.right, zoomsize);
+		r_start.bottom = GetZoomSizeVal(r_start.bottom, zoomsize);
+		
+		// convert to real size
+		r_start.top = r_start.top*conv_height/100;
+		r_start.left = r_start.left*conv_width/100;
+		r_start.right = r_start.left + r_start.right*conv_height/100;
+		r_start.bottom = r_start.top + r_start.bottom*conv_height/100;
+		return r_start;
 	}
 	
 	public Rect GetScrPanelRect(int conv_width, int conv_height) {

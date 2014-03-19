@@ -30,9 +30,11 @@ import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
 public class Controller extends Activity {
+	public static boolean isStartPressed = false;
 	public static boolean isScratchPressed = false;
 	public static boolean[] isButtonPressed = new boolean[7];
 	
+	public static Rect r_start;
 	public static Rect r_scr;
 	public static Rect r_button[] = new Rect[7];
 	public int id_scr;
@@ -72,22 +74,33 @@ public class Controller extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		int size_height = displayMetrics.heightPixels;
 		int size_width = displayMetrics.widthPixels;
-		
-		
+				
 		switch(displayMetrics.densityDpi) {
-		default:
-				if (ConCommon.keyonly) {
-					cs.Preset_Keyonly();
-				} else if (ConCommon.is2P) {
-						cs.Preset_2P_S();
-				} else {
-						cs.Preset_1P_S();
-				}
-				break;
+		case DisplayMetrics.DENSITY_HIGH:
+			Log.i("Display", "Phone");
+			if (ConCommon.keyonly) {
+				cs.Preset_Keyonly();
+			} else if (ConCommon.is2P) {
+				cs.Preset_2P_S();
+			} else {
+				cs.Preset_1P_S();
+			}
+			break;
+		case DisplayMetrics.DENSITY_MEDIUM:
+			Log.i("Display", "Tablet");
+			if (ConCommon.keyonly) {
+				cs.Preset_Keyonly();
+			} else if (ConCommon.is2P) {
+				cs.Preset_2P_M();
+			} else {
+				cs.Preset_1P_M();
+			}
+			break;
 		}
 		cs.SetZoomSize(ConCommon.zoomval);
 		
 		// set rects for touch event
+		r_start = cs.GetStartRect(size_width, size_height);
 		r_scr = cs.GetScrDataRect(size_width, size_height);
 		r_button = cs.GetButtonRect(size_width, size_height);
 		
@@ -120,6 +133,24 @@ public class Controller extends Activity {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
+		// start
+		boolean s = false;
+		for (int c=0; c<event.getPointerCount(); c++) {
+					
+		if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || 
+			event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
+			continue;	// UP EVENT should be ignored
+					
+			float x = event.getX(c);
+			float y = event.getY(c);
+
+			if (r_start.contains((int)x, (int)y)) {
+				s = true;
+			}
+		}
+			//CmpPrs(isStartPressed, s);
+			isStartPressed = s;
+		
 		// scratch
         int pointerIndex = event.getActionIndex();
         int pointerId = event.getPointerId(pointerIndex);
@@ -201,7 +232,7 @@ public class Controller extends Activity {
 	// common function
 	public void SendData(int i) {
 		if (!ConCommon.debug_noconnect)
-			ConCommon.cc.Send( i );
+			ConCommon.cc.Send(i);
 	}
 	public void PressButton(int i) {
 		SendData(pressKey[i]);
