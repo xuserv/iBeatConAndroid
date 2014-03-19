@@ -15,6 +15,7 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 140128 - IP Save Feature Implement. (@xuserv)
 * 140317 - Add Setting and Key-only mode Feature. (@xuserv)
 * 140318 - Add Socket Time-out. (@xuserv)
+* 140319 - Add Screen Size Detect Feature, Turntable is now complete, Start button added but not gonna work. (@xuserv)
 
 # HOW TO USE
 * Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.

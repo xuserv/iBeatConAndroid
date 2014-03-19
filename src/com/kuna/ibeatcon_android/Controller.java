@@ -1,3 +1,12 @@
+/**
+ * iBeatCon Server 0.9.2
+ * 42,74 ; Scratch
+ * 9,7 ; Scratch
+ * 32,33,34,35,36,37,38 ; Key Press
+ * 64,65,66,67,68,69,70 ; Key Release
+ * 8 ; Scratch (Unused)
+ */
+
 package com.kuna.ibeatcon_android;
 
 import android.app.Activity;
@@ -288,12 +297,13 @@ public class Controller extends Activity {
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed < -1) {
-							SendData(42);
+							SendData(7);
 							Log.v("Scratch", "PRESS");
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
 							SendData(74);
+							SendData(9);
 							Log.v("Scratch", "UP");
 							isScrkeyPressed = false;
 						}
