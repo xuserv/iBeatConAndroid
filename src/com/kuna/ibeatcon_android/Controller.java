@@ -1,10 +1,9 @@
 /**
  * iBeatCon Server 0.9.2
- * 42,74 ; Scratch
- * 9,7 ; Scratch
+ * 9,7,8 ; Scratch
+ * 42,74 ; Start
  * 32,33,34,35,36,37,38 ; Key Press
  * 64,65,66,67,68,69,70 ; Key Release
- * 8 ; Scratch (Unused)
  */
 
 package com.kuna.ibeatcon_android;
