@@ -49,7 +49,6 @@ public class Controller extends Activity {
 	private ControllerSizer cs = new ControllerSizer();
 	private CanvasView cv;
 	private boolean isScrkeyPressed = false;
-	private boolean isScrUp = false;
 	
 	public ImageView obj_scr;
 	public TextView[] obj_btn = new TextView[7];
@@ -301,20 +300,17 @@ public class Controller extends Activity {
 						if (mScratchSpeed > 1) {
 							SendData(8);
 							Log.v("Scratch", "PRESS");
-							isScrUp = false;
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed < -1) {
 							SendData(7);
 							Log.v("Scratch", "PRESS2");
-							isScrUp = true;
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
-								SendData(9);
-								Log.v("Scratch", "UP2");
-								isScrUp = false;
-								isScrkeyPressed = false;
+							SendData(9);
+							Log.v("Scratch", "UP");
+							isScrkeyPressed = false;
 						}
 
 						Thread.sleep(1000/30);
