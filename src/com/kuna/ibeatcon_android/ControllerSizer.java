@@ -43,8 +43,7 @@ public class ControllerSizer {
 		r_button[3] = new Rect(37,7,28,42);
 		r_button[4] = new Rect(47,55,28,42);
 		r_button[5] = new Rect(57,7,28,42);
-		r_button[6] = new Rect(67,55,28,42);
-	
+		r_button[6] = new Rect(67,55,28,42);	
 	}
 	
 	public void Preset_2P_M() {

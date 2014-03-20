@@ -16,6 +16,7 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 140317 - Add Setting and Key-only mode Feature. (@xuserv)
 * 140318 - Add Socket Time-out. (@xuserv)
 * 140319 - Add Screen Size Detect Feature, Turntable is now complete, Start button added but not gonna work. (@xuserv)
+* 140320 - Turntable is now *fully* functional! Start button is now works! [Start button available only on Tablet] (Thx to @Harunene) (@xuserv)
 
 # HOW TO USE
 * Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
@@ -23,5 +24,5 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open).
 3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Key-Only Mode then Tab "Finish and Save".
 4. Re-Open iBeatCon for Android Application.
-5. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key in Scratch (left or right).
+5. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key in Start Button.
 6. Enjoy It.

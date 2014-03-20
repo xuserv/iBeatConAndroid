@@ -50,6 +50,7 @@ public class Controller extends Activity {
 	private ControllerSizer cs = new ControllerSizer();
 	private CanvasView cv;
 	private boolean isScrkeyPressed = false;
+	private boolean isScrUp = false;
 	
 	public ImageView obj_scr;
 	public TextView[] obj_btn = new TextView[7];
@@ -157,7 +158,7 @@ public class Controller extends Activity {
 				s = true;
 			}
 		}
-			//CmpPrs(isStartPressed, s);
+			StaBtn(isStartPressed, s);
 			isStartPressed = s;
 		
 		// scratch
@@ -259,6 +260,13 @@ public class Controller extends Activity {
 				ReleaseButton(i);
 		}
 	}
+	public void StaBtn(boolean org, boolean diff) {
+		if (!org && diff) {
+			SendData(42);
+		} else if (org && !diff) {
+			SendData(74);
+		}
+	}
 	
 	public double getRadianDiff(double sRad, double eRad) {
 		double r = eRad - sRad;
@@ -292,20 +300,22 @@ public class Controller extends Activity {
 						
 						// check scratch
 						if (mScratchSpeed > 1) {
-							SendData(42);
+							SendData(8);
 							Log.v("Scratch", "PRESS");
+							isScrUp = false;
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed < -1) {
 							SendData(7);
-							Log.v("Scratch", "PRESS");
+							Log.v("Scratch", "PRESS2");
+							isScrUp = true;
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
-							SendData(74);
-							SendData(9);
-							Log.v("Scratch", "UP");
-							isScrkeyPressed = false;
+								SendData(9);
+								Log.v("Scratch", "UP2");
+								isScrUp = false;
+								isScrkeyPressed = false;
 						}
 
 						Thread.sleep(1000/30);
