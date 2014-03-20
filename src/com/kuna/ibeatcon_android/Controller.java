@@ -103,6 +103,16 @@ public class Controller extends Activity {
 			} else {
 				cs.Preset_1P_M();
 			}
+			break;			
+		default:
+			Log.i("Display", "Undefined (Load Default)");
+			if (ConCommon.keyonly) {
+				cs.Preset_Keyonly();
+			} else if (ConCommon.is2P) {
+				cs.Preset_2P_M();
+			} else {
+				cs.Preset_1P_M();
+			}
 			break;
 		}
 		cs.SetZoomSize(ConCommon.zoomval);

@@ -17,6 +17,7 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 140318 - Add Socket Time-out. (@xuserv)
 * 140319 - Add Screen Size Detect Feature, Turntable is now complete, Start button added but not gonna work. (@xuserv)
 * 140320 - Turntable is now *fully* functional! Start button is now works! Start button available only on Tablet. (Thx to @Harunene) (@xuserv)
+* 140320-a - Fix Screen Size Detect Problem and Start button appear on 2P Mode and Key-only Mode. (not yet on Phone) (@xuserv)
 
 # HOW TO USE
 * Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
