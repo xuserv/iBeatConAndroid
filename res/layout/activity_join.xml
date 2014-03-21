@@ -31,7 +31,7 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="114dp"
         android:ems="10"
-        android:inputType="textUri" />
+        android:inputType="phone" />
 
     <CheckBox
         android:id="@+id/cb_2p"

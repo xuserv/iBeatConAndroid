@@ -72,6 +72,14 @@ public class Settings extends Activity {
         		startActivity(intent);
         		finish();
 			}
-		});
+		});         
     }
+    
+    @Override
+	public void onBackPressed() {
+    	Intent intent = new Intent(getApplicationContext(), Join.class);
+		startActivity(intent);
+		finish();
+		super.onBackPressed();
+	}
 }
