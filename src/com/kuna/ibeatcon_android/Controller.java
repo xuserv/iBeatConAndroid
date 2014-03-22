@@ -52,7 +52,6 @@ public class Controller extends Activity {
 	public int id_scr;
 	private ControllerSizer cs = new ControllerSizer();
 	private boolean isScrkeyPressed = false;
-	private boolean force_fs_mode;
 	
 	public ImageView obj_scr;
 	public TextView[] obj_btn = new TextView[7];
@@ -78,21 +77,10 @@ public class Controller extends Activity {
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		Log.i("iBeatCon", "Controller Started");
+		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
-		setContentView(R.layout.activity_controller);
-		LinearLayout layout = (LinearLayout)findViewById(R.id.canvas_layout);
-		
-		SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
-		force_fs_mode = setting.getBoolean("force_fs_mode", false);
-		
-		if (force_fs_mode) {
-			getWindow().getDecorView().setSystemUiVisibility(View.GONE);
-		} else {
-			// Do Nothing
-		}
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);						
 					
 		DisplayMetrics displayMetrics = new DisplayMetrics(); 
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -101,7 +89,8 @@ public class Controller extends Activity {
 				
 		switch(displayMetrics.densityDpi) {
 		case DisplayMetrics.DENSITY_HIGH:
-			Log.i("Display", "Phone");
+			Log.i("iBeatCon", "Display : Phone");
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
 			} else if (ConCommon.is2P) {
@@ -111,7 +100,14 @@ public class Controller extends Activity {
 			}
 			break;
 		case DisplayMetrics.DENSITY_MEDIUM:
-			Log.i("Display", "Tablet");
+			Log.i("iBeatCon", "Display : Tablet");
+			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+				Log.i("iBeatCon", "Hardware Button Tablet");
+				requestWindowFeature(Window.FEATURE_NO_TITLE);
+			} else {
+				Log.i("iBeatCon", "No Hardware Button Tablet");
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+			}		
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
 			} else if (ConCommon.is2P) {
@@ -121,7 +117,14 @@ public class Controller extends Activity {
 			}
 			break;			
 		default:
-			Log.i("Display", "Undefined (Load Default)");
+			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");
+			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+				Log.i("iBeatCon", "Hardware Button Unknown Device");
+				requestWindowFeature(Window.FEATURE_NO_TITLE);
+			} else {
+				Log.i("iBeatCon", "No Hardware Button Unknown Device");
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+			}	
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
 			} else if (ConCommon.is2P) {
@@ -131,6 +134,10 @@ public class Controller extends Activity {
 			}
 			break;
 		}
+		
+		setContentView(R.layout.activity_controller);
+		LinearLayout layout = (LinearLayout)findViewById(R.id.canvas_layout);
+		
 		cs.SetZoomSize(ConCommon.zoomval);
 		
 		// set rects for touch event
@@ -157,8 +164,14 @@ public class Controller extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
     	case R.id.settings:
+    		Log.i("iBeatCon", "Settings");
     		startActivity(new Intent(this, Settings.class));
     		finish();
+    		return true;
+    	case R.id.exit:
+    		Log.i("iBeatCon", "Exit");
+    		doScratchThread = false;
+    		android.os.Process.killProcess(android.os.Process.myPid()); // finish() Partially works, replace as killProcess
     		return true;
     	default:
     		return super.onOptionsItemSelected(item);
@@ -270,11 +283,11 @@ public class Controller extends Activity {
 	}
 	public void PressButton(int i) {
 		SendData(pressKey[i]);
-		Log.v("Button", i + " PRESSED");
+		Log.i("iBeatCon", "Button " + i + " Pressed");
 	}
 	public void ReleaseButton(int i) {
 		SendData(releaseKey[i]);
-		Log.v("Button", i + " RELEASED");
+		Log.i("iBeatCon", "Button " + i + " Released");
 	}
 	public void CmpPrs(boolean[] org, boolean[] diff) {
 		for (int i=0; i<7; i++) {
@@ -287,7 +300,9 @@ public class Controller extends Activity {
 	public void StaBtn(boolean org, boolean diff) {
 		if (!org && diff) {
 			SendData(42);
+			Log.i("iBeatCon", "Start Button Pressed");
 		} else if (org && !diff) {
+			Log.i("iBeatCon", "Start Button Released");
 			SendData(74);
 		}
 	}
@@ -323,26 +338,26 @@ public class Controller extends Activity {
 						mScratchRotation += mScratchSpeed*3;
 						
 						// check scratch
-						if (mScratchSpeed > 1) {
-							SendData(8);
-							Log.v("Scratch", "PRESS");
-							isScrkeyPressed = true;
-						}
 						if (mScratchSpeed < -1) {
 							SendData(7);
-							Log.v("Scratch", "PRESS2");
+							Log.i("iBeatCon", "Scracth : Up");
 							isScrkeyPressed = true;
 						}
+						if (mScratchSpeed > 1) {
+							SendData(8);
+							Log.i("iBeatCon", "Scratch : Down");
+							isScrkeyPressed = true;
+						}						
 						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
 							SendData(9);
-							Log.v("Scratch", "UP");
+							Log.i("iBeatCon", "Scratch Stopped");
 							isScrkeyPressed = false;
 						}
 
 						Thread.sleep(1000/30);
 					}
 				} catch (Exception e) {
-					Log.v("ERROR", e.toString());
+					Log.e("ERROR", e.toString());
 				}
 			}
 		});

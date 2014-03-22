@@ -26,17 +26,16 @@ public class Join extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        Log.i("iBeatCon", "Application Launched");
+        
         // attach event
-        final Activity _this = this;
         SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
         String ip = setting.getString("ip", "");
         String ZoomValue = setting.getString("zoom", "");
         side_mode = setting.getBoolean("side_mode", false);
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
         if (ip != "") {
-        		Intent intent = new Intent(getApplicationContext(), Settings.class);
-        		startActivity(intent);
-        		finish();
+        		Log.i("iBeatCon", "Connecting to Server");
         		Log.i("IP Address : ", ip);
         		Log.i("Zoom Value : ", ZoomValue);
         		ConCommon.keyonly = keyonly_mode;
@@ -44,6 +43,7 @@ public class Join extends Activity {
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
         		ConCommon.cc = new ConClient(ip, 2001);
         } else {
+        		Log.i("iBeatCon", "First Run");
         		Toast.makeText(getApplicationContext(), "[FIRST RUN]" + "\r\n" + "Please Setting Your iBeatCon!", Toast.LENGTH_SHORT).show();
         		Intent intent = new Intent(getApplicationContext(), Settings.class);
         		startActivity(intent);
@@ -56,11 +56,12 @@ public class Join extends Activity {
         		if (msg.what == 1) {
     				// start activity
     				ConCommon.controller = new Controller();
-    				Intent i = new Intent(_this, Controller.class);
+    				Intent i = new Intent(getApplicationContext(), Controller.class);
     				startActivity(i);
     				finish();
         		}
         		if (msg.what == -1) {
+        			Log.i("iBeatCon", "Cannot Connect into Server");
         			Toast.makeText(getApplicationContext(), "[!] Cannot Connect into iBeatCon Server" + "\r\n" + "Please Make Sure Server Program is Currently Running" + "\r\n" + "or Your IP has been changed.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), Settings.class);
                     startActivity(intent);

@@ -43,6 +43,7 @@ public class ConClient {
 				} catch (UnknownHostException e) {
 					_msg = "Invalid IP Address";
 					Initalized = false;
+					Log.e("iBeatCon", _msg);
 					e.printStackTrace();
 					ConCommon.SendMessage(-1);
 					return;
@@ -50,6 +51,7 @@ public class ConClient {
 					_msg = e.getMessage();
 					Initalized = false;
 					e.printStackTrace();
+					Log.e("iBeatCon", _msg);
 					ConCommon.SendMessage(-1);
 					return;
 				}
@@ -74,12 +76,12 @@ public class ConClient {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				String s="";
+				String s;
 				while (Initalized) {
 					try {
 						s = br.readLine();
 						if (s==null) return;
-						Log.i("CONNECTION", s);
+						Log.i("iBeatCon", "CONNECTION "+ s);
 					} catch (Exception e) {
 						e.printStackTrace();
 						Close();

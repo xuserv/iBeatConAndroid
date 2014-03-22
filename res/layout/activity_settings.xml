@@ -42,7 +42,7 @@
         android:layout_alignLeft="@+id/edit_address"
         android:layout_below="@+id/edit_address"
         android:layout_marginTop="14dp"
-        android:text="2P Mode" />
+        android:text="@string/str_2p" />
     
     <CheckBox
         android:id="@+id/cb_ko"
@@ -50,15 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cb_2p"
         android:layout_below="@+id/cb_2p"
-        android:text="Key Only Mode" />
-
-    <CheckBox
-        android:id="@+id/cb_fs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_ko"
-        android:layout_below="@+id/cb_ko"
-        android:text="Force Fullscreen" />
+        android:text="@string/str_ko" />
     
     <EditText
         android:id="@+id/edit_zoom"
@@ -68,7 +60,7 @@
         android:layout_toRightOf="@+id/textView3"
         android:ems="10"
         android:inputType="number"
-        android:text="100" />
+        android:text="@string/int_zoom" />
     
     <Button
         android:id="@+id/btn_join"
@@ -76,14 +68,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Finish and Save" />
+        android:text="@string/str_save" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_zoom"
-        android:layout_alignLeft="@+id/cb_fs"
-        android:text="Zoom" />
+        android:layout_alignLeft="@+id/cb_ko"
+        android:text="@string/str_zoom" />
 
 </RelativeLayout>

@@ -144,7 +144,7 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 		try {
 			isThreadRunning = true;
 			mThread.start();
-			Log.v("INFO" ,"SurfaceView Started");
+			Log.i("iBeatCon" ,"SurfaceView Started");
 		} catch (Exception e) {
 			// resume doesn't work...
 			isThreadRunning = false;
