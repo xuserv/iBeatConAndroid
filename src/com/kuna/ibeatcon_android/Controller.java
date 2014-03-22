@@ -11,6 +11,7 @@ package com.kuna.ibeatcon_android;
 import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -25,6 +26,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -36,8 +38,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
+import android.widget.Toast;
 
 public class Controller extends Activity {
+	CanvasView cv;
 	public static boolean isStartPressed = false;
 	public static boolean isScratchPressed = false;
 	public static boolean[] isButtonPressed = new boolean[7];
@@ -47,8 +51,8 @@ public class Controller extends Activity {
 	public static Rect r_button[] = new Rect[7];
 	public int id_scr;
 	private ControllerSizer cs = new ControllerSizer();
-	private CanvasView cv;
 	private boolean isScrkeyPressed = false;
+	private boolean force_fs_mode;
 	
 	public ImageView obj_scr;
 	public TextView[] obj_btn = new TextView[7];
@@ -77,7 +81,19 @@ public class Controller extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-				
+		
+		setContentView(R.layout.activity_controller);
+		LinearLayout layout = (LinearLayout)findViewById(R.id.canvas_layout);
+		
+		SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
+		force_fs_mode = setting.getBoolean("force_fs_mode", false);
+		
+		if (force_fs_mode) {
+			getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+		} else {
+			// Do Nothing
+		}
+					
 		DisplayMetrics displayMetrics = new DisplayMetrics(); 
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		int size_height = displayMetrics.heightPixels;
@@ -124,7 +140,7 @@ public class Controller extends Activity {
 		
 		// create canvas for drawing
 		cv = new CanvasView(this);
-		this.setContentView(cv);
+		layout.addView(cv);
 		
 		// start scratching controller
 		UpdateControllerPosition();
@@ -143,7 +159,7 @@ public class Controller extends Activity {
     	case R.id.settings:
     		startActivity(new Intent(this, Settings.class));
     		finish();
-    		return true;   		
+    		return true;
     	default:
     		return super.onOptionsItemSelected(item);
     	}

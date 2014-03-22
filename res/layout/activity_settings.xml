@@ -31,7 +31,9 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="114dp"
         android:ems="10"
-        android:inputType="phone" />
+        android:inputType="phone" >
+        <requestFocus /> 
+     </EditText>
 
     <CheckBox
         android:id="@+id/cb_2p"
@@ -41,15 +43,7 @@
         android:layout_below="@+id/edit_address"
         android:layout_marginTop="14dp"
         android:text="2P Mode" />
-
-    <Button
-        android:id="@+id/btn_join"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Save and Exit" />
-
+    
     <CheckBox
         android:id="@+id/cb_ko"
         android:layout_width="wrap_content"
@@ -58,25 +52,38 @@
         android:layout_below="@+id/cb_2p"
         android:text="Key Only Mode" />
 
-    <TextView
-        android:id="@+id/textView3"
+    <CheckBox
+        android:id="@+id/cb_fs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cb_ko"
-        android:layout_alignTop="@+id/edit_zoom"
-        android:text="Zoom" />
-
+        android:layout_below="@+id/cb_ko"
+        android:text="Force Fullscreen" />
+    
     <EditText
         android:id="@+id/edit_zoom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cb_ko"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/textView3"
         android:ems="10"
         android:inputType="number"
-        android:text="100" >
+        android:text="100" />
+    
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Finish and Save" />
 
-        <requestFocus />
-    </EditText>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edit_zoom"
+        android:layout_alignLeft="@+id/cb_fs"
+        android:text="Zoom" />
 
 </RelativeLayout>

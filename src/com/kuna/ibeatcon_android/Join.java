@@ -34,6 +34,9 @@ public class Join extends Activity {
         side_mode = setting.getBoolean("side_mode", false);
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
         if (ip != "") {
+        		Intent intent = new Intent(getApplicationContext(), Settings.class);
+        		startActivity(intent);
+        		finish();
         		Log.i("IP Address : ", ip);
         		Log.i("Zoom Value : ", ZoomValue);
         		ConCommon.keyonly = keyonly_mode;

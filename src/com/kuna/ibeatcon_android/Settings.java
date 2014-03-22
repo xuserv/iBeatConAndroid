@@ -19,28 +19,35 @@ public class Settings extends Activity {
 	
 	private boolean side_mode;
 	private boolean keyonly_mode;
+	private boolean force_fs_mode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join);
+        setContentView(R.layout.activity_settings);
         
         final SharedPreferences settings = getSharedPreferences("settings", MODE_PRIVATE);
         final SharedPreferences.Editor settings2 = settings.edit();
         final CheckBox cb = (CheckBox) findViewById(R.id.cb_2p);
         final CheckBox cb2 = (CheckBox) findViewById(R.id.cb_ko);
+        final CheckBox cb3 = (CheckBox) findViewById(R.id.cb_fs);
         final TextView t = (TextView) findViewById(R.id.edit_address);
         final TextView zv = (TextView) findViewById(R.id.edit_zoom);
         
         side_mode = settings.getBoolean("side_mode", false);
         keyonly_mode = settings.getBoolean("keyonly_mode", false);
+        force_fs_mode = settings.getBoolean("force_fs_mode", false);
+               
+        if (side_mode == true) {
+        	cb.toggle();
+        }
         
         if (keyonly_mode == true) {
         	cb2.toggle();
         }
         
-        if (side_mode == true) {
-        	cb.toggle();
+        if (force_fs_mode == true) {
+        	cb3.toggle();
         }
         
         String ip = settings.getString("ip", "");
@@ -67,6 +74,12 @@ public class Settings extends Activity {
         			settings2.putBoolean("keyonly_mode", false);
         		}
         		
+        		if (cb3.isChecked()) {
+        			settings2.putBoolean("force_fs_mode", true);
+        		} else {
+        			settings2.putBoolean("force_fs_mode", false);
+        		}
+        			
         		settings2.commit();
         		Intent intent = new Intent(getApplicationContext(), Join.class);
         		startActivity(intent);
