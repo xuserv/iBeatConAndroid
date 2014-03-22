@@ -14,13 +14,13 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 130127 - Fix Scratch issue. (@kuna)
 * 140128 - IP Save Feature Implement. (@xuserv)
 * 140317 - Add Setting and Key-only mode Feature. (@xuserv)
-* 140318 - Add Socket Time-out. (@xuserv)
+* 140318 - Add Socket Timed out. (@xuserv)
 * 140319 - Add Screen Size Detect Feature, Turntable is now complete, Start button added but not gonna work. (@xuserv)
 * 140320 - Turntable is now *fully* functional! Start button is now works! Start button available only on Tablet. (Thx to @Harunene) (@xuserv)
 * 140320-a - Fix Screen Size Detect Problem and Start button appear on 2P Mode and Key-only Mode. (not available on Phone) (@xuserv)
 * 140322 - Change IP Input Text Box as Phone (in Settings) (@xuserv)
 * 140322-a - Add Force Fullscreen Mode Feature *If you set once you may cannot unset this option* (@xuserv)
-* 140323 - Remove Force Fullscreen Mode and Replace Automatic Fullscreen Feature, No Longer Support Under 4.1.x. (@xuserv)
+* 140323 - Remove Force Fullscreen Mode and Replace Automatic Fullscreen Feature, No Longer Support Under 4.0 (@xuserv)
 
 # HOW TO USE
 * Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
