@@ -34,33 +34,6 @@
         android:inputType="phone" >
         <requestFocus /> 
      </EditText>
-
-    <CheckBox
-        android:id="@+id/cb_2p"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edit_address"
-        android:layout_below="@+id/edit_address"
-        android:layout_marginTop="14dp"
-        android:text="@string/str_2p" />
-    
-    <CheckBox
-        android:id="@+id/cb_ko"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_2p"
-        android:layout_below="@+id/cb_2p"
-        android:text="@string/str_ko" />
-    
-    <EditText
-        android:id="@+id/edit_zoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:ems="10"
-        android:inputType="number"
-        android:text="@string/int_zoom" />
     
     <Button
         android:id="@+id/btn_join"
@@ -75,7 +48,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_zoom"
-        android:layout_alignLeft="@+id/cb_ko"
+        android:layout_alignLeft="@+id/edit_address"
         android:text="@string/str_zoom" />
+
+    <EditText
+        android:id="@+id/edit_zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_address"
+        android:layout_toRightOf="@+id/textView3"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/int_zoom" />
+
+    <CheckBox
+        android:id="@+id/cb_2p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:text="@string/str_2p" />
+
+    <CheckBox
+        android:id="@+id/cb_ko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/edit_address"
+        android:layout_below="@+id/edit_zoom"
+        android:text="@string/str_ko" />
 
 </RelativeLayout>

@@ -9,6 +9,20 @@ Compatible Android Application Developer : @kuna
 # Requirement
 Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It!)
 
+# HOW TO USE
+* Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
+1. Download iBeatCon_Android.apk and Install your Android Device.
+2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open).
+3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Key-Only Mode or Force Fullscreen Mode then Tab "Finish and Save".
+4. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key as Start Button.
+5. Enjoy It.
+
+# Tested Device
+* Galaxy S2 LTE
+* Galaxy Note 10.1 (not 2014)
+* Nexus S
+* Optimus 2X
+
 # ChangeLog
 * 130126 - Scratch Feature Finished and Rewrite View Source Code. (@kuna)
 * 130127 - Fix Scratch issue. (@kuna)
@@ -21,11 +35,4 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 140322 - Change IP Input Text Box as Phone (in Settings) (@xuserv)
 * 140322-a - Add Force Fullscreen Mode Feature *If you set once you may cannot unset this option* (@xuserv)
 * 140323 - Remove Force Fullscreen Mode and Replace Automatic Fullscreen Feature, No Longer Support Under 4.0 (@xuserv)
-
-# HOW TO USE
-* Please make sure your PC Firewall setting allow 2001 port and both device (PC & Android) are on same network.
-1. Download iBeatCon_Android.apk and Install your Android Device.
-2. Download iBeatConServer.exe from http://kuna.tistory.com/1378 and run iBeatConServer.exe as Administrator (for Socket Open).
-3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Key-Only Mode or Force Fullscreen Mode then Tab "Finish and Save".
-4. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key as Start Button.
-5. Enjoy It.
+* 140324 - Fix Settings Layout Crash, Add Bigger Resolution Screen Support, Add Start button on Phone. (Key Only Mode Only.) (@xuserv)

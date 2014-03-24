@@ -70,7 +70,7 @@ public class Controller extends Activity {
 	@Override
 	public void onBackPressed() {			
 		doScratchThread = false;
-		finish();
+		android.os.Process.killProcess(android.os.Process.myPid()); // finish() Partially works, replace as killProcess
 		super.onBackPressed();
 	}
 	
@@ -100,7 +100,7 @@ public class Controller extends Activity {
 			}
 			break;
 		case DisplayMetrics.DENSITY_MEDIUM:
-			Log.i("iBeatCon", "Display : Tablet");
+			Log.i("iBeatCon", "Display : Tablet (like Galaxy Tab 10.1)");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 				Log.i("iBeatCon", "Hardware Button Tablet");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -115,7 +115,24 @@ public class Controller extends Activity {
 			} else {
 				cs.Preset_1P_M();
 			}
-			break;			
+			break;
+		case DisplayMetrics.DENSITY_XHIGH:
+			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");
+			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+				Log.i("iBeatCon", "Hardware Button Tablet2");
+				requestWindowFeature(Window.FEATURE_NO_TITLE);
+			} else {
+				Log.i("iBeatCon", "No Hardware Button Tablet2");
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+			}		
+			if (ConCommon.keyonly) {
+				cs.Preset_Keyonly();
+			} else if (ConCommon.is2P) {
+				cs.Preset_2P_L();
+			} else {
+				cs.Preset_1P_L();
+			}
+			break;
 		default:
 			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
