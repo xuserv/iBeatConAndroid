@@ -38,3 +38,4 @@ Android Device (least 4.0) / PC (with iBeatCon Server 0.9.2/1.0.0) / BMS Player 
 * 140324 - Fix Settings Layout Crash, Add Bigger Resolution Screen Support, Add Start button on Phone. (Key Only Mode Only.) (@xuserv)
 * 140328 - Add New Server Compatible Mode, Fix Infinite Activity Loop Issue. (@xuserv)
 * 140328-a - Fix "New Server Compatible Mode" Checkbox State Save Function. (@xuserv)
+* 140329 - Add View Restoring Feature, It may take while. (@xuserv)

@@ -188,9 +188,7 @@ public class Controller extends Activity {
     	switch (item.getItemId()) {
     	case R.id.settings:
     		Log.i("iBeatCon", "Settings");
-    		mScratch.interrupt();
-    		startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-    		finish();
+    		startActivity(new Intent(getApplicationContext(), Settings.class));
     		return true;
     	case R.id.exit:
     		Log.i("iBeatCon", "Exit");

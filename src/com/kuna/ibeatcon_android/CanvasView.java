@@ -122,7 +122,7 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 						//this.wait(1000/60);
 					}
 				} catch (Exception e) {
-					Log.e("ERROR", e.toString());
+					Log.e("iBeatCon", "CanvasView Error : " + e.toString());
 				}
 			}
 		});
@@ -133,10 +133,11 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 
 	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
-		// TODO Auto-generated method stub
-		
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+		// It may take while...
+		isThreadRunning = true;
+		InitThread();
+		mThread.start();
 	}
 
 	@Override
