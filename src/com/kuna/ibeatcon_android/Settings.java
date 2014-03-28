@@ -20,6 +20,7 @@ import android.widget.Toast;
 public class Settings extends Activity {
 	
 	private boolean side_mode;
+	private boolean scronly_mode;
 	private boolean keyonly_mode;
 
     @Override
@@ -31,13 +32,15 @@ public class Settings extends Activity {
         final SharedPreferences.Editor settings2 = settings.edit();
         final CheckBox cb = (CheckBox)findViewById(R.id.cb_2p);
         final CheckBox cb2 = (CheckBox)findViewById(R.id.cb_ko);
-        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_ns);
+        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_so);
+        final CheckBox cb4 = (CheckBox)findViewById(R.id.cb_ns);
         final TextView t = (TextView)findViewById(R.id.edit_address);
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
         
         String ip = settings.getString("ip", "");
         side_mode = settings.getBoolean("side_mode", false);
         keyonly_mode = settings.getBoolean("keyonly_mode", false);
+        scronly_mode = settings.getBoolean("scronly_mode", false);
         String new_server = settings.getString("port", "");
         
         t.setText(ip);
@@ -50,8 +53,12 @@ public class Settings extends Activity {
         	cb2.toggle();
         }
         
-        if (new_server.equals("10070")) {
+        if (scronly_mode) {
         	cb3.toggle();
+        }
+        
+        if (new_server.equals("10070")) {
+        	cb4.toggle();
         }
 
         Button b = (Button) findViewById(R.id.btn_join);
@@ -77,6 +84,12 @@ public class Settings extends Activity {
         		}
         		
         		if (cb3.isChecked()) {
+        			settings2.putBoolean("scronly_mode", true);
+        		} else {
+        			settings2.putBoolean("scronly_mode", false);
+        		}
+        		
+        		if (cb4.isChecked()) {
         			settings2.putString("port", "10070");
         		} else {
         			settings2.putString("port", "2001");

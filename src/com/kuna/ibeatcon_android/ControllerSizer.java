@@ -35,15 +35,15 @@ public class ControllerSizer {
 	}
 	
 	public void Preset_1P_L() {
-		r_start = new Rect(87,7,15,15);
-		r_scr = new Rect(-10,10,50,0);
-		r_button[0] = new Rect(17,55,28,42);
-		r_button[1] = new Rect(27,7,28,42);
-		r_button[2] = new Rect(37,55,28,42);
-		r_button[3] = new Rect(47,7,28,42);
-		r_button[4] = new Rect(57,55,28,42);
-		r_button[5] = new Rect(67,7,28,42);
-		r_button[6] = new Rect(77,55,28,42);
+		r_start = new Rect(87,4,15,15);
+		r_scr = new Rect(-10,8,60,0);
+		r_button[0] = new Rect(17,47,28,40);
+		r_button[1] = new Rect(27,3,28,40);
+		r_button[2] = new Rect(37,47,28,40);
+		r_button[3] = new Rect(47,3,28,40);
+		r_button[4] = new Rect(57,47,28,40);
+		r_button[5] = new Rect(67,3,28,40);
+		r_button[6] = new Rect(77,47,28,40);
 	}
 	
 	public void Preset_2P_S() {
@@ -92,6 +92,18 @@ public class ControllerSizer {
 		r_button[4] = new Rect(52,55,28,42);
 		r_button[5] = new Rect(62,7,28,42);
 		r_button[6] = new Rect(72,55,28,42);
+	}
+	
+	public void Preset_Scronly() {
+		r_start = new Rect(0,0,0,0);
+		r_scr = new Rect(53,53,50,0);
+		r_button[0] = new Rect(0,0,0,0);
+		r_button[1] = new Rect(0,0,0,0);
+		r_button[2] = new Rect(0,0,0,0);
+		r_button[3] = new Rect(0,0,0,0);
+		r_button[4] = new Rect(0,0,0,0);
+		r_button[5] = new Rect(0,0,0,0);
+		r_button[6] = new Rect(0,0,0,0);
 	}
 	
 	//

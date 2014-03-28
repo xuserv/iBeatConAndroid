@@ -86,76 +86,79 @@ public class Controller extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		int size_height = displayMetrics.heightPixels;
 		int size_width = displayMetrics.widthPixels;
-				
-		switch(displayMetrics.densityDpi) {
-		case DisplayMetrics.DENSITY_HIGH:
+		
+		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
 			Log.i("iBeatCon", "Display : Phone");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 				Log.i("iBeatCon", "Hardware Button Phone");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Phone");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
 			}
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P == false) {
-				cs.Preset_1P_S();
-			} else {
+			} else if (ConCommon.scronly) {
+				cs.Preset_Scronly();
+			} else if (ConCommon.is2P) {
 				cs.Preset_2P_S();
+			} else {
+				cs.Preset_1P_S();
 			}
-			break;
-		case DisplayMetrics.DENSITY_MEDIUM:
+		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM) {
 			Log.i("iBeatCon", "Display : Tablet (like Galaxy Tab 10.1)");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 				Log.i("iBeatCon", "Hardware Button Tablet");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Tablet");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
 			}		
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P == false) {
-				cs.Preset_1P_M();
-			} else {
+			} else if (ConCommon.scronly) {
+				cs.Preset_Scronly();
+			} else if (ConCommon.is2P) {
 				cs.Preset_2P_M();
+			} else {
+				cs.Preset_1P_M();
 			}
-			break;
-		case DisplayMetrics.DENSITY_XHIGH:
+		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_XHIGH | displayMetrics.densityDpi <= 480) {
 			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 				Log.i("iBeatCon", "Hardware Button Tablet2");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Tablet2");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
-			}		
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
+			}			
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P == false) {
-				cs.Preset_1P_L();
-			} else {
+			} else if (ConCommon.scronly) {
+				cs.Preset_Scronly();
+			} else if (ConCommon.is2P) {
 				cs.Preset_2P_L();
+			} else {
+				cs.Preset_1P_L();
 			}
-			break;
-		default:
+		} else {
 			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 				Log.i("iBeatCon", "Hardware Button Unknown Device");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Default Device");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
 			}	
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P == false) {
-				cs.Preset_1P_M();
-			} else {
+			} else if (ConCommon.scronly) {
+				cs.Preset_Scronly();
+			} else if (ConCommon.is2P) {
 				cs.Preset_2P_M();
+			} else {
+				cs.Preset_1P_M();
 			}
-			break;
 		}
 		
 		setContentView(R.layout.activity_controller);
@@ -217,8 +220,8 @@ public class Controller extends Activity {
 				s = true;
 			}
 		}
-			StaBtn(isStartPressed, s);
-			isStartPressed = s;
+		StaBtn(isStartPressed, s);
+		isStartPressed = s;
 		
 		// scratch
         int pointerIndex = event.getActionIndex();

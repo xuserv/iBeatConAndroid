@@ -31,9 +31,7 @@
         android:layout_below="@+id/textView2"
         android:layout_marginTop="114dp"
         android:ems="10"
-        android:inputType="phone" >
-        <requestFocus /> 
-     </EditText>
+        android:inputType="phone" /> 
     
     <Button
         android:id="@+id/btn_join"
@@ -78,11 +76,19 @@
         android:text="@string/str_ko" />
 
     <CheckBox
-        android:id="@+id/cb_ns"
+        android:id="@+id/cb_so"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cb_ko"
         android:layout_below="@+id/cb_ko"
+        android:text="@string/str_so" />
+
+    <CheckBox
+        android:id="@+id/cb_ns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cb_so"
+        android:layout_below="@+id/cb_so"
         android:text="@string/str_ns" />
 
 </RelativeLayout>

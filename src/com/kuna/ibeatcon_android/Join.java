@@ -20,6 +20,7 @@ public class Join extends Activity {
 	
 	public Handler h;
 	private boolean side_mode;
+	private boolean scronly_mode;
 	private boolean keyonly_mode;
 
     @Override
@@ -34,6 +35,7 @@ public class Join extends Activity {
         String ZoomValue = setting.getString("zoom", "");
         String port = setting.getString("port", "");
         side_mode = setting.getBoolean("side_mode", false);
+        scronly_mode = setting.getBoolean("scronly_mode", false);
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
         if (ip != "") {
         		Log.i("iBeatCon", "Connecting to Server");
@@ -41,6 +43,7 @@ public class Join extends Activity {
         		Log.i("iBeatCon", "Zoom Value : " + ZoomValue);
         		Log.i("iBeatCon", "Server Port: "+ port);
         		ConCommon.keyonly = keyonly_mode;
+        		ConCommon.scronly = scronly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
         		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
