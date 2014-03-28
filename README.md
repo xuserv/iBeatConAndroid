@@ -7,7 +7,7 @@ Original iOS Application and Sever Developer : @Harunene
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device / PC (with iBeatCon Server 0.9.2/1.0.0) / BMS Player (Like LR2 | Ruv-It!)
+Android Device (least 4.0) / PC (with iBeatCon Server 0.9.2/1.0.0) / BMS Player (Like LR2 | Ruv-It!)
 
 # HOW TO USE
 * Please make sure your PC Firewall setting allow 2001(0.9.2) or 10070(1.0.0) port and both device (PC & Android) are on same network.
@@ -37,3 +37,4 @@ Android Device / PC (with iBeatCon Server 0.9.2/1.0.0) / BMS Player (Like LR2 | 
 * 140323 - Remove Force Fullscreen Mode and Replace Automatic Fullscreen Feature, No Longer Support Under 4.0 (@xuserv)
 * 140324 - Fix Settings Layout Crash, Add Bigger Resolution Screen Support, Add Start button on Phone. (Key Only Mode Only.) (@xuserv)
 * 140328 - Add New Server Compatible Mode, Fix Infinite Activity Loop Issue. (@xuserv)
+* 140328-a - Fix "New Server Compatible Mode" Checkbox State Save Function. (@xuserv)

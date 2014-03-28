@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,11 +35,11 @@ public class Settings extends Activity {
         final TextView t = (TextView)findViewById(R.id.edit_address);
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
         
+        String ip = settings.getString("ip", "");
         side_mode = settings.getBoolean("side_mode", false);
         keyonly_mode = settings.getBoolean("keyonly_mode", false);
         String new_server = settings.getString("port", "");
         
-        String ip = settings.getString("ip", "");
         t.setText(ip);
                
         if (side_mode) {
@@ -49,7 +50,7 @@ public class Settings extends Activity {
         	cb2.toggle();
         }
         
-        if (new_server == "10070") {
+        if (new_server.equals("10070")) {
         	cb3.toggle();
         }
 

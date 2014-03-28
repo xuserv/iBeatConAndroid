@@ -90,13 +90,19 @@ public class Controller extends Activity {
 		switch(displayMetrics.densityDpi) {
 		case DisplayMetrics.DENSITY_HIGH:
 			Log.i("iBeatCon", "Display : Phone");
-			requestWindowFeature(Window.FEATURE_NO_TITLE);
+			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+				Log.i("iBeatCon", "Hardware Button Phone");
+				requestWindowFeature(Window.FEATURE_NO_TITLE);
+			} else {
+				Log.i("iBeatCon", "No Hardware Button Phone");
+				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
+			}
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P) {
-				cs.Preset_2P_S();
-			} else {
+			} else if (ConCommon.is2P == false) {
 				cs.Preset_1P_S();
+			} else {
+				cs.Preset_2P_S();
 			}
 			break;
 		case DisplayMetrics.DENSITY_MEDIUM:
@@ -110,10 +116,10 @@ public class Controller extends Activity {
 			}		
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P) {
-				cs.Preset_2P_M();
-			} else {
+			} else if (ConCommon.is2P == false) {
 				cs.Preset_1P_M();
+			} else {
+				cs.Preset_2P_M();
 			}
 			break;
 		case DisplayMetrics.DENSITY_XHIGH:
@@ -127,10 +133,10 @@ public class Controller extends Activity {
 			}		
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P) {
-				cs.Preset_2P_L();
-			} else {
+			} else if (ConCommon.is2P == false) {
 				cs.Preset_1P_L();
+			} else {
+				cs.Preset_2P_L();
 			}
 			break;
 		default:
@@ -139,15 +145,15 @@ public class Controller extends Activity {
 				Log.i("iBeatCon", "Hardware Button Unknown Device");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
-				Log.i("iBeatCon", "No Hardware Button Unknown Device");
+				Log.i("iBeatCon", "No Hardware Button Default Device");
 				getWindow().getDecorView().setSystemUiVisibility(View.GONE);
 			}	
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
-			} else if (ConCommon.is2P) {
-				cs.Preset_2P_M();
-			} else {
+			} else if (ConCommon.is2P == false) {
 				cs.Preset_1P_M();
+			} else {
+				cs.Preset_2P_M();
 			}
 			break;
 		}

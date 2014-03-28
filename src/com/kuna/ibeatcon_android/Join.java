@@ -37,9 +37,9 @@ public class Join extends Activity {
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
         if (ip != "") {
         		Log.i("iBeatCon", "Connecting to Server");
-        		Log.i("IP Address : ", ip);
-        		Log.i("Zoom Value : ", ZoomValue);
-        		Log.i("Server Port: ", port);
+        		Log.i("iBeatCon", "IP Address : " + ip);
+        		Log.i("iBeatCon", "Zoom Value : " + ZoomValue);
+        		Log.i("iBeatCon", "Server Port: "+ port);
         		ConCommon.keyonly = keyonly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
@@ -56,6 +56,7 @@ public class Join extends Activity {
         	public void handleMessage(Message msg) {
         		if (msg.what == 1) {
     				// start activity
+        			Log.i("iBeatCon", "Connected.");
     				ConCommon.controller = new Controller();
     				startActivity(new Intent(getApplicationContext(), Controller.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     				finish();
