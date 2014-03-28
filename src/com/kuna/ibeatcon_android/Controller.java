@@ -69,8 +69,8 @@ public class Controller extends Activity {
 	
 	@Override
 	public void onBackPressed() {			
-		doScratchThread = false;
-		android.os.Process.killProcess(android.os.Process.myPid()); // finish() Partially works, replace as killProcess
+		mScratch.interrupt();
+		finish();
 		super.onBackPressed();
 	}
 	
@@ -182,13 +182,14 @@ public class Controller extends Activity {
     	switch (item.getItemId()) {
     	case R.id.settings:
     		Log.i("iBeatCon", "Settings");
-    		startActivity(new Intent(this, Settings.class));
+    		mScratch.interrupt();
+    		startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     		finish();
     		return true;
     	case R.id.exit:
     		Log.i("iBeatCon", "Exit");
-    		doScratchThread = false;
-    		android.os.Process.killProcess(android.os.Process.myPid()); // finish() Partially works, replace as killProcess
+    		mScratch.interrupt();
+    		finish();
     		return true;
     	default:
     		return super.onOptionsItemSelected(item);

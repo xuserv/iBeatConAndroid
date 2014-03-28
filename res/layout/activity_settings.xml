@@ -73,8 +73,16 @@
         android:id="@+id/cb_ko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/edit_address"
-        android:layout_below="@+id/edit_zoom"
+        android:layout_alignLeft="@+id/cb_2p"
+        android:layout_below="@+id/cb_2p"
         android:text="@string/str_ko" />
+
+    <CheckBox
+        android:id="@+id/cb_ns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cb_ko"
+        android:layout_below="@+id/cb_ko"
+        android:text="@string/str_ns" />
 
 </RelativeLayout>

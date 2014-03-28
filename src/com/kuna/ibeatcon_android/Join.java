@@ -32,21 +32,22 @@ public class Join extends Activity {
         SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
         String ip = setting.getString("ip", "");
         String ZoomValue = setting.getString("zoom", "");
+        String port = setting.getString("port", "");
         side_mode = setting.getBoolean("side_mode", false);
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
         if (ip != "") {
         		Log.i("iBeatCon", "Connecting to Server");
         		Log.i("IP Address : ", ip);
         		Log.i("Zoom Value : ", ZoomValue);
+        		Log.i("Server Port: ", port);
         		ConCommon.keyonly = keyonly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
-        		ConCommon.cc = new ConClient(ip, 2001);
+        		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
         } else {
         		Log.i("iBeatCon", "First Run");
-        		Toast.makeText(getApplicationContext(), "[FIRST RUN]" + "\r\n" + "Please Setting Your iBeatCon!", Toast.LENGTH_SHORT).show();
-        		Intent intent = new Intent(getApplicationContext(), Settings.class);
-        		startActivity(intent);
+        		Toast.makeText(getApplicationContext(), "[FIRST RUN]" + "\r\n" + "Please Setting Your iBeatCon!", Toast.LENGTH_SHORT).show();       		
+        		startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         		finish();
         }
         
@@ -56,16 +57,14 @@ public class Join extends Activity {
         		if (msg.what == 1) {
     				// start activity
     				ConCommon.controller = new Controller();
-    				Intent i = new Intent(getApplicationContext(), Controller.class);
-    				startActivity(i);
+    				startActivity(new Intent(getApplicationContext(), Controller.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     				finish();
         		}
         		if (msg.what == -1) {
         			Log.i("iBeatCon", "Cannot Connect into Server");
         			Toast.makeText(getApplicationContext(), "[!] Cannot Connect into iBeatCon Server" + "\r\n" + "Please Make Sure Server Program is Currently Running" + "\r\n" + "or Your IP has been changed.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), Settings.class);
-                    startActivity(intent);
-                    finish();
+        			startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        			finish();
         		}
         		super.handleMessage(msg);
         	}

@@ -36,3 +36,4 @@ Android Device / PC (with iBeatCon Server 0.9.2) / BMS Player (Like LR2 | Ruv-It
 * 140322-a - Add Force Fullscreen Mode Feature *If you set once you may cannot unset this option* (@xuserv)
 * 140323 - Remove Force Fullscreen Mode and Replace Automatic Fullscreen Feature, No Longer Support Under 4.0 (@xuserv)
 * 140324 - Fix Settings Layout Crash, Add Bigger Resolution Screen Support, Add Start button on Phone. (Key Only Mode Only.) (@xuserv)
+* 140328 - Add New Server Compatible Mode, Fix Infinite Activity Loop Issue. (@xuserv)

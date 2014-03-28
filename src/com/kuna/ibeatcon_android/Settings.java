@@ -28,24 +28,31 @@ public class Settings extends Activity {
         
         final SharedPreferences settings = getSharedPreferences("settings", MODE_PRIVATE);
         final SharedPreferences.Editor settings2 = settings.edit();
-        final CheckBox cb = (CheckBox) findViewById(R.id.cb_2p);
-        final CheckBox cb2 = (CheckBox) findViewById(R.id.cb_ko);
-        final TextView t = (TextView) findViewById(R.id.edit_address);
-        final TextView zv = (TextView) findViewById(R.id.edit_zoom);
+        final CheckBox cb = (CheckBox)findViewById(R.id.cb_2p);
+        final CheckBox cb2 = (CheckBox)findViewById(R.id.cb_ko);
+        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_ns);
+        final TextView t = (TextView)findViewById(R.id.edit_address);
+        final TextView zv = (TextView)findViewById(R.id.edit_zoom);
         
         side_mode = settings.getBoolean("side_mode", false);
         keyonly_mode = settings.getBoolean("keyonly_mode", false);
-               
-        if (side_mode == true) {
-        	cb.toggle();
-        }
-        
-        if (keyonly_mode == true) {
-        	cb2.toggle();
-        }        
+        String new_server = settings.getString("port", "");
         
         String ip = settings.getString("ip", "");
         t.setText(ip);
+               
+        if (side_mode) {
+        	cb.toggle();
+        }
+        
+        if (keyonly_mode) {
+        	cb2.toggle();
+        }
+        
+        if (new_server == "10070") {
+        	cb3.toggle();
+        }
+
         Button b = (Button) findViewById(R.id.btn_join);
         b.setOnClickListener(new OnClickListener() {
         	@Override
@@ -67,20 +74,17 @@ public class Settings extends Activity {
         		} else {
         			settings2.putBoolean("keyonly_mode", false);
         		}
+        		
+        		if (cb3.isChecked()) {
+        			settings2.putString("port", "10070");
+        		} else {
+        			settings2.putString("port", "2001");
+        		}
         			
         		settings2.commit();
-        		Intent intent = new Intent(getApplicationContext(), Join.class);
-        		startActivity(intent);
+        		startActivity(new Intent(getApplicationContext(), Join.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         		finish();
 			}
 		});         
     }
-    
-    @Override
-	public void onBackPressed() {
-    	Intent intent = new Intent(getApplicationContext(), Join.class);
-		startActivity(intent);
-		finish();
-		super.onBackPressed();
-	}
 }
