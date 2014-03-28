@@ -1,5 +1,5 @@
 /**
- * iBeatCon Server 0.9.2
+ * iBeatCon Server 0.9.2 (beyond 1.0.0)
  * 9,7,8 ; Scratch
  * 42,74 ; Start
  * 32,33,34,35,36,37,38 ; Key Press
