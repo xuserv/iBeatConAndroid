@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iBeatCon for Android</string>
+    <string name="action_settings">설정</string>
+    <string name="action_exit">종료</string>
+    <string name="str_welcome">iBeatCon for Android (140329-b)</string>
+    <string name="str_join">IP 주소를 입력 해 주세요</string>
+    <string name="str_2p">2P 모드</string>
+    <string name="str_ko">키 전용 모드</string>
+    <string name="str_so">스크래치 전용 모드</string>
+    <string name="str_ns">신 서버 대응 모드</string>
+    <string name="str_zoom">확대값 </string>
+    <string name="str_save">저장 후 적용</string>
+    <string name="int_zoom">100</string>
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iBeatCon for Android</string>
+    <string name="action_settings">設定</string>
+    <string name="action_exit">終了</string>
+    <string name="str_welcome">iBeatCon for Android (140329-b)</string>
+    <string name="str_join">IPアドレスを入力してください</string>
+    <string name="str_2p">2P側</string>
+    <string name="str_ko">鍵盤のみ</string>
+    <string name="str_so">スクラッチのみ</string>
+    <string name="str_ns">新しいサーバー適合モード</string>
+    <string name="str_zoom">拡大値</string>
+    <string name="str_save">保存して適用</string>
+    <string name="int_zoom">100</string>
+
+</resources>

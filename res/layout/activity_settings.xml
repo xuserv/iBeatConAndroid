@@ -21,17 +21,7 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="14dp"
-        android:text="@string/str_join" />
-
-    <EditText
-        android:id="@+id/edit_address"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="114dp"
-        android:ems="10"
-        android:inputType="phone" /> 
+        android:text="@string/str_join" /> 
     
     <Button
         android:id="@+id/btn_join"
@@ -90,5 +80,18 @@
         android:layout_alignLeft="@+id/cb_so"
         android:layout_below="@+id/cb_so"
         android:text="@string/str_ns" />
+
+    <EditText
+        android:id="@+id/edit_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="phone" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

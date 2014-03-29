@@ -133,7 +133,8 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 
 	@Override
-	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) { 
+		Log.i("iBeatCon", "SurfaceView Changed");
 		isThreadRunning = true;
 	}
 
@@ -154,6 +155,7 @@ public class CanvasView extends SurfaceView implements SurfaceHolder.Callback {
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
+		Log.i("iBeatCon", "SurfaceView Destroyed");
 		isThreadRunning = false;
 	}
 }

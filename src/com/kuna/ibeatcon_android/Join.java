@@ -37,7 +37,7 @@ public class Join extends Activity {
         side_mode = setting.getBoolean("side_mode", false);
         scronly_mode = setting.getBoolean("scronly_mode", false);
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
-        if (ip != "") {
+        if (ip != "" | ZoomValue != "" | port != "") {
         		Log.i("iBeatCon", "Connecting to Server");
         		Log.i("iBeatCon", "IP Address : " + ip);
         		Log.i("iBeatCon", "Zoom Value : " + ZoomValue);
