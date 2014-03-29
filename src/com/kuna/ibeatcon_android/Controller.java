@@ -13,10 +13,12 @@ import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
@@ -204,7 +206,11 @@ public class Controller extends Activity {
     }
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event) {		
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			cv.invalidate();
+		}
+		
 		// start
 		boolean s = false;
 		for (int c=0; c<event.getPointerCount(); c++) {
@@ -361,6 +367,7 @@ public class Controller extends Activity {
 						
 						// change rotation value
 						mScratchRotation += mScratchSpeed*3;
+						cv.postInvalidate();
 						
 						// check scratch
 						if (mScratchSpeed < -1) {
