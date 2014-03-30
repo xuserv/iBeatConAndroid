@@ -2,8 +2,8 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kuna.ibeatcon_android"
-    android:versionCode="17"
-    android:versionName="140330-a" >
+    android:versionCode="18"
+    android:versionName="140330-b" >
 
     <uses-sdk
         android:minSdkVersion="14" />
