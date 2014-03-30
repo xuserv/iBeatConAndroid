@@ -8,6 +8,8 @@
 
 package com.kuna.ibeatcon_android;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
@@ -306,8 +308,6 @@ public class Controller extends Activity {
 		return super.onTouchEvent(event);
 	}
 	
-	
-	// common function
 	public void SendData(int i) {
 		if (!ConCommon.debug_noconnect)
 			ConCommon.cc.Send(i);

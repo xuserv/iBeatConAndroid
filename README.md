@@ -42,3 +42,4 @@ Android Device (least 4.0) / PC (with iBeatCon Server 0.9.2|1.0.0) / BMS Player 
 * 140329-a - Add Scratch Only Mode, Adjust Controller Layout. (@xuserv)
 * 140329-b - Add Korean, Japanese (thx to @Galpum) Support, Fix Restoring View Issue. (@xuserv)
 * 140330 - Rewrite SurfaceView Code (thx to @Soreebreaker), Add Exception No Longer Need Data Delete or Reinstall. (@xuserv)
+* 140330-a - Add Spanish Support (thx to @_brandNEWdays), Fix Some Bugs (@xuserv)

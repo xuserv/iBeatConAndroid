@@ -3,6 +3,7 @@ package com.kuna.ibeatcon_android;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
@@ -38,6 +39,8 @@ public class ConClient {
 					// After Initalization, Run recv thread & activate send method
 					br = new BufferedReader( new InputStreamReader(s2.getInputStream()) );
 					bw = new BufferedWriter ( new OutputStreamWriter(s2.getOutputStream()));
+					
+					StartReadThread();
 
 					ConCommon.SendMessage(1);
 				} catch (UnknownHostException e) {
@@ -55,7 +58,6 @@ public class ConClient {
 					ConCommon.SendMessage(-1);
 					return;
 				}
-				
 				Initalized = true;
 			}
 		}).start();
