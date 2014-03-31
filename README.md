@@ -7,7 +7,7 @@ Original iOS Application and Sever Developer : @Harunene
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device (least 4.0) / PC (with iBeatCon Server 0.9.2|1.0.0) / BMS Player (Like LR2 | Ruv-It!)
+Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Player (Like LR2 | Ruv-It!)
 
 # HOW TO USE
 * Please make sure your PC Firewall setting allow 2001(0.9.2) or 10070(1.0.0) port and both device (PC & Android) are on same network.
@@ -22,6 +22,7 @@ Android Device (least 4.0) / PC (with iBeatCon Server 0.9.2|1.0.0) / BMS Player 
 * Galaxy Note 10.1 (not 2014)
 * Nexus S
 * Optimus 2X
+* Optimus G
 
 # ChangeLog
 * 130126 - Scratch Feature Finished and Rewrite View Source Code. (@kuna)
@@ -44,3 +45,4 @@ Android Device (least 4.0) / PC (with iBeatCon Server 0.9.2|1.0.0) / BMS Player 
 * 140330 - Rewrite SurfaceView Code (thx to @Soreebreaker), Add Exception No Longer Need Data Delete or Reinstall. (@xuserv)
 * 140330-a - Add Spanish Support (thx to @_brandNEWdays), Fix Some Bugs (@xuserv)
 * 140330-b - Fix Controller Layout in DENSITY_XHIGH Device like Moto X or Nexus 5. (@xuserv)
+* 140331 - Fix Layout *AGAIN* in DENSITY_XHIGH Device. (@xuserv)

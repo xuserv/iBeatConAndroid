@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="action_settings">Ajustes</string>
+    <string name="action_settings">Configuracion</string>
     <string name="action_exit">Salir</string>
     <string name="str_join">Ingrese direccion IP</string>
     <string name="str_2p">Modo 2P</string>

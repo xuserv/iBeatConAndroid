@@ -132,19 +132,28 @@ public class Controller extends Activity {
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 				Log.i("iBeatCon", "Hardware Button Tablet2");
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
+				if (ConCommon.keyonly) {
+					cs.Preset_Keyonly();
+				} else if (ConCommon.scronly) {
+					cs.Preset_Scronly();
+				} else if (ConCommon.is2P) {
+					cs.Preset_2P_L();
+				} else {
+					cs.Preset_1P_L();
+				}
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Tablet2");
 				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				if (ConCommon.keyonly) {
+					cs.Preset_Keyonly();
+				} else if (ConCommon.scronly) {
+					cs.Preset_Scronly();
+				} else if (ConCommon.is2P) {
+					cs.Preset_2P_NH_L();
+				} else {
+					cs.Preset_1P_NH_L();
+				}
 			}			
-			if (ConCommon.keyonly) {
-				cs.Preset_Keyonly();
-			} else if (ConCommon.scronly) {
-				cs.Preset_Scronly();
-			} else if (ConCommon.is2P) {
-				cs.Preset_2P_L();
-			} else {
-				cs.Preset_1P_L();
-			}
 		} else {
 			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");
 			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {

@@ -36,14 +36,26 @@ public class ControllerSizer {
 	
 	public void Preset_1P_L() {
 		r_start = new Rect(87,7,15,15);
+		r_scr = new Rect(-10,10,60,0);
+		r_button[0] = new Rect(17,55,28,42);
+		r_button[1] = new Rect(27,7,28,42);
+		r_button[2] = new Rect(37,55,28,42);
+		r_button[3] = new Rect(47,7,28,42);
+		r_button[4] = new Rect(57,55,28,42);
+		r_button[5] = new Rect(67,7,28,42);
+		r_button[6] = new Rect(77,55,28,42);
+	}
+	
+	public void Preset_1P_NH_L() {
+		r_start = new Rect(87,4,15,15);
 		r_scr = new Rect(-12,10,60,0);
-		r_button[0] = new Rect(17,47,28,40);
-		r_button[1] = new Rect(27,3,28,40);
-		r_button[2] = new Rect(37,47,28,40);
-		r_button[3] = new Rect(47,3,28,40);
-		r_button[4] = new Rect(57,47,28,40);
-		r_button[5] = new Rect(67,3,28,40);
-		r_button[6] = new Rect(77,47,28,40);
+		r_button[0] = new Rect(17,48,28,40);
+		r_button[1] = new Rect(27,4,28,40);
+		r_button[2] = new Rect(37,48,28,40);
+		r_button[3] = new Rect(47,4,28,40);
+		r_button[4] = new Rect(57,48,28,40);
+		r_button[5] = new Rect(67,4,28,40);
+		r_button[6] = new Rect(77,48,28,40);
 	}
 	
 	public void Preset_2P_S() {
@@ -71,6 +83,18 @@ public class ControllerSizer {
 	}
 	
 	public void Preset_2P_L() {
+		r_start = new Rect(4,7,15,15);
+		r_scr = new Rect(110,10,50,0);
+		r_button[0] = new Rect(7,55,28,42);
+		r_button[1] = new Rect(17,7,28,42);
+		r_button[2] = new Rect(27,55,28,42);
+		r_button[3] = new Rect(37,7,28,42);
+		r_button[4] = new Rect(47,55,28,42);
+		r_button[5] = new Rect(57,7,28,42);
+		r_button[6] = new Rect(67,55,28,42);
+	}
+	
+	public void Preset_2P_NH_L() {
 		r_start = new Rect(4,3,15,15);
 		r_scr = new Rect(114,10,50,0);
 		r_button[0] = new Rect(7,47,28,40);
