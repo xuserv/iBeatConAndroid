@@ -3,7 +3,10 @@
 
     <string name="action_settings">設定</string>
     <string name="action_exit">終了</string>
-    <string name="str_join">IPアドレスを入力してください</string>
+    <string name="action_info">情報</string>
+    <string name="str_firstrun">[最初の実行] iBeatConを設定して下さい！</string>
+    <string name="str_connfail">[エラー] iBeatConサーバーに接続できません。 \r\n ネットワークとサーバーの状態を確認して下さい。</string>
+    <string name="str_ip">IPアドレス</string>
     <string name="str_2p">2P側</string>
     <string name="str_ko">鍵盤のみ</string>
     <string name="str_so">スクラッチのみ</string>

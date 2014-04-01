@@ -211,6 +211,9 @@ public class Controller extends Activity {
     		mScratch.interrupt();
     		finish();
     		return true;
+    	case R.id.info:
+    		Log.i("iBeatCon", "Info");
+    		startActivity(new Intent(getApplicationContext(), Info.class));
     	default:
     		return super.onOptionsItemSelected(item);
     	}

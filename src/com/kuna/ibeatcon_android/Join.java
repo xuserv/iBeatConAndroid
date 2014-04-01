@@ -49,7 +49,7 @@ public class Join extends Activity {
         		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
         } else {
         		Log.i("iBeatCon", "First Run");
-        		Toast.makeText(getApplicationContext(), "[FIRST RUN]" + "\r\n" + "Please Setting Your iBeatCon!", Toast.LENGTH_SHORT).show();       		
+        		Toast.makeText(getApplicationContext(), getString(R.string.str_firstrun), Toast.LENGTH_SHORT).show();       		
         		startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         		finish();
         }
@@ -66,7 +66,7 @@ public class Join extends Activity {
         		}
         		if (msg.what == -1) {
         			Log.i("iBeatCon", "Cannot Connect into Server");
-        			Toast.makeText(getApplicationContext(), "[!] Cannot Connect into iBeatCon Server" + "\r\n" + "Please Make Sure Server Program is Currently Running" + "\r\n" + "or Your IP has been changed.", Toast.LENGTH_SHORT).show();
+        			Toast.makeText(getApplicationContext(), getString(R.string.str_connfail), Toast.LENGTH_SHORT).show();
         			startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         			finish();
         		}

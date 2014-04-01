@@ -9,19 +9,11 @@
     tools:context=".Join" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/str_welcome" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
         android:layout_marginTop="14dp"
-        android:text="@string/str_join" /> 
+        android:text="@string/str_ip" />
     
     <Button
         android:id="@+id/btn_join"
@@ -30,14 +22,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/str_save" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edit_zoom"
-        android:layout_alignLeft="@+id/edit_address"
-        android:text="@string/str_zoom" />
 
     <EditText
         android:id="@+id/edit_zoom"
@@ -85,9 +69,18 @@
         android:id="@+id/edit_address"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/textView2"
         android:ems="10"
         android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edit_zoom"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="@string/str_zoom" />
 
 </RelativeLayout>

@@ -37,40 +37,52 @@ public final class R {
         public static final int whp=0x7f02000d;
     }
     public static final class id {
-        public static final int btn_join=0x7f080003;
+        public static final int btn_join=0x7f080007;
         public static final int canvas_layout=0x7f080000;
-        public static final int cb_2p=0x7f080007;
-        public static final int cb_ko=0x7f080008;
-        public static final int cb_ns=0x7f08000a;
-        public static final int cb_so=0x7f080009;
-        public static final int edit_address=0x7f080006;
-        public static final int edit_zoom=0x7f080005;
-        public static final int exit=0x7f08000c;
-        public static final int settings=0x7f08000b;
+        public static final int cb_2p=0x7f08000a;
+        public static final int cb_ko=0x7f08000b;
+        public static final int cb_ns=0x7f08000d;
+        public static final int cb_so=0x7f08000c;
+        public static final int edit_address=0x7f080009;
+        public static final int edit_zoom=0x7f080008;
+        public static final int exit=0x7f08000f;
+        public static final int imageView1=0x7f080002;
+        public static final int info=0x7f080010;
+        public static final int settings=0x7f08000e;
         public static final int textView1=0x7f080001;
-        public static final int textView2=0x7f080002;
+        public static final int textView2=0x7f080003;
         public static final int textView3=0x7f080004;
+        public static final int textView4=0x7f080005;
+        public static final int textView5=0x7f080006;
     }
     public static final class layout {
         public static final int activity_controller=0x7f030000;
-        public static final int activity_settings=0x7f030001;
+        public static final int activity_info=0x7f030001;
+        public static final int activity_settings=0x7f030002;
     }
     public static final class menu {
         public static final int join=0x7f070000;
     }
     public static final class string {
         public static final int action_exit=0x7f050002;
+        public static final int action_info=0x7f050003;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int int_zoom=0x7f05000b;
-        public static final int str_2p=0x7f050005;
-        public static final int str_join=0x7f050004;
-        public static final int str_ko=0x7f050006;
-        public static final int str_ns=0x7f050008;
-        public static final int str_save=0x7f05000a;
-        public static final int str_so=0x7f050007;
-        public static final int str_welcome=0x7f050003;
-        public static final int str_zoom=0x7f050009;
+        public static final int int_zoom=0x7f05000d;
+        public static final int str_2p=0x7f050007;
+        public static final int str_bugreport=0x7f050012;
+        public static final int str_connfail=0x7f050005;
+        public static final int str_developer=0x7f05000f;
+        public static final int str_firstrun=0x7f050004;
+        public static final int str_ip=0x7f050006;
+        public static final int str_ko=0x7f050008;
+        public static final int str_modifier=0x7f050010;
+        public static final int str_ns=0x7f05000a;
+        public static final int str_origdev=0x7f050011;
+        public static final int str_save=0x7f05000c;
+        public static final int str_so=0x7f050009;
+        public static final int str_version=0x7f05000e;
+        public static final int str_zoom=0x7f05000b;
     }
     public static final class style {
         /** 

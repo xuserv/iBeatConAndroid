@@ -3,7 +3,10 @@
 
     <string name="action_settings">설정</string>
     <string name="action_exit">종료</string>
-    <string name="str_join">IP 주소를 입력 해 주세요</string>
+    <string name="action_info">정보</string>
+    <string name="str_firstrun">[최초 실행] iBeatCon을 설정 해 주세요!</string>
+    <string name="str_connfail">[오류 발생] iBeatCon 서버와 연결을 할 수 없습니다. \r\n 네트워크 및 서버의 상태를 확인 해 주세요.</string>
+    <string name="str_ip">IP 주소</string>
     <string name="str_2p">2P 모드</string>
     <string name="str_ko">키 전용 모드</string>
     <string name="str_so">스크래치 전용 모드</string>

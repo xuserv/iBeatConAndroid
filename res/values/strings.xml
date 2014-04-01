@@ -4,8 +4,10 @@
     <string name="app_name">iBeatCon for Android</string>
     <string name="action_settings">Settings</string>
     <string name="action_exit">Exit</string>
-    <string name="str_welcome">iBeatCon for Android (140331)</string>
-    <string name="str_join">Please Enter IP Address</string>
+    <string name="action_info">Info</string>
+    <string name="str_firstrun">[FIRST RUN] Please Setup Your iBeatCon!</string>
+    <string name="str_connfail">[ERROR] Cannot Connect into iBeatCon Server. \r\n Please Check Your Network or Server Status.</string>
+    <string name="str_ip">IP Address</string>
     <string name="str_2p">2P Mode</string>
     <string name="str_ko">Key Only Mode</string>
     <string name="str_so">Scratch Only Mode</string>
@@ -13,5 +15,10 @@
     <string name="str_zoom">Zoom</string>
     <string name="str_save">Save and Apply</string>
     <string name="int_zoom">100</string>
+    <string name="str_version">iBeatCon for Android (0.1)</string>
+    <string name="str_developer">Developed by @lazykuna</string>
+    <string name="str_modifier">Modified by @xuserv</string>
+    <string name="str_origdev">Original iBeatCon Developed by @Harunene</string>
+    <string name="str_bugreport">If you found bugs or have a suggestion, \r\n Please Contact @xuserv on Twitter</string>
 
 </resources>

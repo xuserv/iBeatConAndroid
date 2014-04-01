@@ -46,3 +46,4 @@ Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Pla
 * 140330-a - Add Spanish Support (thx to @_brandNEWdays), Fix Some Bugs (@xuserv)
 * 140330-b - Fix Controller Layout in DENSITY_XHIGH Device like Moto X or Nexus 5. (@xuserv)
 * 140331 - Fix Layout *AGAIN* in DENSITY_XHIGH Device. (@xuserv)
+* v0.1 - Add Information, then Upload into Play Store. (@xuserv)

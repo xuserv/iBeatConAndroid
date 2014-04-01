@@ -3,7 +3,10 @@
 
     <string name="action_settings">Configuracion</string>
     <string name="action_exit">Salir</string>
-    <string name="str_join">Ingrese direccion IP</string>
+    <string name="action_info">Info</string>
+    <string name="str_firstrun">[CONFIGURACION INICIAL] Por favor, configura tu iBeatCon!</string>
+    <string name="str_connfail">[ERROR] No se puede conectar a iBeatCon servidor. \r\n Por favor, marque su red o de estado del servidor.</string>
+    <string name="str_ip">Dirección IP</string>
     <string name="str_2p">Modo 2P</string>
     <string name="str_ko">Modo solo teclas</string>
     <string name="str_so">Modo solo disco</string>
