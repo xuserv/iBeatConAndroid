@@ -57,14 +57,6 @@
         android:layout_below="@+id/cb_ko"
         android:text="@string/str_so" />
 
-    <CheckBox
-        android:id="@+id/cb_ns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_so"
-        android:layout_below="@+id/cb_so"
-        android:text="@string/str_ns" />
-
     <EditText
         android:id="@+id/edit_address"
         android:layout_width="fill_parent"
@@ -82,5 +74,29 @@
         android:layout_alignBottom="@+id/edit_zoom"
         android:layout_alignLeft="@+id/textView2"
         android:text="@string/str_zoom" />
+
+    <CheckBox
+        android:id="@+id/cb_ns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cb_bp"
+        android:layout_below="@+id/cb_bp"
+        android:text="@string/str_ns" />
+
+    <CheckBox
+        android:id="@+id/cb_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cb_so"
+        android:layout_below="@+id/cb_so"
+        android:text="@string/str_bp" />
+
+    <CheckBox
+        android:id="@+id/cb_bk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cb_ns"
+        android:layout_below="@+id/cb_ns"
+        android:text="@string/str_bk" />
 
 </RelativeLayout>

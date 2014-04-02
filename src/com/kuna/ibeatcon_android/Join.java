@@ -1,5 +1,7 @@
 package com.kuna.ibeatcon_android;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +24,8 @@ public class Join extends Activity {
 	private boolean side_mode;
 	private boolean scronly_mode;
 	private boolean keyonly_mode;
+	private boolean bluekey;
+	private boolean blackpanel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class Join extends Activity {
         side_mode = setting.getBoolean("side_mode", false);
         scronly_mode = setting.getBoolean("scronly_mode", false);
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
+        bluekey = setting.getBoolean("bluekey", false);
+        blackpanel = setting.getBoolean("blackpanel", false);
         if (ip != "" | ZoomValue != "" | port != "") {
         		Log.i("iBeatCon", "Connecting to Server");
         		Log.i("iBeatCon", "IP Address : " + ip);
@@ -46,6 +52,8 @@ public class Join extends Activity {
         		ConCommon.scronly = scronly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
+        		CanvasView.bluekey = bluekey;
+        		CanvasView.blackpanel = blackpanel;
         		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
         } else {
         		Log.i("iBeatCon", "First Run");
@@ -75,5 +83,17 @@ public class Join extends Activity {
         };
         
         ConCommon.HandlerStack.add(h);
+    }
+    
+    @Override
+    public void onStart() {
+    	super.onStart();
+    	EasyTracker.getInstance(this).activityStart(this);
+    }
+    
+    @Override
+    public void onStop() {
+    	super.onStop();
+    	EasyTracker.getInstance(this).activityStop(this);
     }
 }

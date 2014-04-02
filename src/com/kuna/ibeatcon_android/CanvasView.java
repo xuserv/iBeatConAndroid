@@ -1,6 +1,7 @@
 package com.kuna.ibeatcon_android;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,6 +15,9 @@ import android.view.SurfaceView;
 import android.view.View;
 
 public class CanvasView extends View {
+	
+	public static boolean bluekey = false;
+	public static boolean blackpanel = false;
 	public Bitmap[] startRes = new Bitmap[2];
 	public Bitmap[] normalRes = new Bitmap[2];
 	public Bitmap[] pressedRes = new Bitmap[2];	
@@ -24,19 +28,26 @@ public class CanvasView extends View {
 	private ControllerSizer cs = new ControllerSizer();
 	private SurfaceHolder mHolder;
 	private Thread mThread;
-	private boolean isThreadRunning = false;
+	private boolean isThreadRunning = false;	
 	
 	public CanvasView(Context context) {
 		super(context);
 		
 		// value init
 		startRes[0] = getBitmapFromResId(R.drawable.rdn);
-		startRes[1] = getBitmapFromResId(R.drawable.rdp);
-		normalRes[0] = getBitmapFromResId(R.drawable.whb);
-		normalRes[1] = getBitmapFromResId(R.drawable.bkb);
-		pressedRes[0] = getBitmapFromResId(R.drawable.whp);
-		pressedRes[1] = getBitmapFromResId(R.drawable.bkp);
-		
+		startRes[1] = getBitmapFromResId(R.drawable.rdp);		
+		if (bluekey) {
+			normalRes[0] = getBitmapFromResId(R.drawable.whb);
+			normalRes[1] = getBitmapFromResId(R.drawable.blb);
+			pressedRes[0] = getBitmapFromResId(R.drawable.whp);
+			pressedRes[1] = getBitmapFromResId(R.drawable.blp);
+		} else {
+			normalRes[0] = getBitmapFromResId(R.drawable.whb);
+			normalRes[1] = getBitmapFromResId(R.drawable.bkb);
+			pressedRes[0] = getBitmapFromResId(R.drawable.whp);
+			pressedRes[1] = getBitmapFromResId(R.drawable.bkp);
+		}
+				
 		scrPanel = getBitmapFromResId(R.drawable.sc_panel);
 		scratch = getBitmapFromResId(R.drawable.scratch);
 		light_white = getBitmapFromResId(R.drawable.white_light);
@@ -49,7 +60,12 @@ public class CanvasView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		canvas.drawColor(Color.WHITE);
+		
+		if (blackpanel) {
+			canvas.drawColor(Color.BLACK);
+		} else {
+			canvas.drawColor(Color.WHITE);
+		}		
 		
 		// draw start
 		Bitmap b;

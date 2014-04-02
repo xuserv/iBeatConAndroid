@@ -10,6 +10,8 @@ package com.kuna.ibeatcon_android;
 
 import java.io.IOException;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
@@ -421,4 +423,16 @@ public class Controller extends Activity {
 	public double GetDist(float x1, float y1, float x2, float y2) {
 		return Math.sqrt( Math.pow(x1-x2,2) + Math.pow(y1-y2, 2) );
 	}
+	
+	@Override
+    public void onStart() {
+    	super.onStart();
+    	EasyTracker.getInstance(this).activityStart(this);
+    }
+    
+	@Override
+    public void onStop() {
+    	super.onStop();
+    	EasyTracker.getInstance(this).activityStop(this);
+    }
 }

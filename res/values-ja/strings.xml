@@ -10,7 +10,9 @@
     <string name="str_2p">2P側</string>
     <string name="str_ko">鍵盤のみ</string>
     <string name="str_so">スクラッチのみ</string>
+    <string name="str_bp">ブラックパネルモード</string>
     <string name="str_ns">新しいサーバー適合モード</string>
+    <string name="str_bk">上のボタン青に変更</string>
     <string name="str_zoom">拡大値</string>
     <string name="str_save">保存して適用</string>
     <string name="int_zoom">100</string>

@@ -1,5 +1,7 @@
 package com.kuna.ibeatcon_android;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +24,8 @@ public class Settings extends Activity {
 	private boolean side_mode;
 	private boolean scronly_mode;
 	private boolean keyonly_mode;
+	private boolean bluekey;
+	private boolean blackpanel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +36,10 @@ public class Settings extends Activity {
         final SharedPreferences.Editor settings2 = settings.edit();
         final CheckBox cb = (CheckBox)findViewById(R.id.cb_2p);
         final CheckBox cb2 = (CheckBox)findViewById(R.id.cb_ko);
-        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_so);
-        final CheckBox cb4 = (CheckBox)findViewById(R.id.cb_ns);
+        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_so);        
+        final CheckBox cb4 = (CheckBox)findViewById(R.id.cb_bp);
+        final CheckBox cb5 = (CheckBox)findViewById(R.id.cb_ns);
+        final CheckBox cb6 = (CheckBox)findViewById(R.id.cb_bk);
         final TextView t = (TextView)findViewById(R.id.edit_address);
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
         
@@ -41,6 +47,8 @@ public class Settings extends Activity {
         side_mode = settings.getBoolean("side_mode", false);
         keyonly_mode = settings.getBoolean("keyonly_mode", false);
         scronly_mode = settings.getBoolean("scronly_mode", false);
+        bluekey = settings.getBoolean("bluekey", false);
+        blackpanel = settings.getBoolean("blackpanel", false);
         String new_server = settings.getString("port", "");
         
         t.setText(ip);
@@ -57,8 +65,16 @@ public class Settings extends Activity {
         	cb3.toggle();
         }
         
-        if (new_server.equals("10070")) {
+        if (blackpanel) {
         	cb4.toggle();
+        }
+        
+        if (new_server.equals("10070")) {
+        	cb5.toggle();
+        }
+        
+        if (bluekey) {
+        	cb6.toggle();
         }
 
         Button b = (Button) findViewById(R.id.btn_join);
@@ -90,9 +106,21 @@ public class Settings extends Activity {
         		}
         		
         		if (cb4.isChecked()) {
+        			settings2.putBoolean("blackpanel", true);
+        		} else {
+        			settings2.putBoolean("blackpanel", false);
+        		}
+        		
+        		if (cb5.isChecked()) {
         			settings2.putString("port", "10070");
         		} else {
         			settings2.putString("port", "2001");
+        		}
+        		
+        		if (cb6.isChecked()) {
+        			settings2.putBoolean("bluekey", true);
+        		} else {
+        			settings2.putBoolean("bluekey", false);
         		}
         			
         		settings2.commit();
@@ -100,5 +128,17 @@ public class Settings extends Activity {
         		finish();
 			}
 		});         
+    }
+    
+    @Override
+    public void onStart() {
+    	super.onStart();
+    	EasyTracker.getInstance(this).activityStart(this);
+    }
+    
+    @Override
+    public void onStop() {
+    	super.onStop();
+    	EasyTracker.getInstance(this).activityStop(this);
     }
 }

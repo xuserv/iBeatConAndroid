@@ -47,3 +47,4 @@ Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Pla
 * 140330-b - Fix Controller Layout in DENSITY_XHIGH Device like Moto X or Nexus 5. (@xuserv)
 * 140331 - Fix Layout *AGAIN* in DENSITY_XHIGH Device. (@xuserv)
 * v0.1 - Add Information, then Upload into Play Store. (@xuserv)
+* v0.2 - Add Black Panel, Change Upper Button Color as Blue Function. Google Analytics Included. (@xuserv)
