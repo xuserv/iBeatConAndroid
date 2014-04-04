@@ -62,7 +62,7 @@ public class CanvasView extends View {
 	protected void onDraw(Canvas canvas) {
 		
 		if (blackpanel) {
-			canvas.drawColor(Color.BLACK);
+			canvas.drawColor(Color.GRAY);
 		} else {
 			canvas.drawColor(Color.WHITE);
 		}		

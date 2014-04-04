@@ -20,6 +20,7 @@ public class ConClient {
 	public String _msg;
 	private BufferedReader br;
 	private BufferedWriter bw;
+	public static String msg;
 	
 	public ConClient(String ip, int port) {
 		Connect(ip, port);
@@ -77,12 +78,11 @@ public class ConClient {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				String s;
 				while (Initalized) {
 					try {
-						s = br.readLine();
-						if (s==null) return;
-						Log.i("iBeatCon", "CONNECTION "+ s);
+						msg = br.readLine();
+						if (msg==null) return;
+						Log.i("iBeatCon", "CONNECTION "+ msg);
 					} catch (Exception e) {
 						e.printStackTrace();
 						Close();
