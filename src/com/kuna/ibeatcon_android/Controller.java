@@ -85,10 +85,6 @@ public class Controller extends Activity {
 		
 		Log.i("iBeatCon", "Controller Started");
 		
-		if (ConClient.msg != null) {
-			Toast.makeText(getApplicationContext(), "Your Client ID : " + ConClient.msg, Toast.LENGTH_SHORT).show();
-		}
-		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);						
 					

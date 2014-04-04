@@ -53,13 +53,14 @@ public final class R {
         public static final int cb_bk=0x7f0a000a;
         public static final int cb_bp=0x7f0a0009;
         public static final int cb_ns=0x7f0a0008;
+        public static final int client_id=0x7f0a000e;
         public static final int edit_address=0x7f0a000c;
         public static final int edit_zoom=0x7f0a000d;
-        public static final int exit=0x7f0a000f;
+        public static final int exit=0x7f0a0010;
         public static final int imageView1=0x7f0a0002;
-        public static final int info=0x7f0a0010;
+        public static final int info=0x7f0a0011;
         public static final int mode_select=0x7f0a000b;
-        public static final int settings=0x7f0a000e;
+        public static final int settings=0x7f0a000f;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0003;
         public static final int textView3=0x7f0a0004;
@@ -82,24 +83,25 @@ public final class R {
         /** Replace placeholder ID with your tracking ID
          */
         public static final int ga_trackingId=0x7f040000;
-        public static final int int_zoom=0x7f040012;
+        public static final int int_zoom=0x7f040013;
         public static final int str_2p=0x7f04000a;
         public static final int str_bk=0x7f04000f;
         public static final int str_bp=0x7f04000d;
-        public static final int str_bugreport=0x7f040017;
+        public static final int str_bugreport=0x7f040018;
+        public static final int str_ci=0x7f040011;
         public static final int str_connfail=0x7f040006;
         public static final int str_default=0x7f040009;
-        public static final int str_developer=0x7f040014;
+        public static final int str_developer=0x7f040015;
         public static final int str_firstrun=0x7f040005;
         public static final int str_ip=0x7f040007;
         public static final int str_ko=0x7f04000b;
         public static final int str_modesel=0x7f040008;
-        public static final int str_modifier=0x7f040015;
+        public static final int str_modifier=0x7f040016;
         public static final int str_ns=0x7f04000e;
-        public static final int str_origdev=0x7f040016;
-        public static final int str_save=0x7f040011;
+        public static final int str_origdev=0x7f040017;
+        public static final int str_save=0x7f040012;
         public static final int str_so=0x7f04000c;
-        public static final int str_version=0x7f040013;
+        public static final int str_version=0x7f040014;
         public static final int str_zoom=0x7f040010;
     }
     public static final class style {

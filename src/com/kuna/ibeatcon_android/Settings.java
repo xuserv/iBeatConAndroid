@@ -41,8 +41,9 @@ public class Settings extends Activity {
         final CheckBox cb6 = (CheckBox)findViewById(R.id.cb_bk);
         final TextView t = (TextView)findViewById(R.id.edit_address);
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
+        final TextView ci = (TextView)findViewById(R.id.client_id);
         final Spinner mode_select = (Spinner)findViewById(R.id.mode_select);
-        final ArrayAdapter Mode = ArrayAdapter.createFromResource(getApplicationContext(), R.array.array_list, android.R.layout.simple_spinner_item);
+        final ArrayAdapter Mode = ArrayAdapter.createFromResource(this, R.array.array_list, android.R.layout.simple_spinner_item);
         
         String ip = settings.getString("ip", "");
         side_mode = settings.getBoolean("side_mode", false);
@@ -56,6 +57,9 @@ public class Settings extends Activity {
         mode_select.setAdapter(Mode);
         
         t.setText(ip);
+        if (ConClient.msg != null) {
+        	ci.setText(getString(R.string.str_ci) + " " + ConClient.msg + ".");
+        }
                
         if (side_mode) {
         	mode_select.setSelection(1);

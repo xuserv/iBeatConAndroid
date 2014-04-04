@@ -16,6 +16,7 @@
     <string name="str_ns">Modo compatible con nuevo servidor</string>    
     <string name="str_bk">El botón superior cambia a azul</string>
     <string name="str_zoom">Zoom</string>
+    <string name="str_ci">Su [ID de cliente] es</string>
     <string name="str_save">Guardar y aplicar</string>
     <string name="int_zoom">100</string>
      

@@ -16,11 +16,12 @@ import android.util.Log;
 public class ConClient {
 	private InetSocketAddress s;
 	private Socket s2;
-	public boolean Initalized = false;
-	public String _msg;
 	private BufferedReader br;
 	private BufferedWriter bw;
-	public static String msg;
+	public boolean Initalized = false;
+	public static final int BUFFER_SIZE = 2048;
+	public static String msg = null;
+	public String _msg;
 	
 	public ConClient(String ip, int port) {
 		Connect(ip, port);
@@ -33,12 +34,12 @@ public class ConClient {
 				try {
 					s = new InetSocketAddress(ip, port);
 					s2 = new Socket();
-					s2.connect(s, 3000);
+					s2.connect(s, 1500);
 					s2.setTcpNoDelay(true);
 					
 					// After Initalization, Run recv thread & activate send method
-					br = new BufferedReader( new InputStreamReader(s2.getInputStream()) );
-					bw = new BufferedWriter ( new OutputStreamWriter(s2.getOutputStream()));
+					br = new BufferedReader(new InputStreamReader(s2.getInputStream()));
+					bw = new BufferedWriter(new OutputStreamWriter(s2.getOutputStream()));
 					
 					StartReadThread();
 
@@ -80,8 +81,15 @@ public class ConClient {
 			public void run() {
 				while (Initalized) {
 					try {
-						msg = br.readLine();
-						if (msg==null) return;
+						String recvdata = "";
+			            int charsRead = 0;
+			            char[] buffer = new char[BUFFER_SIZE];
+
+			            while ((charsRead = br.read(buffer)) != -1) {
+			                recvdata += new String(buffer).substring(1, charsRead);
+			                msg = recvdata.trim().replaceAll("\n|(null)", "");
+			            }
+
 						Log.i("iBeatCon", "CONNECTION "+ msg);
 					} catch (Exception e) {
 						e.printStackTrace();

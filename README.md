@@ -48,4 +48,4 @@ Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Pla
 * 140331 - Fix Layout *AGAIN* in DENSITY_XHIGH Device. (@xuserv)
 * v0.1 - Add Information, then Upload into Play Store. (@xuserv)
 * v0.2 - Add Black Panel, Change Upper Button Color as Blue Function. Google Analytics Included. (@xuserv)
-* v0.3 - Change Settings Layout. (@xuserv)
+* v0.3 - Change Settings Layout, Fix Controller Layout, Add Client ID Support. (@xuserv)

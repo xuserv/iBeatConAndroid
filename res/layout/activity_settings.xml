@@ -99,4 +99,12 @@
         android:layout_alignParentTop="true"
         android:text="@string/str_ip" />
 
+    <TextView
+        android:id="@+id/client_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_join"
+        android:layout_centerHorizontal="true"
+        android:text="" />
+
 </RelativeLayout>
