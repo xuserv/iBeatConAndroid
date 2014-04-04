@@ -18,7 +18,6 @@ public class ConClient {
 	private Socket s2;
 	public boolean Initalized = false;
 	public String _msg;
-	
 	private BufferedReader br;
 	private BufferedWriter bw;
 	

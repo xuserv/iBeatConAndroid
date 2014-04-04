@@ -14,8 +14,10 @@ import android.content.pm.ActivityInfo;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,15 +35,14 @@ public class Settings extends Activity {
         setContentView(R.layout.activity_settings);
         
         final SharedPreferences settings = getSharedPreferences("settings", MODE_PRIVATE);
-        final SharedPreferences.Editor settings2 = settings.edit();
-        final CheckBox cb = (CheckBox)findViewById(R.id.cb_2p);
-        final CheckBox cb2 = (CheckBox)findViewById(R.id.cb_ko);
-        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_so);        
+        final SharedPreferences.Editor settings2 = settings.edit();        
         final CheckBox cb4 = (CheckBox)findViewById(R.id.cb_bp);
         final CheckBox cb5 = (CheckBox)findViewById(R.id.cb_ns);
         final CheckBox cb6 = (CheckBox)findViewById(R.id.cb_bk);
         final TextView t = (TextView)findViewById(R.id.edit_address);
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
+        final Spinner mode_select = (Spinner)findViewById(R.id.mode_select);
+        final ArrayAdapter Mode = ArrayAdapter.createFromResource(getApplicationContext(), R.array.array_list, android.R.layout.simple_spinner_item);
         
         String ip = settings.getString("ip", "");
         side_mode = settings.getBoolean("side_mode", false);
@@ -51,18 +52,21 @@ public class Settings extends Activity {
         blackpanel = settings.getBoolean("blackpanel", false);
         String new_server = settings.getString("port", "");
         
+        Mode.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mode_select.setAdapter(Mode);
+        
         t.setText(ip);
                
         if (side_mode) {
-        	cb.toggle();
+        	mode_select.setSelection(1);
         }
         
         if (keyonly_mode) {
-        	cb2.toggle();
+        	mode_select.setSelection(2);
         }
         
         if (scronly_mode) {
-        	cb3.toggle();
+        	mode_select.setSelection(3);
         }
         
         if (blackpanel) {
@@ -87,23 +91,21 @@ public class Settings extends Activity {
                 String ZoomValue = zv.getText().toString();
         		settings2.putString("zoom", ZoomValue);
         		
-        		if (cb.isChecked()) {
-        			settings2.putBoolean("side_mode", true);        			
-        		} else {
-        			settings2.putBoolean("side_mode", false);
-        		}
-        		
-        		if (cb2.isChecked()) {
-        			settings2.putBoolean("keyonly_mode", true);
-        		} else {
-        			settings2.putBoolean("keyonly_mode", false);
-        		}
-        		
-        		if (cb3.isChecked()) {
-        			settings2.putBoolean("scronly_mode", true);
-        		} else {
-        			settings2.putBoolean("scronly_mode", false);
-        		}
+        		if (mode_select.getSelectedItemPosition() == 1) {
+                	settings2.putBoolean("side_mode", true);
+                } else {
+                	settings2.putBoolean("side_mode", false);
+                } 
+        		if (mode_select.getSelectedItemPosition() == 2) {
+                	settings2.putBoolean("keyonly_mode", true);
+                } else {
+                	settings2.putBoolean("keyonly_mode", false);
+                }
+        		if (mode_select.getSelectedItemPosition() == 3) {
+                	settings2.putBoolean("scronly_mode", true);
+                } else {
+                	settings2.putBoolean("scronly_mode", false);
+                }
         		
         		if (cb4.isChecked()) {
         			settings2.putBoolean("blackpanel", true);
@@ -127,7 +129,7 @@ public class Settings extends Activity {
         		startActivity(new Intent(getApplicationContext(), Join.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         		finish();
 			}
-		});         
+		});
     }
     
     @Override

@@ -7,13 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Join" >
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="@string/str_ip" />
     
     <Button
         android:id="@+id/btn_join"
@@ -23,80 +16,87 @@
         android:layout_centerHorizontal="true"
         android:text="@string/str_save" />
 
-    <EditText
-        android:id="@+id/edit_zoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_address"
-        android:layout_toRightOf="@+id/textView3"
-        android:ems="10"
-        android:inputType="number"
-        android:text="@string/int_zoom" />
-
-    <CheckBox
-        android:id="@+id/cb_2p"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3"
-        android:text="@string/str_2p" />
-
-    <CheckBox
-        android:id="@+id/cb_ko"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_2p"
-        android:layout_below="@+id/cb_2p"
-        android:text="@string/str_ko" />
-
-    <CheckBox
-        android:id="@+id/cb_so"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_ko"
-        android:layout_below="@+id/cb_ko"
-        android:text="@string/str_so" />
-
-    <EditText
-        android:id="@+id/edit_address"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:ems="10"
-        android:inputType="phone" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edit_zoom"
-        android:layout_alignLeft="@+id/textView2"
-        android:text="@string/str_zoom" />
-
     <CheckBox
         android:id="@+id/cb_ns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_bp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/cb_bp"
         android:text="@string/str_ns" />
-
-    <CheckBox
-        android:id="@+id/cb_bp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_so"
-        android:layout_below="@+id/cb_so"
-        android:text="@string/str_bp" />
 
     <CheckBox
         android:id="@+id/cb_bk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cb_ns"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/cb_ns"
         android:text="@string/str_bk" />
+
+    <CheckBox
+        android:id="@+id/cb_bp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/mode_select"
+        android:text="@string/str_bp" />
+
+    <EditText
+        android:id="@+id/edit_address"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2"
+        android:ems="10"
+        android:inputType="phone" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_address"
+        android:layout_below="@+id/edit_address"
+        android:text="@string/str_zoom" />
+
+    <EditText
+        android:id="@+id/edit_zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/int_zoom" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mode_select"
+        android:layout_below="@+id/edit_zoom"
+        android:text="@string/str_modesel" />
+
+    <Spinner
+        android:id="@+id/mode_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edit_zoom"
+        android:layout_alignParentTop="true"
+        android:text="@string/str_ip" />
 
 </RelativeLayout>

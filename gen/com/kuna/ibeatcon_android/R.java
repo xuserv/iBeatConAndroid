@@ -8,6 +8,9 @@
 package com.kuna.ibeatcon_android;
 
 public final class R {
+    public static final class array {
+        public static final int array_list=0x7f060000;
+    }
     public static final class attr {
     }
     public static final class bool {
@@ -25,8 +28,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f060000;
-        public static final int activity_vertical_margin=0x7f060001;
+        public static final int activity_horizontal_margin=0x7f070000;
+        public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
         public static final int bkb=0x7f020000;
@@ -45,25 +48,23 @@ public final class R {
         public static final int whp=0x7f02000d;
     }
     public static final class id {
-        public static final int btn_join=0x7f090007;
-        public static final int canvas_layout=0x7f090000;
-        public static final int cb_2p=0x7f09000a;
-        public static final int cb_bk=0x7f09000f;
-        public static final int cb_bp=0x7f09000e;
-        public static final int cb_ko=0x7f09000b;
-        public static final int cb_ns=0x7f09000d;
-        public static final int cb_so=0x7f09000c;
-        public static final int edit_address=0x7f090009;
-        public static final int edit_zoom=0x7f090008;
-        public static final int exit=0x7f090011;
-        public static final int imageView1=0x7f090002;
-        public static final int info=0x7f090012;
-        public static final int settings=0x7f090010;
-        public static final int textView1=0x7f090001;
-        public static final int textView2=0x7f090003;
-        public static final int textView3=0x7f090004;
-        public static final int textView4=0x7f090005;
-        public static final int textView5=0x7f090006;
+        public static final int btn_join=0x7f0a0007;
+        public static final int canvas_layout=0x7f0a0000;
+        public static final int cb_bk=0x7f0a000a;
+        public static final int cb_bp=0x7f0a0009;
+        public static final int cb_ns=0x7f0a0008;
+        public static final int edit_address=0x7f0a000c;
+        public static final int edit_zoom=0x7f0a000d;
+        public static final int exit=0x7f0a000f;
+        public static final int imageView1=0x7f0a0002;
+        public static final int info=0x7f0a0010;
+        public static final int mode_select=0x7f0a000b;
+        public static final int settings=0x7f0a000e;
+        public static final int textView1=0x7f0a0001;
+        public static final int textView2=0x7f0a0003;
+        public static final int textView3=0x7f0a0004;
+        public static final int textView4=0x7f0a0005;
+        public static final int textView5=0x7f0a0006;
     }
     public static final class layout {
         public static final int activity_controller=0x7f030000;
@@ -71,7 +72,7 @@ public final class R {
         public static final int activity_settings=0x7f030002;
     }
     public static final class menu {
-        public static final int join=0x7f080000;
+        public static final int join=0x7f090000;
     }
     public static final class string {
         public static final int action_exit=0x7f040003;
@@ -81,23 +82,25 @@ public final class R {
         /** Replace placeholder ID with your tracking ID
          */
         public static final int ga_trackingId=0x7f040000;
-        public static final int int_zoom=0x7f040010;
-        public static final int str_2p=0x7f040008;
-        public static final int str_bk=0x7f04000d;
-        public static final int str_bp=0x7f04000b;
-        public static final int str_bugreport=0x7f040015;
+        public static final int int_zoom=0x7f040012;
+        public static final int str_2p=0x7f04000a;
+        public static final int str_bk=0x7f04000f;
+        public static final int str_bp=0x7f04000d;
+        public static final int str_bugreport=0x7f040017;
         public static final int str_connfail=0x7f040006;
-        public static final int str_developer=0x7f040012;
+        public static final int str_default=0x7f040009;
+        public static final int str_developer=0x7f040014;
         public static final int str_firstrun=0x7f040005;
         public static final int str_ip=0x7f040007;
-        public static final int str_ko=0x7f040009;
-        public static final int str_modifier=0x7f040013;
-        public static final int str_ns=0x7f04000c;
-        public static final int str_origdev=0x7f040014;
-        public static final int str_save=0x7f04000f;
-        public static final int str_so=0x7f04000a;
-        public static final int str_version=0x7f040011;
-        public static final int str_zoom=0x7f04000e;
+        public static final int str_ko=0x7f04000b;
+        public static final int str_modesel=0x7f040008;
+        public static final int str_modifier=0x7f040015;
+        public static final int str_ns=0x7f04000e;
+        public static final int str_origdev=0x7f040016;
+        public static final int str_save=0x7f040011;
+        public static final int str_so=0x7f04000c;
+        public static final int str_version=0x7f040013;
+        public static final int str_zoom=0x7f040010;
     }
     public static final class style {
         /** 
@@ -121,10 +124,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

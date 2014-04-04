@@ -7,6 +7,8 @@
     <string name="str_firstrun">[FIRST RUN] Please Setup Your iBeatCon!</string>
     <string name="str_connfail">[ERROR] Cannot Connect into iBeatCon Server. \r\n Please Check Your Network or Server Status.</string>
     <string name="str_ip">IP Address</string>
+    <string name="str_modesel">Mode Select</string>
+    <string name="str_default">Default</string>
     <string name="str_2p">2P Mode</string>
     <string name="str_ko">Key Only Mode</string>
     <string name="str_so">Scratch Only Mode</string>
