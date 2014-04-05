@@ -4,14 +4,9 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,7 +44,7 @@ public class Settings extends Activity {
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
         final TextView ci = (TextView)findViewById(R.id.client_id);
         final Spinner mode_select = (Spinner)findViewById(R.id.mode_select);
-        final ArrayAdapter Mode = ArrayAdapter.createFromResource(this, R.array.array_list, android.R.layout.simple_spinner_item);
+        final ArrayAdapter<CharSequence> Mode = ArrayAdapter.createFromResource(this, R.array.array_list, android.R.layout.simple_spinner_item);
         
         String ip = settings.getString("ip", "");
         side_mode = settings.getBoolean("side_mode", false);

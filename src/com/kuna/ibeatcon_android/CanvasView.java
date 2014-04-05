@@ -1,17 +1,11 @@
 package com.kuna.ibeatcon_android;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import android.opengl.Matrix;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 
 public class CanvasView extends View {
@@ -24,11 +18,7 @@ public class CanvasView extends View {
 	public Bitmap scrPanel;
 	public Bitmap scratch;
 	public Bitmap light_white;
-	public Bitmap light_red;
-	private ControllerSizer cs = new ControllerSizer();
-	private SurfaceHolder mHolder;
-	private Thread mThread;
-	private boolean isThreadRunning = false;	
+	public Bitmap light_red;	
 	
 	public CanvasView(Context context) {
 		super(context);
@@ -106,14 +96,6 @@ public class CanvasView extends View {
 		canvas.drawBitmap(scratchLED, null, new Rect(-(int)(Controller.r_scr.right*ratio_LED), -(int)(Controller.r_scr.right*ratio_LED), 
 				(int)(Controller.r_scr.right*ratio_LED), (int)(Controller.r_scr.right*ratio_LED)), null);
 		canvas.restore();
-		
-		// draw scratch
-		/*canvas.save();
-		canvas.translate(Controller.r_scr.left, Controller.r_scr.top);
-		canvas.rotate((float) Controller.mScratchRotation);
-		canvas.drawBitmap(scrPanel, null, new Rect(-Controller.r_scr.right, -Controller.r_scr.right, 
-				Controller.r_scr.right, Controller.r_scr.right), null);
-		canvas.restore();*/
 		
 		// draw scratch body
 		canvas.save();

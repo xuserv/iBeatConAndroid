@@ -1,7 +1,6 @@
 package com.kuna.ibeatcon_android;
 
 import android.graphics.Rect;
-import android.util.Log;
 
 public class ControllerSizer {
 	public Rect r_start; // x, y, width, height

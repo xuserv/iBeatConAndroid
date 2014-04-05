@@ -3,10 +3,8 @@ package com.kuna.ibeatcon_android;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -15,11 +13,11 @@ import android.util.Log;
 
 public class ConClient {
 	private InetSocketAddress s;
-	private Socket s2;
-	private BufferedReader br;
-	private BufferedWriter bw;
-	public boolean Initalized = false;
-	public static final int BUFFER_SIZE = 2048;
+	private static Socket s2;
+	private static BufferedReader br;
+	private static BufferedWriter bw;
+	public static boolean Initalized = false;
+	public static final int BUFFER_SIZE = 1000;
 	public static String msg = null;
 	public String _msg;
 	
@@ -102,18 +100,18 @@ public class ConClient {
 		}).start();
 	}
 	
-	public boolean Close() {
-		if (!Initalized) return false;
-		try {
-			Initalized = false;
-			bw.close();
-			br.close();
-			s2.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		
-		return true;
+	public static void Close() {
+		if (!Initalized) {
+			// Do Nothing
+		} else {
+			try {
+				Initalized = false;
+				bw.close();
+				br.close();
+				s2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}		
 	}
 }
