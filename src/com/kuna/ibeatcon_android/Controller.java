@@ -14,6 +14,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 import android.app.Activity;
 import android.app.PendingIntent.OnFinished;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -25,6 +26,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -51,6 +53,7 @@ public class Controller extends Activity {
 	public static boolean isStartPressed = false;
 	public static boolean isScratchPressed = false;
 	public static boolean[] isButtonPressed = new boolean[7];
+	public static boolean vb_feedback = false;
 	
 	public static Rect r_start;
 	public static Rect r_scr;
@@ -223,7 +226,7 @@ public class Controller extends Activity {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {		
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+		if (event.getAction() == MotionEvent.ACTION_DOWN | event.getAction() == MotionEvent.ACTION_MOVE) {
 			cv.invalidate();
 		}
 		
@@ -327,8 +330,15 @@ public class Controller extends Activity {
 			ConCommon.cc.Send(i);
 	}
 	public void PressButton(int i) {
-		SendData(pressKey[i]);
-		Log.i("iBeatCon", "Button " + i + " Pressed");
+		if (vb_feedback){
+			Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+			v.vibrate(100);
+			SendData(pressKey[i]);
+			Log.i("iBeatCon", "Button " + i + " Pressed");
+		} else {
+			SendData(pressKey[i]);
+			Log.i("iBeatCon", "Button " + i + " Pressed");
+		}
 	}
 	public void ReleaseButton(int i) {
 		SendData(releaseKey[i]);

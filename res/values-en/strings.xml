@@ -15,6 +15,7 @@
     <string name="str_bp">Black panel mode</string>
     <string name="str_ns">New server compatible mode</string>
     <string name="str_bk">Blue upper button</string>
+    <string name="str_fb">Haptic Feedback</string>
     <string name="str_zoom">Zoom</string>
     <string name="str_ci">Your client ID is</string>
     <string name="str_save">Save and Apply</string>

@@ -26,6 +26,7 @@ public class Join extends Activity {
 	private boolean keyonly_mode;
 	private boolean bluekey;
 	private boolean blackpanel;
+	private boolean vb_feedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class Join extends Activity {
         keyonly_mode = setting.getBoolean("keyonly_mode", false);
         bluekey = setting.getBoolean("bluekey", false);
         blackpanel = setting.getBoolean("blackpanel", false);
+        vb_feedback = setting.getBoolean("feedback", false);
         if (ip != "" | ZoomValue != "" | port != "") {
         		Log.i("iBeatCon", "Connecting to Server");
         		Log.i("iBeatCon", "IP Address : " + ip);
@@ -52,9 +54,10 @@ public class Join extends Activity {
         		ConCommon.scronly = scronly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
+        		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
         		CanvasView.bluekey = bluekey;
         		CanvasView.blackpanel = blackpanel;
-        		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
+        		Controller.vb_feedback = vb_feedback;
         } else {
         		Log.i("iBeatCon", "First Run");
         		Toast.makeText(getApplicationContext(), getString(R.string.str_firstrun), Toast.LENGTH_SHORT).show();       		

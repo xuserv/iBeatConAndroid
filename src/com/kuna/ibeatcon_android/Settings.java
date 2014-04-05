@@ -28,7 +28,8 @@ public class Settings extends Activity {
 	private boolean keyonly_mode;
 	private boolean bluekey;
 	private boolean blackpanel;
-
+	private boolean vb_feedback;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +37,10 @@ public class Settings extends Activity {
         
         final SharedPreferences settings = getSharedPreferences("settings", MODE_PRIVATE);
         final SharedPreferences.Editor settings2 = settings.edit();        
-        final CheckBox cb4 = (CheckBox)findViewById(R.id.cb_bp);
-        final CheckBox cb5 = (CheckBox)findViewById(R.id.cb_ns);
-        final CheckBox cb6 = (CheckBox)findViewById(R.id.cb_bk);
+        final CheckBox cb1 = (CheckBox)findViewById(R.id.cb_bp);
+        final CheckBox cb2 = (CheckBox)findViewById(R.id.cb_ns);
+        final CheckBox cb3 = (CheckBox)findViewById(R.id.cb_bk);
+        final CheckBox cb4 = (CheckBox)findViewById(R.id.cb_vb);
         final TextView t = (TextView)findViewById(R.id.edit_address);
         final TextView zv = (TextView)findViewById(R.id.edit_zoom);
         final TextView ci = (TextView)findViewById(R.id.client_id);
@@ -51,6 +53,7 @@ public class Settings extends Activity {
         scronly_mode = settings.getBoolean("scronly_mode", false);
         bluekey = settings.getBoolean("bluekey", false);
         blackpanel = settings.getBoolean("blackpanel", false);
+        vb_feedback = settings.getBoolean("feedback", false);
         String new_server = settings.getString("port", "");
         
         Mode.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -74,15 +77,19 @@ public class Settings extends Activity {
         }
         
         if (blackpanel) {
-        	cb4.toggle();
-        }
+        	cb1.toggle();
+        }       
         
         if (new_server.equals("10070")) {
-        	cb5.toggle();
+        	cb2.toggle();
         }
         
         if (bluekey) {
-        	cb6.toggle();
+        	cb3.toggle();
+        }
+        
+        if (vb_feedback) {
+        	cb4.toggle();
         }
 
         Button b = (Button) findViewById(R.id.btn_join);
@@ -111,22 +118,28 @@ public class Settings extends Activity {
                 	settings2.putBoolean("scronly_mode", false);
                 }
         		
-        		if (cb4.isChecked()) {
+        		if (cb1.isChecked()) {
         			settings2.putBoolean("blackpanel", true);
         		} else {
         			settings2.putBoolean("blackpanel", false);
         		}
         		
-        		if (cb5.isChecked()) {
+        		if (cb2.isChecked()) {
         			settings2.putString("port", "10070");
         		} else {
         			settings2.putString("port", "2001");
         		}
         		
-        		if (cb6.isChecked()) {
+        		if (cb3.isChecked()) {
         			settings2.putBoolean("bluekey", true);
         		} else {
         			settings2.putBoolean("bluekey", false);
+        		}
+        		
+        		if (cb4.isChecked()) {
+        			settings2.putBoolean("feedback", true);
+        		} else {
+        			settings2.putBoolean("feedback", false);
         		}
         			
         		settings2.commit();

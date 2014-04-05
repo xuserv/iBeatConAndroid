@@ -15,6 +15,7 @@
     <string name="str_bp">블랙 패널 모드</string>
     <string name="str_ns">신 서버 대응 모드</string>
     <string name="str_bk">윗 버튼 파란색으로 변경</string>
+    <string name="str_fb">햅틱 피드백</string>
     <string name="str_zoom">확대값 </string>
     <string name="str_ci">클라이언트 ID :</string>
     <string name="str_save">저장 후 적용</string>

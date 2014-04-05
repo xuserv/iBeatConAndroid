@@ -16,11 +16,12 @@
     <string name="str_bp">Black panel mode</string>
     <string name="str_ns">New server compatible mode</string>
     <string name="str_bk">Blue upper button</string>
+    <string name="str_fb">Haptic Feedback</string>
     <string name="str_zoom">Zoom</string>
     <string name="str_ci">Your client ID is</string>
     <string name="str_save">Save and Apply</string>
     <string name="int_zoom">100</string>
-    <string name="str_version">iBeatCon for Android (0.3)</string>
+    <string name="str_version">iBeatCon for Android (0.4)</string>
     <string name="str_developer">Developed by @lazykuna</string>
     <string name="str_modifier">Modified by @xuserv</string>
     <string name="str_origdev">Original iBeatCon Developed by @Harunene</string>
