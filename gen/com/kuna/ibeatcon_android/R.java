@@ -37,31 +37,35 @@ public final class R {
         public static final int blb=0x7f020002;
         public static final int blp=0x7f020003;
         public static final int cyan_light=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int rdn=0x7f020006;
-        public static final int rdp=0x7f020007;
-        public static final int red_light=0x7f020008;
-        public static final int sc_panel=0x7f020009;
-        public static final int scratch=0x7f02000a;
-        public static final int whb=0x7f02000b;
-        public static final int white_light=0x7f02000c;
-        public static final int whp=0x7f02000d;
+        public static final int ic_action_help=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int rdn=0x7f020007;
+        public static final int rdp=0x7f020008;
+        public static final int red_light=0x7f020009;
+        public static final int sc_panel=0x7f02000a;
+        public static final int scratch=0x7f02000b;
+        public static final int whb=0x7f02000c;
+        public static final int white_light=0x7f02000d;
+        public static final int whp=0x7f02000e;
     }
     public static final class id {
-        public static final int btn_join=0x7f0a0007;
+        public static final int btn_join=0x7f0a000f;
+        public static final int btn_reset=0x7f0a0010;
         public static final int canvas_layout=0x7f0a0000;
-        public static final int cb_bk=0x7f0a000a;
-        public static final int cb_bp=0x7f0a0009;
-        public static final int cb_ns=0x7f0a0008;
-        public static final int cb_vb=0x7f0a000f;
-        public static final int client_id=0x7f0a000e;
-        public static final int edit_address=0x7f0a000c;
-        public static final int edit_zoom=0x7f0a000d;
-        public static final int exit=0x7f0a0011;
+        public static final int cb_bk=0x7f0a0009;
+        public static final int cb_bp=0x7f0a0008;
+        public static final int cb_ns=0x7f0a0007;
+        public static final int cb_vb=0x7f0a000d;
+        public static final int client_id=0x7f0a0011;
+        public static final int edit_address=0x7f0a000b;
+        public static final int edit_zoom=0x7f0a000c;
+        public static final int exit=0x7f0a0013;
+        public static final int help=0x7f0a0015;
         public static final int imageView1=0x7f0a0002;
-        public static final int info=0x7f0a0012;
-        public static final int mode_select=0x7f0a000b;
-        public static final int settings=0x7f0a0010;
+        public static final int info=0x7f0a0014;
+        public static final int linearLayout1=0x7f0a000e;
+        public static final int mode_select=0x7f0a000a;
+        public static final int settings=0x7f0a0012;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0003;
         public static final int textView3=0x7f0a0004;
@@ -75,36 +79,41 @@ public final class R {
     }
     public static final class menu {
         public static final int join=0x7f090000;
+        public static final int settings=0x7f090001;
     }
     public static final class string {
         public static final int action_exit=0x7f040003;
+        public static final int action_help=0x7f040005;
         public static final int action_info=0x7f040004;
         public static final int action_settings=0x7f040002;
         public static final int app_name=0x7f040001;
         /** Replace placeholder ID with your tracking ID
          */
         public static final int ga_trackingId=0x7f040000;
-        public static final int int_zoom=0x7f040014;
-        public static final int str_2p=0x7f04000a;
-        public static final int str_bk=0x7f04000f;
-        public static final int str_bp=0x7f04000d;
-        public static final int str_bugreport=0x7f040019;
-        public static final int str_ci=0x7f040012;
-        public static final int str_connfail=0x7f040006;
-        public static final int str_default=0x7f040009;
-        public static final int str_developer=0x7f040016;
-        public static final int str_fb=0x7f040010;
-        public static final int str_firstrun=0x7f040005;
-        public static final int str_ip=0x7f040007;
-        public static final int str_ko=0x7f04000b;
-        public static final int str_modesel=0x7f040008;
-        public static final int str_modifier=0x7f040017;
-        public static final int str_ns=0x7f04000e;
-        public static final int str_origdev=0x7f040018;
-        public static final int str_save=0x7f040013;
-        public static final int str_so=0x7f04000c;
-        public static final int str_version=0x7f040015;
-        public static final int str_zoom=0x7f040011;
+        public static final int int_zoom=0x7f040018;
+        public static final int str_2p=0x7f04000b;
+        public static final int str_bk=0x7f040010;
+        public static final int str_bp=0x7f04000e;
+        public static final int str_bugreport=0x7f04001d;
+        public static final int str_ci=0x7f040013;
+        public static final int str_connfail=0x7f040007;
+        public static final int str_default=0x7f04000a;
+        public static final int str_developer=0x7f04001a;
+        public static final int str_fb=0x7f040011;
+        public static final int str_firstrun=0x7f040006;
+        public static final int str_ip=0x7f040008;
+        public static final int str_ko=0x7f04000c;
+        public static final int str_modesel=0x7f040009;
+        public static final int str_modifier=0x7f04001b;
+        public static final int str_ns=0x7f04000f;
+        public static final int str_origdev=0x7f04001c;
+        public static final int str_reset=0x7f040014;
+        public static final int str_reset_msg=0x7f040017;
+        public static final int str_save=0x7f040015;
+        public static final int str_save_msg=0x7f040016;
+        public static final int str_so=0x7f04000d;
+        public static final int str_version=0x7f040019;
+        public static final int str_zoom=0x7f040012;
     }
     public static final class style {
         /** 

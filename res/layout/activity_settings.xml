@@ -7,14 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Join" >
-    
-    <Button
-        android:id="@+id/btn_join"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/str_save" />
 
     <CheckBox
         android:id="@+id/cb_ns"
@@ -99,14 +91,6 @@
         android:layout_alignParentTop="true"
         android:text="@string/str_ip" />
 
-    <TextView
-        android:id="@+id/client_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_join"
-        android:layout_centerHorizontal="true"
-        android:text="" />
-
     <CheckBox
         android:id="@+id/cb_vb"
         android:layout_width="wrap_content"
@@ -114,5 +98,39 @@
         android:layout_alignLeft="@+id/cb_bk"
         android:layout_below="@+id/cb_bk"
         android:text="@string/str_fb" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <Button
+            android:id="@+id/btn_join"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:text="@string/str_save" />
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:text="@string/str_reset" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/client_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_exit">Exit</string>
     <string name="action_info">Info</string>
+    <string name="action_help">Manual</string>
     <string name="str_firstrun">[FIRST RUN] Please setup Your iBeatCon!</string>
     <string name="str_connfail">[ERROR] Cannot connect into iBeatCon server. \r\n Please check your network or server status.</string>
     <string name="str_ip">IP Address</string>
@@ -19,7 +20,10 @@
     <string name="str_fb">Haptic Feedback</string>
     <string name="str_zoom">Zoom</string>
     <string name="str_ci">Your client ID is</string>
+    <string name="str_reset">Reset</string>
     <string name="str_save">Save and Apply</string>
+    <string name="str_save_msg">Settings saved</string>
+    <string name="str_reset_msg">Defaults Restored</string>
     <string name="int_zoom">100</string>
     <string name="str_version">iBeatCon for Android (0.4)</string>
     <string name="str_developer">Developed by @lazykuna</string>

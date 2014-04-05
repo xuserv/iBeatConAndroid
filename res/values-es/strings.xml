@@ -4,6 +4,7 @@
     <string name="action_settings">Configuracion</string>
     <string name="action_exit">Salir</string>
     <string name="action_info">Info</string>
+    <string name="action_help">Manual</string>
     <string name="str_firstrun">[CONFIGURACION INICIAL] Por favor, configura tu iBeatCon!</string>
     <string name="str_connfail">[ERROR] No se puede conectar a iBeatCon servidor. \r\n Por favor, marque su red o de estado del servidor.</string>
     <string name="str_ip">Dirección IP</string>
@@ -19,6 +20,9 @@
     <string name="str_zoom">Zoom</string>
     <string name="str_ci">Su [ID de cliente] es</string>
     <string name="str_save">Guardar y aplicar</string>
+    <string name="str_reset">Reajustar</string>
+    <string name="str_save_msg">Los ajustes se han guardado.</string>
+    <string name="str_reset_msg">Predeterminados restaurados.</string>
     <string name="int_zoom">100</string>
      
 </resources>

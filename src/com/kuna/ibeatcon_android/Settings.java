@@ -2,6 +2,7 @@ package com.kuna.ibeatcon_android;
 
 import com.google.analytics.tracking.android.EasyTracker;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -143,10 +147,41 @@ public class Settings extends Activity {
         		}
         			
         		settings2.commit();
+        		Toast.makeText(getApplicationContext(), getString(R.string.str_save_msg), Toast.LENGTH_SHORT).show();
         		startActivity(new Intent(getApplicationContext(), Join.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         		finish();
 			}
 		});
+        
+        Button b2 = (Button) findViewById(R.id.btn_reset);
+        b2.setOnClickListener(new OnClickListener() {
+        	@Override
+			public void onClick(View v) {
+        			settings2.clear();
+        			settings2.commit();
+        			Toast.makeText(getApplicationContext(), getString(R.string.str_reset_msg), Toast.LENGTH_SHORT).show();
+        			startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        			finish();
+			}
+		});
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.settings, menu);
+    	return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+    	case R.id.help:
+    		Log.i("iBeatCon", "Help");
+    		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://xuserv.net/ibc/")));
+    	default:
+    		return super.onOptionsItemSelected(item);
+    	}
     }
     
     @Override
