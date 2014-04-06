@@ -222,11 +222,7 @@ public class Controller extends Activity {
     }
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {		
-		if (event.getAction() == MotionEvent.ACTION_DOWN | event.getAction() == MotionEvent.ACTION_MOVE) {
-			cv.invalidate();
-		}
-		
+	public boolean onTouchEvent(MotionEvent event) {			
 		// start
 		boolean s = false;
 		for (int c=0; c<event.getPointerCount(); c++) {
