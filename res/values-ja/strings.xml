@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="action_disconnect">切断</string>
+    <string name="action_reconnect">再接続する</string>
     <string name="action_settings">設定</string>
     <string name="action_exit">終了</string>
     <string name="action_info">情報</string>

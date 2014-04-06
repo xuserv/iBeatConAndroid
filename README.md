@@ -50,4 +50,4 @@ Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Pla
 * v0.2 - Add Black Panel, Change Upper Button Color as Blue Function. Google Analytics Included. (@xuserv)
 * v0.3 - Change Settings Layout, Fix Controller Layout, Add Client ID Support. (@xuserv)
 * v0.4 - Add Haptic Feedback and Manual Page and restore to defaults function. (@xuserv)
-* v0.5 - Fix connection wasn't closed issue, add borderless button bar, add disconnect feature. (@xuserv)
+* v0.5 - Fix connection wasn't closed issue, add borderless button bar, add reconnect feature, use Immersive Full-Screen Mode (KitKat only). (@xuserv)

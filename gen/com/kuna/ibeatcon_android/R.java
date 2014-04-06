@@ -57,7 +57,6 @@ public final class R {
         public static final int cb_ns=0x7f0a0007;
         public static final int cb_vb=0x7f0a000d;
         public static final int client_id=0x7f0a0011;
-        public static final int disconnect=0x7f0a0012;
         public static final int edit_address=0x7f0a000b;
         public static final int edit_zoom=0x7f0a000c;
         public static final int exit=0x7f0a0014;
@@ -66,6 +65,7 @@ public final class R {
         public static final int imageView1=0x7f0a0002;
         public static final int info=0x7f0a0015;
         public static final int mode_select=0x7f0a000a;
+        public static final int reconnect=0x7f0a0012;
         public static final int settings=0x7f0a0013;
         public static final int textView1=0x7f0a0001;
         public static final int textView2=0x7f0a0003;
@@ -83,10 +83,10 @@ public final class R {
         public static final int settings=0x7f090001;
     }
     public static final class string {
-        public static final int action_disconnect=0x7f040002;
         public static final int action_exit=0x7f040004;
         public static final int action_help=0x7f040006;
         public static final int action_info=0x7f040005;
+        public static final int action_reconnect=0x7f040002;
         public static final int action_settings=0x7f040003;
         public static final int app_name=0x7f040001;
         /** Replace placeholder ID with your tracking ID

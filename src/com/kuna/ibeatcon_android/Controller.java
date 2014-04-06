@@ -13,8 +13,10 @@ import com.google.analytics.tracking.android.EasyTracker;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -41,22 +43,23 @@ public class Controller extends Activity {
 	public static Rect r_scr;
 	public static Rect r_button[] = new Rect[7];
 	public int id_scr;
-	private ControllerSizer cs = new ControllerSizer();
-	private boolean isScrkeyPressed = false;
-	
-	public ImageView obj_scr;
-	public TextView[] obj_btn = new TextView[7];
-	
 	public int[] pressKey = {32,33,34,35,36,37,38};
 	public int[] releaseKey = {64,65,66,67,68,69,70};
 	
-	private Thread mScratch = null;
+	public ImageView obj_scr;
+	public TextView[] obj_btn = new TextView[7];
+		
+	public static double mScratchRotation = 0;
+	
+	private boolean isScrkeyPressed = false;
 	private boolean doScratchThread = false;
 	private double mScratchSpeed = 0;
 	private double mScratchFriction = 1;
-	public static double mScratchRotation = 0;
-	
 	private double mTouchAngle = -1;	// backup
+	private ControllerSizer cs = new ControllerSizer();
+	private Thread mScratch = null;
+	private String ip;
+	private String port;
 	
 	@Override
 	public void onBackPressed() {			
@@ -71,13 +74,15 @@ public class Controller extends Activity {
 		
 		Log.i("iBeatCon", "Controller Started");
 		
+		final SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
+		ip = setting.getString("ip", "");
+		port = setting.getString("port", "");
+				
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);						
 					
-		DisplayMetrics displayMetrics = new DisplayMetrics(); 
+		DisplayMetrics displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		int size_height = displayMetrics.heightPixels;
-		int size_width = displayMetrics.widthPixels;
 		
 		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
 			Log.i("iBeatCon", "Display : Phone");
@@ -86,7 +91,7 @@ public class Controller extends Activity {
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Phone");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				hideSystemBar();
 			}
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
@@ -104,7 +109,7 @@ public class Controller extends Activity {
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Tablet");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				hideSystemBar();
 			}		
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
@@ -131,7 +136,7 @@ public class Controller extends Activity {
 				}
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Tablet2");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				hideSystemBar();
 				if (ConCommon.keyonly) {
 					cs.Preset_Keyonly();
 				} else if (ConCommon.scronly) {
@@ -149,7 +154,7 @@ public class Controller extends Activity {
 				requestWindowFeature(Window.FEATURE_NO_TITLE);
 			} else {
 				Log.i("iBeatCon", "No Hardware Button Default Device");
-				getWindow().getDecorView().setSystemUiVisibility(View.GONE|View.SYSTEM_UI_FLAG_LOW_PROFILE);
+				hideSystemBar();
 			}	
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
@@ -166,6 +171,9 @@ public class Controller extends Activity {
 		LinearLayout layout = (LinearLayout)findViewById(R.id.canvas_layout);
 		
 		cs.SetZoomSize(ConCommon.zoomval);
+		
+		int size_height = displayMetrics.heightPixels;
+		int size_width = displayMetrics.widthPixels;
 		
 		// set rects for touch event
 		r_start = cs.GetStartRect(size_width, size_height);
@@ -190,9 +198,10 @@ public class Controller extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
-    	case R.id.disconnect:
-    		Log.i("iBeatCon", "Disconnect");
+    	case R.id.reconnect:
+    		Log.i("iBeatCon", "Reconnect");
     		ConClient.Close();
+    		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
     		return true;
     	case R.id.settings:
     		Log.i("iBeatCon", "Settings");
@@ -255,14 +264,6 @@ public class Controller extends Activity {
 				}
 			}
 		}
-		
-		/*
-		if ((Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
-				|| Actval == MotionEvent.ACTION_CANCEL) && id_scr == pointerIndex) {
-			if (isScratchPressed) {
-				isScratchPressed = false;
-			}
-		}*/
 
 		if (isScratchPressed) {
 			// constantly receive scratch pos
@@ -420,6 +421,28 @@ public class Controller extends Activity {
 	
 	public double GetDist(float x1, float y1, float x2, float y2) {
 		return Math.sqrt( Math.pow(x1-x2,2) + Math.pow(y1-y2, 2) );
+	}
+	
+	void hideSystemBar() {
+		if (Build.VERSION.SDK_INT >= 19) {
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+					| View.GONE
+					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+		} else {
+			 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+					 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+					 | View.GONE);
+		}
+	}
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		
+		if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
+			hideSystemBar();
+		}
 	}
 	
 	@Override
