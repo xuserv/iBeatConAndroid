@@ -7,14 +7,14 @@ Original iOS Application and Sever Developer : @Harunene
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Player (Like LR2 | Ruv-It!)
+Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Player (Like LR2 | Ruv-It!)
 
 # HOW TO USE
-* Please make sure your PC Firewall setting allow 2001(0.9.2) or 10070(1.0.0) port and both device (PC & Android) are on same network.
-1. Download iBeatCon_Android.apk and Install your Android Device.
-2. Download iBeatConServer.exe from http://kuna.tistory.com/attachment/cfile22.uf@2339744352B06C2C109292.exe (0.9.2) or https://www.dropbox.com/s/xwjk6e7800fiws1/iBeatconServer.exe (1.0.0) and run iBeatConServer.exe.
-3. Open iBeatCon for Android Application and Set your IP, select 2P Mode or Scratch Only Mode or Key Only Mode or New Server Compatible Mode (for 1.0.0) then Tab "Save and Apply".
-4. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key as Start Button.
+* Please make sure your PC Firewall setting allow 2001(0.9.2) or 10070(1.0.0/HKiBC Server) port and both device (PC & Android) are on same network.
+1. Download iBeatCon_Android.apk and install your Android device.
+2. Download server program from http://bit.ly/ibeatconold (0.9.2) or http://bit.ly/ibeatcon (1.0.0) or http://bit.ly/hkibc (HKiBC Server) and run server program.
+3. Open iBeatCon for Android application and Set your IP, Mode and Check New Server Compatible Mode (for 1.0.0/HKiBC Server) then Tab "Save and Apply".
+4. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key as Start Button. (If you're using HKiBC Server you don't need to do)
 5. Enjoy It.
 
 # Tested Device
@@ -51,3 +51,4 @@ Android Device (least 4.0.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Pla
 * v0.3 - Change Settings Layout, Fix Controller Layout, Add Client ID Support. (@xuserv)
 * v0.4 - Add Haptic Feedback and Manual Page and restore to defaults function. (@xuserv)
 * v0.5 - Fix connection wasn't closed issue, add borderless button bar, add reconnect feature, use Immersive Full-Screen Mode (KitKat only). (@xuserv)
+* v0.6 - Add Android 2.3.3 support, removed unrequired code and fix some bugs. (@xuserv)

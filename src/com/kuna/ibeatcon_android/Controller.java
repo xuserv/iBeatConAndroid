@@ -148,9 +148,9 @@ public class Controller extends Activity {
 				} else if (ConCommon.scronly) {
 					cs.Preset_Scronly();
 				} else if (ConCommon.is2P) {
-					cs.Preset_2P_NH_L();
+					cs.Preset_2P_L();
 				} else {
-					cs.Preset_1P_NH_L();
+					cs.Preset_1P_L();
 				}
 			}			
 		} else {
@@ -434,7 +434,6 @@ public class Controller extends Activity {
 					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 		} else {
 			 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-					 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 					 | View.GONE);
 		}
 	}

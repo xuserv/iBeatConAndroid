@@ -26,7 +26,7 @@
     <string name="str_save_msg">Settings saved</string>
     <string name="str_reset_msg">Defaults Restored</string>
     <string name="int_zoom">100</string>
-    <string name="str_version">iBeatCon for Android (0.5)</string>
+    <string name="str_version">iBeatCon for Android (0.6)</string>
     <string name="str_developer">Developed by @lazykuna</string>
     <string name="str_modifier">Modified by @xuserv</string>
     <string name="str_origdev">Original iBeatCon Developed by @Harunene</string>
