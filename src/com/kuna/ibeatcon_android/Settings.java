@@ -143,6 +143,7 @@ public class Settings extends Activity {
         			
         		settings2.commit();
         		Toast.makeText(getApplicationContext(), getString(R.string.str_save_msg), Toast.LENGTH_SHORT).show();
+        		ConClient.Close();
         		startActivity(new Intent(getApplicationContext(), Join.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         		finish();
 			}

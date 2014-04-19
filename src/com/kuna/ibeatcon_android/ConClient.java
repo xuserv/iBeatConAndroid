@@ -33,8 +33,6 @@ public class ConClient {
 					s = new InetSocketAddress(ip, port);
 					s2 = new Socket();
 					s2.connect(s, 1500);
-					s2.setTcpNoDelay(true);
-					s2.setKeepAlive(true);
 					
 					// After Initalization, Run recv thread & activate send method
 					br = new BufferedReader(new InputStreamReader(s2.getInputStream()));

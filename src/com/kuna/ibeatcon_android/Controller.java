@@ -79,19 +79,25 @@ public class Controller extends Activity {
 		port = setting.getString("port", "");
 				
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);						
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		if (Build.VERSION.SDK_INT >= 7) {
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+		}
 					
 		DisplayMetrics displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		
 		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
 			Log.i("iBeatCon", "Display : Phone");
-			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-				Log.i("iBeatCon", "Hardware Button Phone");
-				requestWindowFeature(Window.FEATURE_NO_TITLE);
-			} else {
-				Log.i("iBeatCon", "No Hardware Button Phone");
-				hideSystemBar();
+			if (Build.VERSION.SDK_INT >= 14) {
+				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+					Log.i("iBeatCon", "Hardware Button Phone");
+					requestWindowFeature(Window.FEATURE_NO_TITLE);
+				} else {
+					Log.i("iBeatCon", "No Hardware Button Phone");
+					hideSystemBar();
+				}
 			}
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
@@ -374,9 +380,10 @@ public class Controller extends Activity {
 							if (mScratchSpeed > 0) mScratchSpeed = 0;
 						}
 						
+						cv.postInvalidate();
+						
 						// change rotation value
 						mScratchRotation += mScratchSpeed*3;
-						cv.postInvalidate();
 						
 						// check scratch
 						if (mScratchSpeed < -1) {
@@ -436,8 +443,10 @@ public class Controller extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);
 		
-		if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
-			hideSystemBar();
+		if (Build.VERSION.SDK_INT >= 14) {
+			if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
+				hideSystemBar();
+			}
 		}
 	}
 	
