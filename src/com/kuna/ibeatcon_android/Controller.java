@@ -59,7 +59,8 @@ public class Controller extends Activity {
 	private ControllerSizer cs = new ControllerSizer();
 	private Thread mScratch = null;
 	private String ip;
-	private String port;
+	private String port2;
+	private boolean port;
 	
 	@Override
 	public void onBackPressed() {			
@@ -76,7 +77,13 @@ public class Controller extends Activity {
 		
 		final SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
 		ip = setting.getString("ip", "");
-		port = setting.getString("port", "");
+		port = setting.getBoolean("port", false);
+		
+		if (port) {
+			port2 = "10070";
+		} else {
+			port2 = "2001";
+		}
 				
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -207,7 +214,7 @@ public class Controller extends Activity {
     	case R.id.reconnect:
     		Log.i("iBeatCon", "Reconnect");
     		ConClient.Close();
-    		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
+    		ConCommon.cc = new ConClient(ip, Integer.parseInt(port2));
     		return true;
     	case R.id.settings:
     		Log.i("iBeatCon", "Settings");

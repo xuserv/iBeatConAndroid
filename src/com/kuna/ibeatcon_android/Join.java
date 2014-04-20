@@ -14,12 +14,14 @@ import android.widget.Toast;
 public class Join extends Activity {
 	
 	public Handler h;
+	private boolean port;
 	private boolean side_mode;
 	private boolean scronly_mode;
 	private boolean keyonly_mode;
 	private boolean bluekey;
 	private boolean blackpanel;
 	private boolean vb_feedback;
+	private String port2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +29,53 @@ public class Join extends Activity {
         
         Log.i("iBeatCon", "Application Launched");
         
+        try {
+        	SharedPreferences old_setting = getSharedPreferences("settings", MODE_PRIVATE);
+        	String old_port = old_setting.getString("port", "");
+        	SharedPreferences.Editor old_setting_edit = old_setting.edit();
+        	if(!old_port.equals("true") | !old_port.equals("false")){
+        		old_setting_edit.clear();
+        		old_setting_edit.commit();
+        		startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        	}
+        } catch (ClassCastException e) {
+        	// Exception Caused!
+        }
+        
         // attach event
         SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
         String ip = setting.getString("ip", "");
         String ZoomValue = setting.getString("zoom", "");
-        String port = setting.getString("port", "");
-        side_mode = setting.getBoolean("side_mode", false);
-        scronly_mode = setting.getBoolean("scronly_mode", false);
-        keyonly_mode = setting.getBoolean("keyonly_mode", false);
+        String mode_sel = setting.getString("mode_sel", "");
+        port = setting.getBoolean("port", false);
         bluekey = setting.getBoolean("bluekey", false);
         blackpanel = setting.getBoolean("blackpanel", false);
         vb_feedback = setting.getBoolean("feedback", false);
-        if (ip != "" | ZoomValue != "" | port != "") {
+        
+        if (mode_sel.equals("side_mode")) {
+        	side_mode = true;
+        } else if (mode_sel.equals("scronly_mode")) {
+        	scronly_mode = true;
+        } else if (mode_sel.equals("keyonly_mode")) {
+        	keyonly_mode = true;
+        }
+        
+        if (port) {
+        	port2 = "10070";
+        } else {
+        	port2 = "2001";
+        }
+        
+        if (ip != "" | ZoomValue != "" | mode_sel != "") {
         		Log.i("iBeatCon", "Connecting to Server");
         		Log.i("iBeatCon", "IP Address : " + ip);
         		Log.i("iBeatCon", "Zoom Value : " + ZoomValue);
-        		Log.i("iBeatCon", "Server Port: "+ port);
+        		Log.i("iBeatCon", "Server Port: "+ port2);
         		ConCommon.keyonly = keyonly_mode;
         		ConCommon.scronly = scronly_mode;
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
-        		ConCommon.cc = new ConClient(ip, Integer.parseInt(port));
+        		ConCommon.cc = new ConClient(ip, Integer.parseInt(port2));
         		CanvasView.bluekey = bluekey;
         		CanvasView.blackpanel = blackpanel;
         		Controller.vb_feedback = vb_feedback;

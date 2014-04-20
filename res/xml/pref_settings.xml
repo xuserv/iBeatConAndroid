@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="Network">
+	    <EditTextPreference android:title="@string/str_ip"
+	        android:key="ip" />
+	    <CheckBoxPreference android:title="@string/str_ns"
+	        android:key="port"
+	        android:defaultValue="true" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Skin">
+	    <ListPreference android:title="@string/str_modesel"
+	        android:key="mode_sel"
+	        android:entries="@array/array_list"
+	        android:entryValues="@array/array_list_enties"
+	        android:defaultValue="default" />
+	    <CheckBoxPreference android:title="@string/str_bp"
+	        android:key="blackpanel" />
+	    <CheckBoxPreference android:title="@string/str_bk"
+	        android:key="bluekey" />
+	    <EditTextPreference android:title="@string/str_zoom"
+	        android:key="zoom"
+	        android:defaultValue="100" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Misc">
+	    <CheckBoxPreference android:title="@string/str_fb"
+	        android:key="feedback" />
+	</PreferenceCategory>
+</PreferenceScreen>

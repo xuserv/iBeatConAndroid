@@ -6,5 +6,11 @@
         <item>@string/str_ko</item>
         <item>@string/str_so</item>
     </string-array>
-        
+    
+    <string-array name="array_list_enties">
+        <item>default</item>
+        <item>side_mode</item>
+        <item>keyonly_mode</item>
+        <item>scronly_mode</item>
+    </string-array>
 </resources>
