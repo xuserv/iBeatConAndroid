@@ -81,7 +81,7 @@ public class Controller extends Activity {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
-		if (Build.VERSION.SDK_INT >= 7) {
+		if (Build.VERSION.SDK_INT <= 7) {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 		}
 					
