@@ -8,6 +8,9 @@
     <string name="action_help">설명서</string>
     <string name="str_firstrun">[최초 실행] iBeatCon을 설정 해 주세요!</string>
     <string name="str_connfail">[오류 발생] iBeatCon 서버와 연결을 할 수 없습니다. \r\n 네트워크 및 서버의 상태를 확인 해 주세요.</string>
+    <string name="pref_network">네트워크</string>
+    <string name="pref_skin">스킨</string>
+    <string name="pref_misc">기타</string>
     <string name="str_ip">IP 주소</string>
     <string name="str_modesel">모드 선택</string>
     <string name="str_default">기본값</string>
@@ -18,11 +21,9 @@
     <string name="str_ns">신 서버 대응 모드</string>
     <string name="str_bk">윗 버튼 파란색으로 변경</string>
     <string name="str_fb">햅틱 피드백</string>
+    <string name="str_hw">하드웨어 가속</string>
     <string name="str_zoom">확대값 </string>
-    <string name="str_ci">클라이언트 ID :</string>
-    <string name="str_save">저장 후 적용</string>
     <string name="str_reset">초기화</string>
-    <string name="str_save_msg">설정이 저장 되었습니다.</string>
     <string name="str_reset_msg">설정이 초기화 되었습니다.</string>
     <string name="int_zoom">100</string>
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<PreferenceCategory android:title="Network">
+	<PreferenceCategory android:title="@string/pref_network">
 	    <EditTextPreference android:title="@string/str_ip"
 	        android:key="ip" />
 	    <CheckBoxPreference android:title="@string/str_ns"
 	        android:key="port"
 	        android:defaultValue="true" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="Skin">
+	<PreferenceCategory android:title="@string/pref_skin">
 	    <ListPreference android:title="@string/str_modesel"
 	        android:key="mode_sel"
 	        android:entries="@array/array_list"
@@ -21,7 +21,7 @@
 	    <CheckBoxPreference android:title="@string/str_bk"
 	        android:key="bluekey" />
 	</PreferenceCategory>
-	<PreferenceCategory android:title="Misc">
+	<PreferenceCategory android:title="@string/pref_misc">
 	    <CheckBoxPreference android:title="@string/str_fb"
 	        android:key="feedback" />
 	    <CheckBoxPreference android:title="@string/str_hw"

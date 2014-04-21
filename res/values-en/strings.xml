@@ -8,6 +8,9 @@
     <string name="action_help">Manual</string>
     <string name="str_firstrun">[FIRST RUN] Please setup Your iBeatCon!</string>
     <string name="str_connfail">[ERROR] Cannot connect into iBeatCon server. \r\n Please check your network or server status.</string>
+    <string name="pref_network">Network</string>
+    <string name="pref_skin">Skin</string>
+    <string name="pref_misc">Misc</string>
     <string name="str_ip">IP Address</string>
     <string name="str_modesel">Mode Select</string>
     <string name="str_default">Default</string>
@@ -20,10 +23,7 @@
     <string name="str_fb">Haptic Feedback</string>
     <string name="str_hw">Hardware Acceleration</string>
     <string name="str_zoom">Zoom</string>
-    <string name="str_ci">Your client ID is</string>
     <string name="str_reset">Reset</string>
-    <string name="str_save">Save and Apply</string>
-    <string name="str_save_msg">Settings saved</string>
     <string name="str_reset_msg">Defaults Restored</string>
     <string name="int_zoom">100</string>
 
