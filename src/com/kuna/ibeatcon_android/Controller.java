@@ -60,7 +60,6 @@ public class Controller extends Activity {
 	private Thread mScratch = null;
 	private String ip;
 	private String port2;
-	private boolean port;
 	
 	@Override
 	public void onBackPressed() {			
@@ -77,12 +76,17 @@ public class Controller extends Activity {
 		
 		final SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
 		ip = setting.getString("ip", "");
-		port = setting.getBoolean("port", false);
 		
-		if (port) {
+		if (setting.getBoolean("port", true)) {
 			port2 = "10070";
 		} else {
 			port2 = "2001";
+		}
+		
+		if (Build.VERSION.SDK_INT >= 11) {
+			if (setting.getBoolean("hw_accel", true)) {
+				getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+			}
 		}
 				
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -229,6 +233,7 @@ public class Controller extends Activity {
     	case R.id.info:
     		Log.i("iBeatCon", "Info");
     		startActivity(new Intent(getApplicationContext(), Info.class));
+    		return true;
     	default:
     		return super.onOptionsItemSelected(item);
     	}

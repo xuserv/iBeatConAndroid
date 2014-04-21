@@ -36,9 +36,6 @@
             android:name="com.kuna.ibeatcon_android.Settings"
             android:label="@string/action_settings"></activity>
         <activity
-            android:name="com.kuna.ibeatcon_android.Settings"
-            android:label="@string/action_settings"></activity>
-        <activity
             android:name="com.kuna.ibeatcon_android.Info"
             android:label="@string/action_info"></activity>
     </application>

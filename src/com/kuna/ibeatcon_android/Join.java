@@ -14,7 +14,6 @@ import android.widget.Toast;
 public class Join extends Activity {
 	
 	public Handler h;
-	private boolean port;
 	private boolean side_mode;
 	private boolean scronly_mode;
 	private boolean keyonly_mode;
@@ -36,7 +35,6 @@ public class Join extends Activity {
         	if(!old_port.equals("true") | !old_port.equals("false")){
         		old_setting_edit.clear();
         		old_setting_edit.commit();
-        		startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         	}
         } catch (ClassCastException e) {
         	// Exception Caused!
@@ -47,7 +45,6 @@ public class Join extends Activity {
         String ip = setting.getString("ip", "");
         String ZoomValue = setting.getString("zoom", "");
         String mode_sel = setting.getString("mode_sel", "");
-        port = setting.getBoolean("port", false);
         bluekey = setting.getBoolean("bluekey", false);
         blackpanel = setting.getBoolean("blackpanel", false);
         vb_feedback = setting.getBoolean("feedback", false);
@@ -60,7 +57,7 @@ public class Join extends Activity {
         	keyonly_mode = true;
         }
         
-        if (port) {
+        if (setting.getBoolean("port", true)) {
         	port2 = "10070";
         } else {
         	port2 = "2001";

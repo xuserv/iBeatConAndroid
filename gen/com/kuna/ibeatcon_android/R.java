@@ -105,6 +105,7 @@ public final class R {
         public static final int str_developer=0x7f05001b;
         public static final int str_fb=0x7f050012;
         public static final int str_firstrun=0x7f050007;
+        public static final int str_hw=0x7f05001f;
         public static final int str_ip=0x7f050009;
         public static final int str_ko=0x7f05000d;
         public static final int str_modesel=0x7f05000a;

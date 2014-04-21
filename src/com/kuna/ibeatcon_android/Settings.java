@@ -4,6 +4,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -39,12 +40,17 @@ public class Settings extends PreferenceActivity {
     	case R.id.help:
     		Log.i("iBeatCon", "Help");
     		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://xuserv.net/ibc/")));
+    		return true;
     	case R.id.reset:
     		Log.i("iBeatCon", "Restore to Default");
-    		PreferenceManager.getDefaultSharedPreferences(this);
+    		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+    		SharedPreferences.Editor editor = settings.edit();
+    		editor.clear();
+    		editor.commit();
 			Toast.makeText(getApplicationContext(), getString(R.string.str_reset_msg), Toast.LENGTH_SHORT).show();
 			startActivity(new Intent(getApplicationContext(), Settings.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			finish();
+			return true;
     	default:
     		return super.onOptionsItemSelected(item);
     	}

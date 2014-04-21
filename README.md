@@ -51,4 +51,4 @@ Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Pla
 * v0.3 - Change Settings Layout, Fix Controller Layout, Add Client ID Support. (@xuserv)
 * v0.4 - Add Haptic Feedback and Manual Page and restore to defaults function. (@xuserv)
 * v0.5 - Fix connection wasn't closed issue, add borderless button bar, add reconnect feature, use Immersive Full-Screen Mode (KitKat only). (@xuserv)
-* v0.6 - Add Android 2.3.3 support, settings now using PreferenceActivity, removed unrequire code, fix some bugs. (@xuserv)
+* v0.6 - Add Android 2.3.3 support, settings now using PreferenceActivity, Add Hardware Acceleration, removed unrequire code, fix some bugs. (@xuserv)
