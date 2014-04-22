@@ -392,10 +392,10 @@ public class Controller extends Activity {
 							if (mScratchSpeed > 0) mScratchSpeed = 0;
 						}
 						
-						cv.postInvalidate();
-						
 						// change rotation value
 						mScratchRotation += mScratchSpeed*3;
+						
+						cv.postInvalidate();
 						
 						// check scratch
 						if (mScratchSpeed < -1) {
