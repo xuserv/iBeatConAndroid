@@ -8,7 +8,7 @@
     <string name="action_info">Info</string>
     <string name="action_help">Manual</string>
     <string name="str_firstrun">[FIRST RUN] Please setup Your iBeatCon!</string>
-    <string name="str_connfail">[ERROR] Cannot connect into iBeatCon server. \r\n Please check your network or server status.</string>
+    <string name="str_connfail">[ERROR] Cannot connect into iBeatCon server. \n Please check your network or server status.</string>
     <string name="pref_network">Network</string>
     <string name="pref_skin">Skin</string>
     <string name="pref_misc">Misc</string>
@@ -27,10 +27,12 @@
     <string name="str_reset">Reset</string>
     <string name="str_reset_msg">Defaults Restored</string>
     <string name="int_zoom">100</string>
-    <string name="str_version">iBeatCon for Android (0.6)</string>
-    <string name="str_developer">Developed by @lazykuna</string>
-    <string name="str_modifier">Modified by @xuserv</string>
-    <string name="str_origdev">Original iBeatCon Developed by @Harunene</string>
-    <string name="str_bugreport">If you found bugs or have a suggestion, \r\n Please Contact @xuserv on Twitter</string>
+    <string name="desc_logo">Logo of iBeatCon</string>
+    <string name="str_dev">Developer</string>
+    <string name="str_developer">kuna (lazykuna)</string>
+    <string name="str_maintain">Maintainer</string>
+    <string name="str_modifier">xuserv (xuserv)</string>
+    <string name="str_original">Original iBeatCon Developer</string>
+    <string name="str_origdev">Harunene (Harunene)</string>
 
 </resources>

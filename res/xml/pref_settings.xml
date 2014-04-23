@@ -2,7 +2,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:title="@string/pref_network">
 	    <EditTextPreference android:title="@string/str_ip"
-	        android:key="ip" />
+	        android:key="ip"
+	        android:inputType="phone" />
 	    <CheckBoxPreference android:title="@string/str_ns"
 	        android:key="port"
 	        android:defaultValue="true" />

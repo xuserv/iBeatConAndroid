@@ -50,19 +50,25 @@ public final class R {
         public static final int whp=0x7f02000e;
     }
     public static final class id {
+        public static final int ScrollView1=0x7f0b0001;
+        public static final int app_logo=0x7f0b0002;
+        public static final int app_name=0x7f0b0004;
+        public static final int app_version=0x7f0b0003;
         public static final int canvas_layout=0x7f0b0000;
-        public static final int exit=0x7f0b0009;
-        public static final int help=0x7f0b000b;
-        public static final int imageView1=0x7f0b0002;
-        public static final int info=0x7f0b000a;
-        public static final int reconnect=0x7f0b0007;
-        public static final int reset=0x7f0b000c;
-        public static final int settings=0x7f0b0008;
-        public static final int textView1=0x7f0b0001;
-        public static final int textView2=0x7f0b0003;
-        public static final int textView3=0x7f0b0004;
-        public static final int textView4=0x7f0b0005;
-        public static final int textView5=0x7f0b0006;
+        public static final int exit=0x7f0b000f;
+        public static final int help=0x7f0b0011;
+        public static final int info=0x7f0b0010;
+        public static final int reconnect=0x7f0b000d;
+        public static final int reset=0x7f0b0012;
+        public static final int settings=0x7f0b000e;
+        public static final int textView1=0x7f0b0005;
+        public static final int textView2=0x7f0b0006;
+        public static final int textView3=0x7f0b0007;
+        public static final int textView4=0x7f0b0008;
+        public static final int textView5=0x7f0b0009;
+        public static final int textView6=0x7f0b000a;
+        public static final int textView7=0x7f0b000b;
+        public static final int textView8=0x7f0b000c;
     }
     public static final class layout {
         public static final int activity_controller=0x7f030000;
@@ -79,6 +85,7 @@ public final class R {
         public static final int action_reconnect=0x7f050002;
         public static final int action_settings=0x7f050003;
         public static final int app_name=0x7f050001;
+        public static final int desc_logo=0x7f05001b;
         /** Replace placeholder ID with your tracking ID
          */
         public static final int ga_trackingId=0x7f050000;
@@ -89,23 +96,24 @@ public final class R {
         public static final int str_2p=0x7f05000f;
         public static final int str_bk=0x7f050014;
         public static final int str_bp=0x7f050012;
-        public static final int str_bugreport=0x7f05001f;
         public static final int str_connfail=0x7f050008;
         public static final int str_default=0x7f05000e;
-        public static final int str_developer=0x7f05001c;
+        public static final int str_dev=0x7f05001c;
+        public static final int str_developer=0x7f05001d;
         public static final int str_fb=0x7f050015;
         public static final int str_firstrun=0x7f050007;
         public static final int str_hw=0x7f050016;
         public static final int str_ip=0x7f05000c;
         public static final int str_ko=0x7f050010;
+        public static final int str_maintain=0x7f05001e;
         public static final int str_modesel=0x7f05000d;
-        public static final int str_modifier=0x7f05001d;
+        public static final int str_modifier=0x7f05001f;
         public static final int str_ns=0x7f050013;
-        public static final int str_origdev=0x7f05001e;
+        public static final int str_origdev=0x7f050021;
+        public static final int str_original=0x7f050020;
         public static final int str_reset=0x7f050018;
         public static final int str_reset_msg=0x7f050019;
         public static final int str_so=0x7f050011;
-        public static final int str_version=0x7f05001b;
         public static final int str_zoom=0x7f050017;
     }
     public static final class style {
