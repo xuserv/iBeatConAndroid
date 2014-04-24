@@ -337,7 +337,7 @@ public class Controller extends Activity {
 			Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(100);
 			SendData(pressKey[i]);
-			Log.i("iBeatCon", "Button " + i + " Pressed");
+			Log.i("iBeatCon", "Button " + i + " Pressed with Vibe");
 		} else {
 			SendData(pressKey[i]);
 			Log.i("iBeatCon", "Button " + i + " Pressed");
@@ -452,8 +452,7 @@ public class Controller extends Activity {
 	
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-		
+		super.onWindowFocusChanged(hasFocus);		
 		if (Build.VERSION.SDK_INT >= 14) {
 			if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
 				hideSystemBar();

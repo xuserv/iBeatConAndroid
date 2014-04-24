@@ -37,7 +37,7 @@ public class Join extends Activity {
         		old_setting_edit.commit();
         	}
         } catch (ClassCastException e) {
-        	// Exception Caused!
+        	// Old preference file has been cleared, don't need to do this.
         }
         
         // attach event

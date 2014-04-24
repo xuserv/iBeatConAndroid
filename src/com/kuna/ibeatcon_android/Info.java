@@ -26,9 +26,9 @@ public class Info extends Activity {
         
 		try {
 			String version = getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
-			ver.setText("v" + version);
+			ver.setText(version);
 		} catch (NameNotFoundException e) {
-			// Exception Caused!
+			// NOOOOOOOOOO, IT CAN'T BE! YOUR ANDROID DENIED GET PACKAGE NAME FROM YOUR DEVICE!
 		}
 
         dev.setOnClickListener(new OnClickListener() {
