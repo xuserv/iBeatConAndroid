@@ -10,12 +10,7 @@ Compatible Android Application Developer : @kuna
 Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Player (Like LR2 | Ruv-It!)
 
 # HOW TO USE
-* Please make sure your PC Firewall setting allow 2001(0.9.2) or 10070(1.0.0/HKiBC Server) port and both device (PC & Android) are on same network.
-1. Download iBeatCon_Android.apk and install your Android device.
-2. Download server program from http://bit.ly/ibeatconold (0.9.2) or http://bit.ly/ibeatcon (1.0.0) or http://bit.ly/hkibc (HKiBC Server) and run server program.
-3. Open iBeatCon for Android application and Set your IP, Mode and Check New Server Compatible Mode (for 1.0.0/HKiBC Server) then Tab "Save and Apply".
-4. Run Lunatic Rave 2 then goto System Setting -> Key Config bind TAB key as Start Button. (If you're using HKiBC Server you don't need to do)
-5. Enjoy It.
+* Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 
 # Tested Device
 * Galaxy S2 LTE
