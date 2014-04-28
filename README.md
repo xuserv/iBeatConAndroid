@@ -1,18 +1,19 @@
 iBeatCon for Android
 ===============
-This is a Android ported version of iBeatCon which simulates beatmaniaIIDX Controller on iOS Device
+This is a Android ported version of iBeatCon which simulates beatmaniaIIDX Controller on iOS Device.
 
 Original iOS Application and Sever Developer : @Harunene
 
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0) / BMS Player (Like LR2 | Ruv-It!)
+Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0 | HKiBC) / BMS Player (Like Lunatic Rave 2)
 
 # HOW TO USE
-* Manual available on http://xuserv.net/ibc [ENG/KOR Only].
+Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 
 # Tested Device
+* Galaxy S2
 * Galaxy S2 LTE
 * Galaxy Note 10.1 (not 2014)
 * Nexus S
