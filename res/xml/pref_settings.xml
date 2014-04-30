@@ -2,30 +2,40 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:title="@string/pref_network">
 	    <EditTextPreference android:title="@string/str_ip"
+	        android:summary="@string/str_ip_desc"
 	        android:key="ip"
-	        android:inputType="phone" />
+	        android:inputType="phone"
+	        android:singleLine="true"
+	        android:dialogTitle="@string/str_ip_input" />
 	    <CheckBoxPreference android:title="@string/str_ns"
+	        android:summary="@string/str_ns_desc"
 	        android:key="port"
 	        android:defaultValue="true" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/pref_skin">
 	    <ListPreference android:title="@string/str_modesel"
+	        android:summary="@string/str_modesel_desc"
 	        android:key="mode_sel"
 	        android:entries="@array/array_list"
 	        android:entryValues="@array/array_list_enties"
 	        android:defaultValue="default" />
 	    <EditTextPreference android:title="@string/str_zoom"
+	        android:summary="@string/str_zoom_desc"
 	        android:key="zoom"
 	        android:defaultValue="100" />
 	    <CheckBoxPreference android:title="@string/str_bp"
+	        android:summary="@string/str_bp_desc"
 	        android:key="blackpanel" />
 	    <CheckBoxPreference android:title="@string/str_bk"
+	        android:summary="@string/str_bk_desc"
 	        android:key="bluekey" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/pref_misc">
 	    <CheckBoxPreference android:title="@string/str_fb"
+	        android:summary="@string/str_fb_desc"
 	        android:key="feedback" />
 	    <CheckBoxPreference android:title="@string/str_hw"
+	        android:summary="@string/str_hw_desc"
 	        android:key="hw_accel" />
 	</PreferenceCategory>
 </PreferenceScreen>

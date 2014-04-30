@@ -22,6 +22,15 @@
     <string name="str_bk">上のボタン青に変更</string>
     <string name="str_fb">触覚フィードバック</string>
     <string name="str_hw">ハードウェア加速</string>
+    <string name="str_ip_input">サーバーのIPアドレスを入力</string>
+    <string name="str_ip_desc">あなたのサーバーのIPアドレスを入力してください</string>
+    <string name="str_ns_desc">2001ポートの代わりに10070ポートを使用します</string>
+    <string name="str_modesel_desc">コントローラのスタイルを選択してください</string>
+    <string name="str_zoom_desc">コントローラのサイズを変更します</string>
+    <string name="str_bp_desc">背景色を灰色に変更します</string>
+    <string name="str_bk_desc">上のボタンを青に変更します</string>
+    <string name="str_fb_desc">コントローラのボタンを押すと振動します</string>
+    <string name="str_hw_desc">パフォーマンス向上のためのハードウェアアクセラレーションを行います</string>
     <string name="str_zoom">拡大値</string>
     <string name="str_reset">リセット</string>
     <string name="str_reset_msg">デフォルト値に復元しました。</string>

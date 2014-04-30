@@ -22,6 +22,15 @@
     <string name="str_bk">Blue upper button</string>
     <string name="str_fb">Haptic Feedback</string>
     <string name="str_hw">Hardware Acceleration</string>
+    <string name="str_ip_input">Input Your Server IP</string>
+    <string name="str_ip_desc">Please input your server IP address</string>
+    <string name="str_ns_desc">Use port 10070 instead of 2001</string>
+    <string name="str_modesel_desc">Choose your controller style</string>
+    <string name="str_zoom_desc">Change controller size</string>
+    <string name="str_bp_desc">Change background color as Gray</string>
+    <string name="str_bk_desc">Change upper button color as Blue</string>
+    <string name="str_fb_desc">Vibrate when you pressing key on controller</string>
+    <string name="str_hw_desc">Hardware acceleration for performance</string>
     <string name="str_zoom">Zoom</string>
     <string name="str_reset">Reset</string>
     <string name="str_reset_msg">Defaults Restored</string>

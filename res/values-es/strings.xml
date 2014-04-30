@@ -22,6 +22,15 @@
     <string name="str_bk">El botón superior cambia a azul</string>
     <string name="str_fb">Vibración al pulsar</string>
     <string name="str_hw">Aceleración de hardware</string>
+    <string name="str_ip_input">Ingrese su dirección IP del servidor</string>
+    <string name="str_ip_desc">Ingrese su dirección IP del servidor</string>
+    <string name="str_ns_desc">Utilice el puerto 10070 en lugar de 2001</string>
+    <string name="str_modesel_desc">Elige tu estilo controlador</string>
+    <string name="str_zoom_desc">Cambiar tamaño de controlador</string>
+    <string name="str_bp_desc">Cambie el color de fondo como Gray</string>
+    <string name="str_bk_desc">Cambiar el color del botón superior como Blue</string>
+    <string name="str_fb_desc">Vibrar al pulsar tecla del controlador</string>
+    <string name="str_hw_desc">La aceleración de hardware para un rendimiento</string>
     <string name="str_zoom">Zoom</string>
     <string name="str_reset">Reajustar</string>
     <string name="str_reset_msg">Predeterminados restaurados.</string>
