@@ -1,6 +1,6 @@
 /**
  * iBeatCon Server 0.9.2 (beyond 1.0.0)
- * 9,7,8 ; Scratch
+ * 9,7,8 ; Scratch (LCtrl, LShift)
  * 42,74 ; Start
  * 32,33,34,35,36,37,38 ; Key Press
  * 64,65,66,67,68,69,70 ; Key Release
@@ -240,21 +240,25 @@ public class Controller extends Activity {
     }
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {			
+	public boolean onTouchEvent(MotionEvent event) {
+		// generic
+		if(event.getAction() == MotionEvent.ACTION_UP) {
+			cv.invalidate();
+		}
+		
 		// start
 		boolean s = false;
-		for (int c=0; c<event.getPointerCount(); c++) {
+		for (int c=0; c<event.getPointerCount(); c++) {					
+			if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || 
+					event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
+				continue;	// UP EVENT should be ignored
 					
-		if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || 
-			event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
-			continue;	// UP EVENT should be ignored
-					
-			float x = event.getX(c);
-			float y = event.getY(c);
+				float x = event.getX(c);
+				float y = event.getY(c);
 
-			if (r_start.contains((int)x, (int)y)) {
-				s = true;
-			}
+				if (r_start.contains((int)x, (int)y)) {
+					s = true;
+				}
 		}
 		StaBtn(isStartPressed, s);
 		isStartPressed = s;
