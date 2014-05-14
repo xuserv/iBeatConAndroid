@@ -38,6 +38,7 @@ public class Controller extends Activity {
 	public static boolean isScratchPressed = false;
 	public static boolean[] isButtonPressed = new boolean[7];
 	public static boolean vb_feedback = false;
+	public static boolean touch_scratch = false;
 	
 	public static Rect r_start;
 	public static Rect r_scr;
@@ -242,7 +243,7 @@ public class Controller extends Activity {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// generic
-		if(event.getAction() == MotionEvent.ACTION_UP) {
+		if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
 			cv.invalidate();
 		}
 		
@@ -264,49 +265,80 @@ public class Controller extends Activity {
 		isStartPressed = s;
 		
 		// scratch
-        int pointerIndex = event.getActionIndex();
-        int pointerId = event.getPointerId(pointerIndex);
-        int pointerCount = event.getPointerCount();
-		int Actval = event.getAction() & MotionEvent.ACTION_MASK;
+		if (!touch_scratch) {
+			int pointerIndex = event.getActionIndex();
+			int pointerId = event.getPointerId(pointerIndex);
+			int pointerCount = event.getPointerCount();
+			int Actval = event.getAction() & MotionEvent.ACTION_MASK;
 		
-		if (Actval == MotionEvent.ACTION_DOWN || Actval == MotionEvent.ACTION_POINTER_DOWN) {
-			if (!isScratchPressed) {
-				float x = event.getX(pointerIndex);
-				float y = event.getY(pointerIndex);
+			if (Actval == MotionEvent.ACTION_DOWN || Actval == MotionEvent.ACTION_POINTER_DOWN) {
+				if (!isScratchPressed) {
+					float x = event.getX(pointerIndex);
+					float y = event.getY(pointerIndex);
 				
-				if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
-					id_scr = pointerIndex;
-					mTouchAngle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
-					mScratchSpeed = 0;	// just press to stop signal ...?
-					isScratchPressed = true;
+					if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
+						id_scr = pointerIndex;
+						mTouchAngle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+						mScratchSpeed = 0;	// just press to stop signal ...?
+						isScratchPressed = true;
+					}
 				}
 			}
-		}
 
-		if (isScratchPressed) {
-			// constantly receive scratch pos
-	        for(int i = 0; i < pointerCount; ++i)
-	        {
-	            pointerIndex = i;
-	            pointerId = event.getPointerId(pointerIndex);
-	            if(pointerId == id_scr)
-	            {
-	            	if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
-	        				|| Actval == MotionEvent.ACTION_CANCEL) {
-	            		isScratchPressed = false;
-	            		break;
-	            	}
+			if (isScratchPressed) {
+				// constantly receive scratch pos
+				for(int i = 0; i < pointerCount; ++i) {
+					pointerIndex = i;
+					pointerId = event.getPointerId(pointerIndex);
+					if(pointerId == id_scr) {
+						if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
+								|| Actval == MotionEvent.ACTION_CANCEL) {
+							isScratchPressed = false;
+							break;
+						}
 	        				
-	                float x = event.getX(pointerIndex);
-	                float y = event.getY(pointerIndex);
+						float x = event.getX(pointerIndex);
+						float y = event.getY(pointerIndex);
 	                
-	                double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
-                    double angleDiff = getRadianDiff(mTouchAngle, angle);
+						double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+						double angleDiff = getRadianDiff(mTouchAngle, angle);
                     
-                    mScratchSpeed = angleDiff;
-                    mTouchAngle = angle;
-	            }
-	        }
+						mScratchSpeed = angleDiff;
+						mTouchAngle = angle;
+					}
+				}
+			}
+		} else {
+			mScratch.interrupt();
+			
+			boolean scr = false;
+			int pointerIndex = event.getActionIndex();
+			int pointerId = event.getPointerId(pointerIndex);
+			int pointerCount = event.getPointerCount();
+			int Actval = event.getAction() & MotionEvent.ACTION_MASK;
+		
+			if (Actval == MotionEvent.ACTION_DOWN || Actval == MotionEvent.ACTION_POINTER_DOWN) {
+					float x = event.getX(pointerIndex);
+					float y = event.getY(pointerIndex);
+				
+					if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
+						id_scr = pointerIndex;
+						scr = true;
+					}
+			}
+
+			for(int i = 0; i < pointerCount; ++i) {
+				pointerIndex = i;
+				pointerId = event.getPointerId(pointerIndex);
+				if(pointerId == id_scr) {
+					if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
+							|| Actval == MotionEvent.ACTION_CANCEL) {
+						scr = false;
+					}
+				}
+			}		
+			ScrBtn(isScratchPressed, scr);
+			isScratchPressed = scr;
 		}
 		
 		// button
@@ -336,6 +368,7 @@ public class Controller extends Activity {
 		if (!ConCommon.debug_noconnect)
 			ConCommon.cc.Send(i);
 	}
+	
 	public void PressButton(int i) {
 		if (vb_feedback){
 			Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
@@ -347,10 +380,12 @@ public class Controller extends Activity {
 			Log.i("iBeatCon", "Button " + i + " Pressed");
 		}
 	}
+	
 	public void ReleaseButton(int i) {
 		SendData(releaseKey[i]);
 		Log.i("iBeatCon", "Button " + i + " Released");
 	}
+	
 	public void CmpPrs(boolean[] org, boolean[] diff) {
 		for (int i=0; i<7; i++) {
 			if (!org[i] && diff[i])
@@ -359,12 +394,23 @@ public class Controller extends Activity {
 				ReleaseButton(i);
 		}
 	}
+	
 	public void StaBtn(boolean org, boolean diff) {
 		if (!org && diff) {
 			SendData(42);
 			Log.i("iBeatCon", "Start Button Pressed");
 		} else if (org && !diff) {
 			Log.i("iBeatCon", "Start Button Released");
+			SendData(74);
+		}
+	}
+	
+	public void ScrBtn(boolean org, boolean diff) {
+		if (!org && diff) {
+			SendData(42);
+			Log.i("iBeatCon", "Scratch Pressed");
+		} else if (org && !diff) {
+			Log.i("iBeatCon", "Scratch Released");
 			SendData(74);
 		}
 	}

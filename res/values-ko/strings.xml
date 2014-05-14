@@ -20,6 +20,7 @@
     <string name="str_bp">블랙 패널 모드</string>
     <string name="str_ns">신 서버 대응 모드</string>
     <string name="str_bk">윗 버튼 파란색으로 변경</string>
+    <string name="str_ts">터치 스크래치</string>
     <string name="str_fb">햅틱 피드백</string>
     <string name="str_hw">하드웨어 가속</string>
     <string name="str_ip_input">서버 IP 주소를 입력 해 주세요</string>
@@ -29,6 +30,7 @@
     <string name="str_zoom_desc">컨트롤러 사이즈를 변경합니다</string>
     <string name="str_bp_desc">컨트롤러 배경을 회색으로 변경합니다</string>
     <string name="str_bk_desc">윗 건반들을 파란색 건반으로 변경합니다</string>
+    <string name="str_ts_desc">스크래치 이벤트를 터치로 바꿉니다</string>
     <string name="str_fb_desc">컨트롤러의 건반부를 누를때 진동합니다</string>
     <string name="str_hw_desc">퍼포먼스 향상을 위해 하드웨어 가속을 사용합니다</string>
     <string name="str_zoom">확대값 </string>

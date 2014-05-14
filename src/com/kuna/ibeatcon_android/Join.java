@@ -17,9 +17,6 @@ public class Join extends Activity {
 	private boolean side_mode;
 	private boolean scronly_mode;
 	private boolean keyonly_mode;
-	private boolean bluekey;
-	private boolean blackpanel;
-	private boolean vb_feedback;
 	private String port2;
 
     @Override
@@ -45,9 +42,6 @@ public class Join extends Activity {
         String ip = setting.getString("ip", "");
         String ZoomValue = setting.getString("zoom", "");
         String mode_sel = setting.getString("mode_sel", "");
-        bluekey = setting.getBoolean("bluekey", false);
-        blackpanel = setting.getBoolean("blackpanel", false);
-        vb_feedback = setting.getBoolean("feedback", false);
         
         if (mode_sel.equals("side_mode")) {
         	side_mode = true;
@@ -73,9 +67,10 @@ public class Join extends Activity {
         		ConCommon.is2P = side_mode;
         		ConCommon.zoomval = Integer.parseInt(ZoomValue);
         		ConCommon.cc = new ConClient(ip, Integer.parseInt(port2));
-        		CanvasView.bluekey = bluekey;
-        		CanvasView.blackpanel = blackpanel;
-        		Controller.vb_feedback = vb_feedback;
+        		CanvasView.bluekey = setting.getBoolean("bluekey", false);
+        		CanvasView.blackpanel = setting.getBoolean("blackpanel", false);
+        		Controller.vb_feedback = setting.getBoolean("feedback", false);
+        		Controller.touch_scratch = setting.getBoolean("touch_scratch", false);
         } else {
         		Log.i("iBeatCon", "First Run");
         		Toast.makeText(getApplicationContext(), getString(R.string.str_firstrun), Toast.LENGTH_SHORT).show();       		
