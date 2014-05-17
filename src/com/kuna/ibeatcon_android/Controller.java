@@ -58,6 +58,7 @@ public class Controller extends Activity {
 	private double mScratchFriction = 1;
 	private double mTouchAngle = -1;	// backup
 	private ControllerSizer cs = new ControllerSizer();
+	private Thread UIRefresh = null;
 	private Thread mScratch = null;
 	private String ip;
 	private String port2;
@@ -241,12 +242,7 @@ public class Controller extends Activity {
     }
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		// generic
-		if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
-			cv.invalidate();
-		}
-		
+	public boolean onTouchEvent(MotionEvent event) {		
 		// start
 		boolean s = false;
 		for (int c=0; c<event.getPointerCount(); c++) {					
@@ -428,6 +424,21 @@ public class Controller extends Activity {
 	}
 	
 	public void UpdateControllerPosition() {
+		UIRefresh = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					while (true) {
+						cv.postInvalidate();
+						
+						Thread.sleep(1000/30);
+					}
+				} catch (Exception e) {
+					
+				}
+			}
+		});
+
 		mScratch = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -444,8 +455,6 @@ public class Controller extends Activity {
 						
 						// change rotation value
 						mScratchRotation += mScratchSpeed*3;
-						
-						cv.postInvalidate();
 						
 						// check scratch
 						if (mScratchSpeed < -1) {
@@ -473,6 +482,7 @@ public class Controller extends Activity {
 		});
 		doScratchThread = true;
 		
+		UIRefresh.start();
 		mScratch.start();
 	}
 	
