@@ -403,11 +403,11 @@ public class Controller extends Activity {
 	
 	public void ScrBtn(boolean org, boolean diff) {
 		if (!org && diff) {
-			SendData(42);
+			SendData(9);
 			Log.i("iBeatCon", "Scratch Pressed");
 		} else if (org && !diff) {
 			Log.i("iBeatCon", "Scratch Released");
-			SendData(74);
+			SendData(8);
 		}
 	}
 	
@@ -434,7 +434,7 @@ public class Controller extends Activity {
 						Thread.sleep(1000/30);
 					}
 				} catch (Exception e) {
-					
+					Log.e("ERROR", "UI Refresh Error");
 				}
 			}
 		});
