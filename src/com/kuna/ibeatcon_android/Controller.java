@@ -103,7 +103,7 @@ public class Controller extends Activity {
 		
 		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
 			Log.i("iBeatCon", "Display : Phone");
-			if (Build.VERSION.SDK_INT >= 13) {
+			if (Build.VERSION.SDK_INT >= 14) {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Phone");
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -123,7 +123,7 @@ public class Controller extends Activity {
 			}
 		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM) {
 			Log.i("iBeatCon", "Display : Tablet (like Galaxy Tab 10.1)");
-			if (Build.VERSION.SDK_INT >= 13) {
+			if (Build.VERSION.SDK_INT >= 14) {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Tablet");
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -145,7 +145,7 @@ public class Controller extends Activity {
 			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");
 			
 			
-			if (Build.VERSION.SDK_INT >= 13) {
+			if (Build.VERSION.SDK_INT >= 14) {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Tablet2");
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -174,7 +174,7 @@ public class Controller extends Activity {
 			}			
 		} else {
 			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");			
-			if (Build.VERSION.SDK_INT >= 13) {
+			if (Build.VERSION.SDK_INT >= 14) {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Unknown Device");
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -521,7 +521,7 @@ public class Controller extends Activity {
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);		
-		if (Build.VERSION.SDK_INT >= 13) {
+		if (Build.VERSION.SDK_INT >= 14) {
 			if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
 				hideSystemBar();
 			}
