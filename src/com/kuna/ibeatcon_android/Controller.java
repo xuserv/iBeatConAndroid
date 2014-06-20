@@ -123,12 +123,14 @@ public class Controller extends Activity {
 			}
 		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM) {
 			Log.i("iBeatCon", "Display : Tablet (like Galaxy Tab 10.1)");
-			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-				Log.i("iBeatCon", "Hardware Button Tablet");
-				requestWindowFeature(Window.FEATURE_NO_TITLE);
-			} else {
-				Log.i("iBeatCon", "No Hardware Button Tablet");
-				hideSystemBar();
+			if (Build.VERSION.SDK_INT >= 13) {
+				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+					Log.i("iBeatCon", "Hardware Button Tablet");
+					requestWindowFeature(Window.FEATURE_NO_TITLE);
+				} else {
+					Log.i("iBeatCon", "No Hardware Button Tablet");
+					hideSystemBar();
+				}
 			}		
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
@@ -141,40 +143,46 @@ public class Controller extends Activity {
 			}
 		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_XHIGH | displayMetrics.densityDpi <= 480) {
 			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");
-			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-				Log.i("iBeatCon", "Hardware Button Tablet2");
-				requestWindowFeature(Window.FEATURE_NO_TITLE);
-				if (ConCommon.keyonly) {
-					cs.Preset_Keyonly();
-				} else if (ConCommon.scronly) {
-					cs.Preset_Scronly();
-				} else if (ConCommon.is2P) {
-					cs.Preset_2P_L();
+			
+			
+			if (Build.VERSION.SDK_INT >= 13) {
+				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+					Log.i("iBeatCon", "Hardware Button Tablet2");
+					requestWindowFeature(Window.FEATURE_NO_TITLE);
+					if (ConCommon.keyonly) {
+						cs.Preset_Keyonly();
+					} else if (ConCommon.scronly) {
+						cs.Preset_Scronly();
+					} else if (ConCommon.is2P) {
+						cs.Preset_2P_L();
+					} else {
+						cs.Preset_1P_L();
+					}
 				} else {
-					cs.Preset_1P_L();
-				}
-			} else {
-				Log.i("iBeatCon", "No Hardware Button Tablet2");
-				hideSystemBar();
-				if (ConCommon.keyonly) {
-					cs.Preset_Keyonly();
-				} else if (ConCommon.scronly) {
-					cs.Preset_Scronly();
-				} else if (ConCommon.is2P) {
-					cs.Preset_2P_L();
-				} else {
-					cs.Preset_1P_L();
+					Log.i("iBeatCon", "No Hardware Button Tablet2");
+					hideSystemBar();
+					if (ConCommon.keyonly) {
+						cs.Preset_Keyonly();
+					} else if (ConCommon.scronly) {
+						cs.Preset_Scronly();
+					} else if (ConCommon.is2P) {
+						cs.Preset_2P_L();
+					} else {
+						cs.Preset_1P_L();
+					}
 				}
 			}			
 		} else {
-			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");
-			if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-				Log.i("iBeatCon", "Hardware Button Unknown Device");
-				requestWindowFeature(Window.FEATURE_NO_TITLE);
-			} else {
-				Log.i("iBeatCon", "No Hardware Button Default Device");
-				hideSystemBar();
-			}	
+			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");			
+			if (Build.VERSION.SDK_INT >= 13) {
+				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
+					Log.i("iBeatCon", "Hardware Button Unknown Device");
+					requestWindowFeature(Window.FEATURE_NO_TITLE);
+				} else {
+					Log.i("iBeatCon", "No Hardware Button Default Device");
+					hideSystemBar();
+				}
+			}
 			if (ConCommon.keyonly) {
 				cs.Preset_Keyonly();
 			} else if (ConCommon.scronly) {
