@@ -31,9 +31,9 @@
 	        android:key="bluekey" />
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/pref_misc">
-	    <CheckBoxPreference android:title="@string/str_ts"
+	    <!--<CheckBoxPreference android:title="@string/str_ts"
 	        android:summary="@string/str_ts_desc"
-	        android:key="touch_scratch" />
+	        android:key="touch_scratch" />  -->
 	    <CheckBoxPreference android:title="@string/str_fb"
 	        android:summary="@string/str_fb_desc"
 	        android:key="feedback" />

@@ -103,7 +103,7 @@ public class Controller extends Activity {
 		
 		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
 			Log.i("iBeatCon", "Display : Phone");
-			if (Build.VERSION.SDK_INT >= 14) {
+			if (Build.VERSION.SDK_INT >= 13) {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Phone");
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -513,7 +513,7 @@ public class Controller extends Activity {
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);		
-		if (Build.VERSION.SDK_INT >= 14) {
+		if (Build.VERSION.SDK_INT >= 13) {
 			if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
 				hideSystemBar();
 			}
