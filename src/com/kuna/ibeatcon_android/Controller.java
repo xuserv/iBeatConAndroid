@@ -142,9 +142,7 @@ public class Controller extends Activity {
 				cs.Preset_1P_M();
 			}
 		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_XHIGH | displayMetrics.densityDpi <= 480) {
-			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");
-			
-			
+			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");			
 			if (Build.VERSION.SDK_INT >= 14) {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Tablet2");
@@ -432,7 +430,8 @@ public class Controller extends Activity {
 	}
 	
 	public void UpdateControllerPosition() {
-		UIRefresh = new Thread(new Runnable() {
+		/*** CPU Overload
+		 UIRefresh = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
@@ -445,7 +444,8 @@ public class Controller extends Activity {
 					Log.e("ERROR", "UI Refresh Error");
 				}
 			}
-		});
+		})
+		*/
 
 		mScratch = new Thread(new Runnable() {
 			@Override
@@ -463,6 +463,9 @@ public class Controller extends Activity {
 						
 						// change rotation value
 						mScratchRotation += mScratchSpeed*3;
+						
+						// refresh controller ui
+						cv.postInvalidate();
 						
 						// check scratch
 						if (mScratchSpeed < -1) {
@@ -490,7 +493,7 @@ public class Controller extends Activity {
 		});
 		doScratchThread = true;
 		
-		UIRefresh.start();
+		//UIRefresh.start();
 		mScratch.start();
 	}
 	

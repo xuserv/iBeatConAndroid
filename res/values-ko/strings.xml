@@ -6,7 +6,7 @@
     <string name="action_exit">종료</string>
     <string name="action_info">정보</string>
     <string name="action_help">설명서</string>
-    <string name="str_firstrun">[최초 실행] iBeatCon을 설정 해 주세요!</string>
+    <string name="str_firstrun">[최초 실행] iBeatCon을 설정 해 주세요, 설명서를 보실려면 \"?\" 아이콘을 눌러주세요.</string>
     <string name="str_connfail">[오류 발생] iBeatCon 서버와 연결을 할 수 없습니다. \r\n 네트워크 및 서버의 상태를 확인 해 주세요.</string>
     <string name="pref_network">네트워크</string>
     <string name="pref_skin">스킨</string>

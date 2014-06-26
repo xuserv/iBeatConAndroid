@@ -7,7 +7,7 @@
     <string name="action_exit">Exit</string>
     <string name="action_info">Info</string>
     <string name="action_help">Manual</string>
-    <string name="str_firstrun">[FIRST RUN] Please setup Your iBeatCon!</string>
+    <string name="str_firstrun">[FIRST RUN] Please setup Your iBeatCon, Press \"?\" icon to check the manual.</string>
     <string name="str_connfail">[ERROR] Cannot connect into iBeatCon server. \n Please check your network or server status.</string>
     <string name="pref_network">Network</string>
     <string name="pref_skin">Skin</string>
