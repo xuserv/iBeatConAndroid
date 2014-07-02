@@ -50,3 +50,4 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 * v0.6 - Add Android 2.3.3 support, settings now using PreferenceActivity, Add Hardware Acceleration, remove unrequired code, fix some bugs. (@xuserv)
 * v0.7 - Change settings layout. (@xuserv)
 * v0.8 - Fix screen stuck issue, Add TS mode [temporary disabled], fix crash on Honeycomb devices, add more descriptions. (@xuserv)
+* v0.9 - Fix some devices cannot display controller parts.

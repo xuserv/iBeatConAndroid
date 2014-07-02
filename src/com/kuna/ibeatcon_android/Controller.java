@@ -58,7 +58,7 @@ public class Controller extends Activity {
 	private double mScratchFriction = 1;
 	private double mTouchAngle = -1;	// backup
 	private ControllerSizer cs = new ControllerSizer();
-	private Thread UIRefresh = null;
+	//private Thread UIRefresh = null;
 	private Thread mScratch = null;
 	private String ip;
 	private String port2;
@@ -147,29 +147,20 @@ public class Controller extends Activity {
 				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
 					Log.i("iBeatCon", "Hardware Button Tablet2");
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
-					if (ConCommon.keyonly) {
-						cs.Preset_Keyonly();
-					} else if (ConCommon.scronly) {
-						cs.Preset_Scronly();
-					} else if (ConCommon.is2P) {
-						cs.Preset_2P_L();
-					} else {
-						cs.Preset_1P_L();
-					}
 				} else {
 					Log.i("iBeatCon", "No Hardware Button Tablet2");
 					hideSystemBar();
-					if (ConCommon.keyonly) {
-						cs.Preset_Keyonly();
-					} else if (ConCommon.scronly) {
-						cs.Preset_Scronly();
-					} else if (ConCommon.is2P) {
-						cs.Preset_2P_L();
-					} else {
-						cs.Preset_1P_L();
-					}
 				}
-			}			
+			}
+			if (ConCommon.keyonly) {
+				cs.Preset_Keyonly();
+			} else if (ConCommon.scronly) {
+				cs.Preset_Scronly();
+			} else if (ConCommon.is2P) {
+				cs.Preset_2P_L();
+			} else {
+				cs.Preset_1P_L();
+			}
 		} else {
 			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");			
 			if (Build.VERSION.SDK_INT >= 14) {
