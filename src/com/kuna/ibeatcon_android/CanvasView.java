@@ -49,8 +49,7 @@ public class CanvasView extends View {
 	}
 
 	@Override
-	protected void onDraw(Canvas canvas) {
-		
+	protected void onDraw(Canvas canvas) {		
 		if (blackpanel) {
 			canvas.drawColor(Color.GRAY);
 		} else {

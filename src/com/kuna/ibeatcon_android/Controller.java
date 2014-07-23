@@ -58,7 +58,7 @@ public class Controller extends Activity {
 	private double mScratchFriction = 1;
 	private double mTouchAngle = -1;	// backup
 	private ControllerSizer cs = new ControllerSizer();
-	//private Thread UIRefresh = null;
+	private Thread UIRefresh = null;
 	private Thread mScratch = null;
 	private String ip;
 	private String port2;
@@ -275,42 +275,41 @@ public class Controller extends Activity {
 						mScratchSpeed = 0;	// just press to stop signal ...?
 						isScratchPressed = true;
 					}
-				}
-			}
-
-			if (isScratchPressed) {
-				// constantly receive scratch pos
-				for(int i = 0; i < pointerCount; ++i) {
-					pointerIndex = i;
-					pointerId = event.getPointerId(pointerIndex);
-					if(pointerId == id_scr) {
-						if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
-								|| Actval == MotionEvent.ACTION_CANCEL) {
-							isScratchPressed = false;
-							break;
+				} else {
+					// constantly receive scratch pos
+					for(int i = 0; i < pointerCount; ++i) {
+						pointerIndex = i;
+						pointerId = event.getPointerId(pointerIndex);
+						if(pointerId == id_scr) {
+							if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
+									|| Actval == MotionEvent.ACTION_CANCEL) {
+								isScratchPressed = false;
+								break;
+							}
+		        				
+							float x = event.getX(pointerIndex);
+							float y = event.getY(pointerIndex);
+		                
+							double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+							double angleDiff = getRadianDiff(mTouchAngle, angle);
+	                    
+							mScratchSpeed = angleDiff;
+							mTouchAngle = angle;
 						}
-	        				
-						float x = event.getX(pointerIndex);
-						float y = event.getY(pointerIndex);
-	                
-						double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
-						double angleDiff = getRadianDiff(mTouchAngle, angle);
-                    
-						mScratchSpeed = angleDiff;
-						mTouchAngle = angle;
 					}
 				}
 			}
 		} else {
 			mScratch.interrupt();
 			
-			boolean scr = false;
 			int pointerIndex = event.getActionIndex();
 			int pointerId = event.getPointerId(pointerIndex);
 			int pointerCount = event.getPointerCount();
 			int Actval = event.getAction() & MotionEvent.ACTION_MASK;
+			boolean scr = false;
 		
 			if (Actval == MotionEvent.ACTION_DOWN || Actval == MotionEvent.ACTION_POINTER_DOWN) {
+				if (!isScratchPressed) {
 					float x = event.getX(pointerIndex);
 					float y = event.getY(pointerIndex);
 				
@@ -318,19 +317,21 @@ public class Controller extends Activity {
 						id_scr = pointerIndex;
 						scr = true;
 					}
-			}
-
-			for(int i = 0; i < pointerCount; ++i) {
-				pointerIndex = i;
-				pointerId = event.getPointerId(pointerIndex);
-				if(pointerId == id_scr) {
-					if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
-							|| Actval == MotionEvent.ACTION_CANCEL) {
-						scr = false;
+				} else {
+					// constantly receive scratch pos
+					for(int i = 0; i < pointerCount; ++i) {
+						pointerIndex = i;
+						pointerId = event.getPointerId(pointerIndex);
+						if(pointerId == id_scr) {
+							if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
+									|| Actval == MotionEvent.ACTION_CANCEL) {
+								scr = false;
+							}
+						}
 					}
 				}
-			}		
-			ScrBtn(isScratchPressed, scr);
+			}
+			ScrBtn(scr, isScratchPressed);
 			isScratchPressed = scr;
 		}
 		
@@ -421,7 +422,6 @@ public class Controller extends Activity {
 	}
 	
 	public void UpdateControllerPosition() {
-		/*** CPU Overload
 		 UIRefresh = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -435,8 +435,7 @@ public class Controller extends Activity {
 					Log.e("ERROR", "UI Refresh Error");
 				}
 			}
-		})
-		*/
+		});
 
 		mScratch = new Thread(new Runnable() {
 			@Override
