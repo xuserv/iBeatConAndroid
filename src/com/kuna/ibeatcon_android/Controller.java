@@ -58,7 +58,6 @@ public class Controller extends Activity {
 	private double mScratchFriction = 1;
 	private double mTouchAngle = -1;	// backup
 	private ControllerSizer cs = new ControllerSizer();
-	private Thread UIRefresh = null;
 	private Thread mScratch = null;
 	private String ip;
 	private String port2;
@@ -316,6 +315,7 @@ public class Controller extends Activity {
 					if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
 						id_scr = pointerIndex;
 						scr = true;
+						cv.postInvalidate();
 					}
 				} else {
 					// constantly receive scratch pos
@@ -326,6 +326,7 @@ public class Controller extends Activity {
 							if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
 									|| Actval == MotionEvent.ACTION_CANCEL) {
 								scr = false;
+								cv.postInvalidate();
 							}
 						}
 					}
@@ -333,6 +334,7 @@ public class Controller extends Activity {
 			}
 			ScrBtn(scr, isScratchPressed);
 			isScratchPressed = scr;
+			cv.postInvalidate();
 		}
 		
 		// button
@@ -422,21 +424,6 @@ public class Controller extends Activity {
 	}
 	
 	public void UpdateControllerPosition() {
-		 UIRefresh = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					while (true) {
-						cv.postInvalidate();
-						
-						Thread.sleep(1000/30);
-					}
-				} catch (Exception e) {
-					Log.e("ERROR", "UI Refresh Error");
-				}
-			}
-		});
-
 		mScratch = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -483,7 +470,6 @@ public class Controller extends Activity {
 		});
 		doScratchThread = true;
 		
-		//UIRefresh.start();
 		mScratch.start();
 	}
 	
