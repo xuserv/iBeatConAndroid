@@ -30,7 +30,7 @@
     <string name="str_zoom_desc">Change controller size</string>
     <string name="str_bp_desc">Change background color as Gray</string>
     <string name="str_bk_desc">Change upper button color as Blue</string>
-    <string name="str_ts_desc">Change scratch to touchable</string>
+    <string name="str_ts_desc">Change turntable to touchable</string>
     <string name="str_fb_desc">Vibrate when you pressing key on controller</string>
     <string name="str_hw_desc">Hardware acceleration for performance</string>
     <string name="str_zoom">Zoom</string>
