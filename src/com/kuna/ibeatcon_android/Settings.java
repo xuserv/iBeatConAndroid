@@ -65,5 +65,7 @@ public class Settings extends PreferenceActivity {
     public void onStop() {
     	super.onStop();
     	EasyTracker.getInstance(this).activityStop(this);
+    	startActivity(new Intent(getApplicationContext(), Join.class));
+    	finish();
     }
 }

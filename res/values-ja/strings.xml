@@ -16,12 +16,13 @@
     <string name="str_default">デフォルト</string>
     <string name="str_2p">2P側</string>
     <string name="str_ko">鍵盤のみ</string>
-    <string name="str_so">スクラッチのみ</string>
+    <string name="str_so">唯一のターンテーブルモード</string>
     <string name="str_bp">ブラックパネルモード</string>
     <string name="str_ns">新しいサーバー適合モード</string>
     <string name="str_bk">上のボタン青に変更</string>
     <string name="str_fb">触覚フィードバック</string>
     <string name="str_hw">ハードウェア加速</string>
+    <string name="str_ts">タッチターンテーブル</string>
     <string name="str_ip_input">サーバーのIPアドレスを入力</string>
     <string name="str_ip_desc">あなたのサーバーのIPアドレスを入力してください</string>
     <string name="str_ns_desc">2001ポートの代わりに10070ポートを使用します</string>
@@ -31,6 +32,7 @@
     <string name="str_bk_desc">上のボタンを青に変更します</string>
     <string name="str_fb_desc">コントローラのボタンを押すと振動します</string>
     <string name="str_hw_desc">パフォーマンス向上のためのハードウェアアクセラレーションを行います</string>
+    <string name="str_ts_desc">触れることができるターンテーブルを変更します</string>
     <string name="str_zoom">拡大値</string>
     <string name="str_reset">リセット</string>
     <string name="str_reset_msg">デフォルト値に復元しました。</string>

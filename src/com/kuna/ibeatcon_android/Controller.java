@@ -256,7 +256,7 @@ public class Controller extends Activity {
 		StaBtn(isStartPressed, s);
 		isStartPressed = s;
 		
-		// scratch
+		// normal scratch
 		if (!touch_scratch) {
 			int pointerIndex = event.getActionIndex();
 			int pointerId = event.getPointerId(pointerIndex);
@@ -299,6 +299,7 @@ public class Controller extends Activity {
 				}
 			}
 		} else {
+			// touch scratch
 			mScratch.interrupt();
 			
 			int pointerIndex = event.getActionIndex();
