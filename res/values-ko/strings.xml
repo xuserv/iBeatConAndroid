@@ -36,6 +36,7 @@
     <string name="str_zoom">확대값 </string>
     <string name="str_reset">초기화</string>
     <string name="str_reset_msg">설정이 초기화 되었습니다.</string>
+    <string name="str_apply_msg">설정이 저장 되었습니다. \n 어플리케이션을 종료하고 싶으시다면 홈 버튼을 눌러 종료 해주세요.</string>
     <string name="int_zoom">100</string>
 
 </resources>

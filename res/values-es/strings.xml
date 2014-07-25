@@ -36,6 +36,7 @@
     <string name="str_zoom">Zoom</string>
     <string name="str_reset">Reajustar</string>
     <string name="str_reset_msg">Predeterminados restaurados.</string>
+    <string name="str_apply_msg">Ajuste se ha guardado. \n Para salir de esta solicitud, por favor presione el botón HOME.</string>
     <string name="int_zoom">100</string>
      
 </resources>

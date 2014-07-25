@@ -36,6 +36,7 @@
     <string name="str_zoom">拡大値</string>
     <string name="str_reset">リセット</string>
     <string name="str_reset_msg">デフォルト値に復元しました。</string>
+    <string name="str_apply_msg">設定が保存されました。 \n このアプリケーションを終了したい場合は、HOMEボタンを押してください。</string>
     <string name="int_zoom">100</string>
 
 </resources>

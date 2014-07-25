@@ -29,14 +29,15 @@
     <string name="str_ns_desc">Use port 10070 instead of 2001</string>
     <string name="str_modesel_desc">Choose your controller style</string>
     <string name="str_zoom_desc">Change controller size</string>
-    <string name="str_bp_desc">Change background color as Gray</string>
-    <string name="str_bk_desc">Change upper button color as Blue</string>
+    <string name="str_bp_desc">Change background color to Gray</string>
+    <string name="str_bk_desc">Change upper button color to Blue</string>
     <string name="str_ts_desc">Change turntable to touchable</string>
     <string name="str_fb_desc">Vibrate when you pressing key on controller</string>
     <string name="str_hw_desc">Hardware acceleration for performance</string>
     <string name="str_zoom">Zoom</string>
     <string name="str_reset">Reset</string>
     <string name="str_reset_msg">Defaults Restored</string>
+    <string name="str_apply_msg">Settings saved \n If you want to quit this application then press HOME button.</string>
     <string name="int_zoom">100</string>
     <string name="desc_logo">Logo of iBeatCon</string>
     <string name="str_dev">Developer</string>

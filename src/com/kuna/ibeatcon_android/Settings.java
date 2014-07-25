@@ -56,6 +56,13 @@ public class Settings extends PreferenceActivity {
     }
     
     @Override
+    public void onBackPressed() {
+    	Toast.makeText(getApplicationContext(), getString(R.string.str_apply_msg), Toast.LENGTH_SHORT).show();
+    	startActivity(new Intent(getApplicationContext(), Join.class));
+    	finish();
+    }
+    
+    @Override
     public void onStart() {
     	super.onStart();
     	EasyTracker.getInstance(this).activityStart(this);
@@ -65,7 +72,5 @@ public class Settings extends PreferenceActivity {
     public void onStop() {
     	super.onStop();
     	EasyTracker.getInstance(this).activityStop(this);
-    	startActivity(new Intent(getApplicationContext(), Join.class));
-    	finish();
     }
 }
