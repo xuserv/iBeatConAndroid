@@ -238,67 +238,8 @@ public class Controller extends Activity {
     }
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {		
-		// start
-		boolean s = false;
-		for (int c=0; c<event.getPointerCount(); c++) {					
-			if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || 
-					event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
-				continue;	// UP EVENT should be ignored
-					
-				float x = event.getX(c);
-				float y = event.getY(c);
-
-				if (r_start.contains((int)x, (int)y)) {
-					s = true;
-				}
-		}
-		StaBtn(isStartPressed, s);
-		isStartPressed = s;
-		
-		// normal scratch
-		if (!touch_scratch) {
-			int pointerIndex = event.getActionIndex();
-			int pointerId = event.getPointerId(pointerIndex);
-			int pointerCount = event.getPointerCount();
-			int Actval = event.getAction() & MotionEvent.ACTION_MASK;
-		
-			if (Actval == MotionEvent.ACTION_DOWN || Actval == MotionEvent.ACTION_POINTER_DOWN) {
-				if (!isScratchPressed) {
-					float x = event.getX(pointerIndex);
-					float y = event.getY(pointerIndex);
-				
-					if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
-						id_scr = pointerIndex;
-						mTouchAngle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
-						mScratchSpeed = 0;	// just press to stop signal ...?
-						isScratchPressed = true;
-					}
-				} else {
-					// constantly receive scratch pos
-					for(int i = 0; i < pointerCount; ++i) {
-						pointerIndex = i;
-						pointerId = event.getPointerId(pointerIndex);
-						if(pointerId == id_scr) {
-							if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
-									|| Actval == MotionEvent.ACTION_CANCEL) {
-								isScratchPressed = false;
-								break;
-							}
-		        				
-							float x = event.getX(pointerIndex);
-							float y = event.getY(pointerIndex);
-		                
-							double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
-							double angleDiff = getRadianDiff(mTouchAngle, angle);
-	                    
-							mScratchSpeed = angleDiff;
-							mTouchAngle = angle;
-						}
-					}
-				}
-			}
-		} else {
+	public boolean onTouchEvent(MotionEvent event) {
+		if (touch_scratch){
 			// touch scratch
 			mScratch.interrupt();
 			
@@ -324,8 +265,7 @@ public class Controller extends Activity {
 						pointerIndex = i;
 						pointerId = event.getPointerId(pointerIndex);
 						if(pointerId == id_scr) {
-							if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP
-									|| Actval == MotionEvent.ACTION_CANCEL) {
+							if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP || Actval == MotionEvent.ACTION_CANCEL) {
 								scr = false;
 								cv.postInvalidate();
 							}
@@ -336,14 +276,71 @@ public class Controller extends Activity {
 			ScrBtn(scr, isScratchPressed);
 			isScratchPressed = scr;
 			cv.postInvalidate();
+		} else {
+			int pointerIndex = event.getActionIndex();
+	        int pointerId = event.getPointerId(pointerIndex);
+	        int pointerCount = event.getPointerCount();
+			int Actval = event.getAction() & MotionEvent.ACTION_MASK;
+			
+			if (Actval == MotionEvent.ACTION_DOWN || Actval == MotionEvent.ACTION_POINTER_DOWN) {
+				if (!isScratchPressed) {
+					float x = event.getX(pointerIndex);
+					float y = event.getY(pointerIndex);
+					
+					if (GetDist(x, y, r_scr.left, r_scr.top) < r_scr.right) {
+						id_scr = pointerIndex;
+						mTouchAngle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+						mScratchSpeed = 0;	// just press to stop signal ...?
+						isScratchPressed = true;
+					}
+				}
+			} else {
+				// constantly receive scratch pos
+		        for(int i = 0; i < pointerCount; ++i)
+		        {
+		            pointerIndex = i;
+		            pointerId = event.getPointerId(pointerIndex);
+		            if(pointerId == id_scr)
+		            {
+		            	if (Actval == MotionEvent.ACTION_UP || Actval == MotionEvent.ACTION_POINTER_UP || Actval == MotionEvent.ACTION_CANCEL) {
+		            		isScratchPressed = false;
+		            		break;
+		            	}
+		        				
+		                float x = event.getX(pointerIndex);
+		                float y = event.getY(pointerIndex);
+		                
+		                double angle = getRadianOfPointer(r_scr.left, r_scr.top, x, y);
+	                    double angleDiff = getRadianDiff(mTouchAngle, angle);
+	                    
+	                    mScratchSpeed = angleDiff;
+	                    mTouchAngle = angle;
+		            }
+		        }
+			}
 		}
+		
+		// start
+		boolean s = false;
+		for (int c=0; c<event.getPointerCount(); c++) {					
+			if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
+				continue;	// UP EVENT should be ignored
+					
+				float x = event.getX(c);
+				float y = event.getY(c);
+
+				if (r_start.contains((int)x, (int)y)) {
+					s = true;
+				}
+		}
+		StaBtn(isStartPressed, s);
+		isStartPressed = s;		
 		
 		// button
 		boolean[] p = new boolean[7];
 		for (int c=0; c<event.getPointerCount(); c++) {
 			
-			if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || 
-					event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
+			if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
 				continue;	// UP EVENT should be ignored
 			
 			float x = event.getX(c);
@@ -458,7 +455,7 @@ public class Controller extends Activity {
 						}						
 						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
 							SendData(9);
-							Log.i("iBeatCon", "Scratch Stopped");
+							Log.i("iBeatCon", "Scratch : Stopped");
 							isScrkeyPressed = false;
 						}
 
@@ -488,13 +485,9 @@ public class Controller extends Activity {
 	
 	void hideSystemBar() {
 		if (Build.VERSION.SDK_INT >= 19) {
-			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-					| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-					| View.GONE
-					| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+			getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.GONE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 		} else {
-			 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-					 | View.GONE);
+			 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.GONE);
 		}
 	}
 	

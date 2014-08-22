@@ -2,12 +2,12 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kuna.ibeatcon_android"
-    android:versionCode="9"
-    android:versionName="v0.9" >
+    android:versionCode="10"
+    android:versionName="v0.9-hotfix" >
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="20" />
     <uses-permission
         android:name="android.permission.INTERNET" />
     <uses-permission
