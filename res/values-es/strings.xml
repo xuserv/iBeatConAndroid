@@ -7,7 +7,8 @@
     <string name="action_info">Info</string>
     <string name="action_help">Manual</string>
     <string name="str_firstrun">[CONFIGURACION INICIAL] Por favor, configura tu iBeatCon, pulse el icono \"?\" para comprobar el manual.</string>
-    <string name="str_connfail">[ERROR] No se puede conectar a iBeatCon servidor. \r\n Por favor, marque su red o de estado del servidor.</string>
+    <string name="title_connfail">No se puede conectar a iBeatCon servidor.</string>
+    <string name="content_connfail">Por favor, marque su red o de estado del servidor.</string>
     <string name="pref_network">Conexión</string>
     <string name="pref_skin">Piel</string>
     <string name="pref_misc">Diverso</string>
@@ -36,7 +37,7 @@
     <string name="str_zoom">Zoom</string>
     <string name="str_reset">Reajustar</string>
     <string name="str_reset_msg">Predeterminados restaurados.</string>
-    <string name="str_apply_msg">Ajuste se ha guardado. \n Para salir de esta solicitud, por favor presione el botón HOME.</string>
+    <string name="str_apply_msg">Ajuste se ha guardado. \n Debe reiniciar iBeatCon f Android para que este cambio surta efecto.</string>
     <string name="int_zoom">100</string>
      
 </resources>

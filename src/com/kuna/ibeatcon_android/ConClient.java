@@ -35,7 +35,7 @@ public class ConClient {
 					s2.connect(s, 1500);
 					s2.setTcpNoDelay(true);
 					
-					// After Initalization, Run recv thread & activate send method
+					// After Initialization, Run recv thread & activate send method
 					br = new BufferedReader(new InputStreamReader(s2.getInputStream()));
 					bw = new BufferedWriter(new OutputStreamWriter(s2.getOutputStream()));
 					
@@ -88,7 +88,7 @@ public class ConClient {
 			                msg = recvdata.trim().replaceAll("\n|(null)", "");
 			            }
 
-						Log.i("iBeatCon", "CONNECTION "+ msg);
+						Log.i("iBeatCon", "CONNECTION : "+ msg);
 					} catch (Exception e) {
 						e.printStackTrace();
 						Close();

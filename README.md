@@ -52,4 +52,5 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 * v0.8 - Fix screen stuck issue, Add TT [Touch turntable] mode [temporary disabled], fix crash on Honeycomb devices, add more descriptions. (@xuserv)
 * v0.9 - Fix some devices cannot display controller parts, fix TT mode bugs, add missing translation, add reconnect feature when settings activity closed. (@xuserv)
 * v1.0 - Fix normal turntable works incorrectly. (@xuserv)
-* v1.1 - revert normal turntable code and it's working now! (@xuserv)
+* v1.1 - Revert normal turntable code and it's working normally! (@xuserv)
+* v1.2 - Change connection failed alert type. (@xuserv)

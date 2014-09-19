@@ -58,7 +58,6 @@ public class Settings extends PreferenceActivity {
     @Override
     public void onBackPressed() {
     	Toast.makeText(getApplicationContext(), getString(R.string.str_apply_msg), Toast.LENGTH_SHORT).show();
-    	startActivity(new Intent(getApplicationContext(), Join.class));
     	finish();
     }
     

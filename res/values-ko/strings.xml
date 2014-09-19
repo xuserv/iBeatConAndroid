@@ -7,7 +7,8 @@
     <string name="action_info">정보</string>
     <string name="action_help">설명서</string>
     <string name="str_firstrun">[최초 실행] iBeatCon을 설정 해 주세요, 설명서를 보실려면 \"?\" 아이콘을 눌러주세요.</string>
-    <string name="str_connfail">[오류 발생] iBeatCon 서버와 연결을 할 수 없습니다. \r\n 네트워크 및 서버의 상태를 확인 해 주세요.</string>
+    <string name="title_connfail">iBeatCon 서버와 연결을 할 수 없습니다.</string>
+    <string name="content_connfail">네트워크 및 설정을 확인 해 주세요.</string>
     <string name="pref_network">네트워크</string>
     <string name="pref_skin">스킨</string>
     <string name="pref_misc">기타</string>
@@ -36,7 +37,7 @@
     <string name="str_zoom">확대값 </string>
     <string name="str_reset">초기화</string>
     <string name="str_reset_msg">설정이 초기화 되었습니다.</string>
-    <string name="str_apply_msg">설정이 저장 되었습니다. \n 어플리케이션을 종료하고 싶으시다면 홈 버튼을 눌러 종료 해주세요.</string>
+    <string name="str_apply_msg">설정이 저장 되었습니다. \n 이 변경 사항을 적용하시려면 iBeatCon for Android 재시작이 필요합니다.</string>
     <string name="int_zoom">100</string>
 
 </resources>
