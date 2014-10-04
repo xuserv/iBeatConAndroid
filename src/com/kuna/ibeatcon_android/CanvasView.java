@@ -25,7 +25,9 @@ public class CanvasView extends View {
 		
 		// value init
 		startRes[0] = getBitmapFromResId(R.drawable.rdn);
-		startRes[1] = getBitmapFromResId(R.drawable.rdp);		
+		startRes[1] = getBitmapFromResId(R.drawable.rdp);	
+		
+		// change buttons color & draw buttons
 		if (bluekey) {
 			normalRes[0] = getBitmapFromResId(R.drawable.whb);
 			normalRes[1] = getBitmapFromResId(R.drawable.blb);
@@ -49,7 +51,8 @@ public class CanvasView extends View {
 	}
 
 	@Override
-	protected void onDraw(Canvas canvas) {		
+	protected void onDraw(Canvas canvas) {
+		// change background & draw background
 		if (blackpanel) {
 			canvas.drawColor(Color.GRAY);
 		} else {

@@ -28,7 +28,8 @@ public class Info extends Activity {
 			String version = getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
 			ver.setText(version);
 		} catch (NameNotFoundException e) {
-			// NOOOOOOOOOO, IT CAN'T BE! YOUR DEVICE DENIED GET PACKAGE NAME FROM YOUR DEVICE!
+			// Cannot get package name some reasons.
+			ver.setText("ERROR");
 		}
 
         dev.setOnClickListener(new OnClickListener() {

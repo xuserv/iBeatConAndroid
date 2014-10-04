@@ -100,6 +100,7 @@ public class Controller extends Activity {
 		DisplayMetrics displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		
+		// load template
 		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
 			Log.i("iBeatCon", "Display : Phone");
 			if (Build.VERSION.SDK_INT >= 14) {
