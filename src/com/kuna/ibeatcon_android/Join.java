@@ -29,14 +29,17 @@ public class Join extends Activity {
         
         Log.i("iBeatCon", "Application Launched");
         
+        // Preferences structure has been changed since version 0.6
         try {
         	SharedPreferences old_setting = getSharedPreferences("settings", MODE_PRIVATE);
+        	SharedPreferences.Editor old_setting_editor = old_setting.edit();
         	String old_port = old_setting.getString("port", "");
-        	SharedPreferences.Editor old_setting_edit = old_setting.edit();
-        	if(!old_port.equals("true") | !old_port.equals("false")){
-        		old_setting_edit.clear();
-        		old_setting_edit.commit();
-        	}
+        	if(!old_port.equals("true") | !old_port.equals("false")) {
+        		old_setting_editor.clear();
+        		old_setting_editor.commit();
+        		Toast.makeText(getApplicationContext(), getString(R.string.str_error_msg), Toast.LENGTH_SHORT).show();
+        		finish();
+        	} 
         } catch (ClassCastException e) {
         	// Old preference has been cleared, don't need to do this.
         }
@@ -69,7 +72,16 @@ public class Join extends Activity {
         		ConCommon.keyonly = keyonly_mode;
         		ConCommon.scronly = scronly_mode;
         		ConCommon.is2P = side_mode;
-        		ConCommon.zoomval = Integer.parseInt(ZoomValue);
+        		// if zoomvalue is string, clear preferences.
+        		try {
+        			ConCommon.zoomval = Integer.parseInt(ZoomValue);
+        		} catch (NumberFormatException e) {
+        			SharedPreferences.Editor setting_edit = setting.edit();
+        			setting_edit.clear();
+        			setting_edit.commit();
+        			Toast.makeText(getApplicationContext(), getString(R.string.str_error_msg), Toast.LENGTH_SHORT).show();   
+        			finish();
+        		}
         		ConCommon.cc = new ConClient(ip, Integer.parseInt(port2));
         		CanvasView.bluekey = setting.getBoolean("bluekey", false);
         		CanvasView.blackpanel = setting.getBoolean("blackpanel", false);

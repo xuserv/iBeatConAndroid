@@ -86,11 +86,11 @@ public final class R {
         public static final int action_settings=0x7f050003;
         public static final int app_name=0x7f050001;
         public static final int content_connfail=0x7f050009;
-        public static final int desc_logo=0x7f050028;
+        public static final int desc_logo=0x7f050029;
         /** Replace placeholder ID with your tracking ID
          */
         public static final int ga_trackingId=0x7f050000;
-        public static final int int_zoom=0x7f050027;
+        public static final int int_zoom=0x7f050028;
         public static final int pref_misc=0x7f05000c;
         public static final int pref_network=0x7f05000a;
         public static final int pref_skin=0x7f05000b;
@@ -100,10 +100,11 @@ public final class R {
         public static final int str_bk_desc=0x7f05001f;
         public static final int str_bp=0x7f050013;
         public static final int str_bp_desc=0x7f05001e;
-        public static final int str_connfail=0x7f05002f;
+        public static final int str_connfail=0x7f050030;
         public static final int str_default=0x7f05000f;
-        public static final int str_dev=0x7f050029;
-        public static final int str_developer=0x7f05002a;
+        public static final int str_dev=0x7f05002a;
+        public static final int str_developer=0x7f05002b;
+        public static final int str_error_msg=0x7f050027;
         public static final int str_fb=0x7f050017;
         public static final int str_fb_desc=0x7f050021;
         public static final int str_firstrun=0x7f050007;
@@ -113,14 +114,14 @@ public final class R {
         public static final int str_ip_desc=0x7f05001a;
         public static final int str_ip_input=0x7f050019;
         public static final int str_ko=0x7f050011;
-        public static final int str_maintain=0x7f05002b;
+        public static final int str_maintain=0x7f05002c;
         public static final int str_modesel=0x7f05000e;
         public static final int str_modesel_desc=0x7f05001c;
-        public static final int str_modifier=0x7f05002c;
+        public static final int str_modifier=0x7f05002d;
         public static final int str_ns=0x7f050014;
         public static final int str_ns_desc=0x7f05001b;
-        public static final int str_origdev=0x7f05002e;
-        public static final int str_original=0x7f05002d;
+        public static final int str_origdev=0x7f05002f;
+        public static final int str_original=0x7f05002e;
         public static final int str_reset=0x7f050024;
         public static final int str_reset_msg=0x7f050025;
         public static final int str_so=0x7f050012;

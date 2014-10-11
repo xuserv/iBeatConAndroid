@@ -9,7 +9,7 @@
     <string name="action_help">Manual</string>
     <string name="str_firstrun">[FIRST RUN] Please setup Your iBeatCon, Press \"?\" icon to check the manual.</string>
     <string name="title_connfail">Cannot connect into iBeatCon server.</string>
-    <string name="content_connfail">Please check your network or settings.</string>
+    <string name="content_connfail">Please check your network or server status.</string>
     <string name="pref_network">Network</string>
     <string name="pref_skin">Skin</string>
     <string name="pref_misc">Misc</string>
@@ -39,6 +39,7 @@
     <string name="str_reset">Reset</string>
     <string name="str_reset_msg">Defaults Restored</string>
     <string name="str_apply_msg">Settings saved \n You must restart iBeatCon for Android for this change to take effect.</string>
+    <string name="str_error_msg">[ERROR] Something has gone wrong, Please restart the application.</string>
     <string name="int_zoom">100</string>
     <string name="desc_logo">Logo of iBeatCon</string>
     <string name="str_dev">Developer</string>
