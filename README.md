@@ -7,7 +7,7 @@ Original iOS Application and Sever Developer : @Harunene
 Compatible Android Application Developer : @kuna
 
 # Requirement
-Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0 | HKiBC) / BMS Player (Like Lunatic Rave 2)
+Android Device (least 2.3.3) / PC (with iBeatCon Server 0.9.2 | 1.0.0 | HKiBC | XiBC (not yet ready)) / BMS Player (Like Lunatic Rave 2)
 
 # HOW TO USE
 Manual available on http://xuserv.net/ibc [ENG/KOR Only].
@@ -15,7 +15,8 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 # Tested Device
 * Galaxy S2
 * Galaxy S2 LTE
-* Galaxy Note 10.1 (not 2014)
+* Galaxy Note 10.1 2012
+* Galaxy S5
 * Nexus S
 * Optimus 2X
 * Optimus G
@@ -54,3 +55,4 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 * v1.0 - Fix normal turntable works incorrectly. (@xuserv)
 * v1.1 - Revert normal turntable code and it's working normally! (@xuserv)
 * v1.2 - Change connection failed alert type. (@xuserv)
+* v1.3 - Add VEFX Button. (@xuserv)

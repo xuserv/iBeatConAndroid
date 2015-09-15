@@ -35,12 +35,14 @@ import android.widget.TextView;
 public class Controller extends Activity {
 	CanvasView cv;
 	public static boolean isStartPressed = false;
+	public static boolean isVefxPressed = false;
 	public static boolean isScratchPressed = false;
 	public static boolean[] isButtonPressed = new boolean[7];
 	public static boolean vb_feedback = false;
 	public static boolean touch_scratch = false;
 	
 	public static Rect r_start;
+	public static Rect r_vefx;
 	public static Rect r_scr;
 	public static Rect r_button[] = new Rect[7];
 	public int id_scr;
@@ -193,6 +195,7 @@ public class Controller extends Activity {
 		
 		// set rects for touch event
 		r_start = cs.GetStartRect(size_width, size_height);
+		r_vefx = cs.GetVefxRect(size_width, size_height);
 		r_scr = cs.GetScrDataRect(size_width, size_height);
 		r_button = cs.GetButtonRect(size_width, size_height);
 		
@@ -336,7 +339,23 @@ public class Controller extends Activity {
 				}
 		}
 		StaBtn(isStartPressed, s);
-		isStartPressed = s;		
+		isStartPressed = s;	
+		
+		// vefx
+		boolean v = false;
+		for (int c=0; c<event.getPointerCount(); c++) {
+			if (c == event.getActionIndex() && (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_POINTER_UP || event.getAction() == MotionEvent.ACTION_CANCEL))
+			continue;	// UP EVENT should be ignored
+				
+			float x = event.getX(c);
+			float y = event.getY(c);
+
+			if (r_vefx.contains((int)x, (int)y)) {
+				v = true;
+			}
+		}
+		VefxBtn(isVefxPressed, v);
+		isVefxPressed = v;
 		
 		// button
 		boolean[] p = new boolean[7];
@@ -398,6 +417,16 @@ public class Controller extends Activity {
 		} else if (org && !diff) {
 			Log.i("iBeatCon", "Start Button Released");
 			SendData(74);
+		}
+	}
+	
+	public void VefxBtn(boolean org, boolean diff) {
+		if (!org && diff) {
+			SendData(43);
+			Log.i("iBeatCon", "Vefx Button Pressed");
+		} else if (org && !diff) {
+			SendData(75);
+			Log.i("iBeatCon", "Vefx Button Released");
 		}
 	}
 	

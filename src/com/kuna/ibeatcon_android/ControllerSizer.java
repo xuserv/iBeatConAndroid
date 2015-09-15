@@ -4,6 +4,7 @@ import android.graphics.Rect;
 
 public class ControllerSizer {
 	public Rect r_start; // x, y, width, height
+	public Rect r_vefx; // x, y, width, height
 	public Rect r_scr;						// cent_x, cent_y, radius(height), (null)
 	public Rect r_button[] = new Rect[7];	// x, y, width(height), height(height)
 	private int zoomsize=100;
@@ -11,6 +12,7 @@ public class ControllerSizer {
 	// presets
 	public void Preset_1P_S() {
 		r_start = new Rect(0,0,0,0);
+		r_vefx = new Rect(0,0,0,0);
 		r_scr = new Rect(-10,10,60,0);
 		r_button[0] = new Rect(17,55,28,42);
 		r_button[1] = new Rect(27,7,28,42);
@@ -23,6 +25,7 @@ public class ControllerSizer {
 	
 	public void Preset_1P_M() {
 		r_start = new Rect(87,7,15,15);
+		r_vefx = new Rect(87,25,15,15);
 		r_scr = new Rect(-10,10,60,0);
 		r_button[0] = new Rect(17,55,28,42);
 		r_button[1] = new Rect(27,7,28,42);
@@ -35,6 +38,7 @@ public class ControllerSizer {
 	
 	public void Preset_1P_L() {
 		r_start = new Rect(87,7,15,15);
+		r_vefx = new Rect(87,25,15,15);
 		r_scr = new Rect(-12,10,60,0);
 		r_button[0] = new Rect(17,55,28,42);
 		r_button[1] = new Rect(27,7,28,42);
@@ -47,6 +51,7 @@ public class ControllerSizer {
 	
 	public void Preset_2P_S() {
 		r_start = new Rect(0,0,0,0);
+		r_vefx = new Rect(0,0,0,0);
 		r_scr = new Rect(110,10,60,0);
 		r_button[0] = new Rect(7,55,28,42);
 		r_button[1] = new Rect(17,7,28,42);
@@ -59,6 +64,7 @@ public class ControllerSizer {
 	
 	public void Preset_2P_M() {
 		r_start = new Rect(4,7,15,15);
+		r_vefx = new Rect(4,25,15,15);
 		r_scr = new Rect(110,10,50,0);
 		r_button[0] = new Rect(7,55,28,42);
 		r_button[1] = new Rect(17,7,28,42);
@@ -71,6 +77,7 @@ public class ControllerSizer {
 	
 	public void Preset_2P_L() {
 		r_start = new Rect(4,7,15,15);
+		r_vefx = new Rect(4,25,15,15);
 		r_scr = new Rect(110,10,50,0);
 		r_button[0] = new Rect(7,55,28,42);
 		r_button[1] = new Rect(17,7,28,42);
@@ -83,6 +90,7 @@ public class ControllerSizer {
 	
 	public void Preset_Keyonly() {
 		r_start = new Rect(85,7,15,15);
+		r_vefx = new Rect(85,25,15,15);
 		r_scr = new Rect(0,0,0,0);
 		r_button[0] = new Rect(12,55,28,42);
 		r_button[1] = new Rect(22,7,28,42);
@@ -95,6 +103,7 @@ public class ControllerSizer {
 	
 	public void Preset_Scronly() {
 		r_start = new Rect(0,0,0,0);
+		r_vefx = new Rect(0,0,0,0);
 		r_scr = new Rect(53,53,50,0);
 		r_button[0] = new Rect(0,0,0,0);
 		r_button[1] = new Rect(0,0,0,0);
@@ -152,6 +161,24 @@ public class ControllerSizer {
 		r_start.right = r_start.left + r_start.right*conv_height/100;
 		r_start.bottom = r_start.top + r_start.bottom*conv_height/100;
 		return r_start;
+	}
+	
+	public Rect GetVefxRect(int conv_width, int conv_height) {
+		Rect r_vefx = new Rect();
+		r_vefx.set(this.r_vefx);
+		
+		// proc zoom size
+		r_vefx.top = SetZoomSizeAttr(r_vefx.top, zoomsize);
+		r_vefx.left = SetZoomSizeAttr(r_vefx.left, zoomsize);
+		r_vefx.right = SetZoomSizeAttr(r_vefx.right, zoomsize);
+		r_vefx.bottom = SetZoomSizeAttr(r_vefx.bottom, zoomsize);
+		
+		// convert to real size
+		r_vefx.top = r_vefx.top*conv_height/100;
+		r_vefx.left = r_vefx.left*conv_width/100;
+		r_vefx.right = r_vefx.left + r_vefx.right*conv_height/100;
+		r_vefx.bottom = r_vefx.top + r_vefx.bottom*conv_height/100;
+		return r_vefx;
 	}
 	
 	public Rect GetScrPanelRect(int conv_width, int conv_height) {

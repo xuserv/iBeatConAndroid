@@ -13,6 +13,7 @@ public class CanvasView extends View {
 	public static boolean bluekey = false;
 	public static boolean blackpanel = false;
 	public Bitmap[] startRes = new Bitmap[2];
+	public Bitmap[] vefxRes = new Bitmap[2];
 	public Bitmap[] normalRes = new Bitmap[2];
 	public Bitmap[] pressedRes = new Bitmap[2];	
 	public Bitmap scrPanel;
@@ -25,7 +26,9 @@ public class CanvasView extends View {
 		
 		// value init
 		startRes[0] = getBitmapFromResId(R.drawable.rdn);
-		startRes[1] = getBitmapFromResId(R.drawable.rdp);	
+		startRes[1] = getBitmapFromResId(R.drawable.rdp);
+		vefxRes[0] = getBitmapFromResId(R.drawable.rdn);
+		vefxRes[1] = getBitmapFromResId(R.drawable.rdp);
 		
 		// change buttons color & draw buttons
 		if (bluekey) {
@@ -69,16 +72,25 @@ public class CanvasView extends View {
 		
 		canvas.drawBitmap(b, null, Controller.r_start, null);
 		
+		Bitmap b2;
+		if (Controller.isVefxPressed) {
+			b2 = vefxRes[1];
+		} else {
+			b2 = vefxRes[0];
+		}
+		
+		canvas.drawBitmap(b2, null, Controller.r_vefx, null);
+		
 		// draw buttons
 		for (int i=0; i<7; i++) {
-			Bitmap b2;
+			Bitmap b3;
 			if (Controller.isButtonPressed[i]) {
-				b2 = pressedRes[i%2];
+				b3 = pressedRes[i%2];
 			} else {
-				b2 = normalRes[i%2];
+				b3 = normalRes[i%2];
 			}
 			
-			canvas.drawBitmap(b2, null, Controller.r_button[i], null);
+			canvas.drawBitmap(b3, null, Controller.r_button[i], null);
 		}
 		
 		/** scratch part */
