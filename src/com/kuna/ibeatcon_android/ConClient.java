@@ -87,8 +87,6 @@ public class ConClient {
 			                recvdata += new String(buffer).substring(1, charsRead);
 			                msg = recvdata.trim().replaceAll("\n|(null)", "");
 			            }
-
-						Log.i("iBeatCon", "CONNECTION : "+ msg);
 					} catch (Exception e) {
 						e.printStackTrace();
 						Close();

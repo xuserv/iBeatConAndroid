@@ -20,12 +20,13 @@ import android.os.Build;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -34,6 +35,10 @@ import android.widget.TextView;
 
 public class Controller extends Activity {
 	CanvasView cv;
+	
+	private boolean hasHomeKey;
+	private boolean hasBackKey;
+	
 	public static boolean isStartPressed = false;
 	public static boolean isVefxPressed = false;
 	public static boolean isScratchPressed = false;
@@ -75,8 +80,6 @@ public class Controller extends Activity {
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Log.i("iBeatCon", "Controller Started");
-		
 		final SharedPreferences setting = getSharedPreferences("settings", MODE_PRIVATE);
 		ip = setting.getString("ip", "");
 		
@@ -97,6 +100,10 @@ public class Controller extends Activity {
 		
 		if (Build.VERSION.SDK_INT <= 7) {
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
+		} else {
+			// Hardware key detection
+			hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
+			hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
 		}
 					
 		DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -104,13 +111,11 @@ public class Controller extends Activity {
 		
 		// load template
 		if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_HIGH) {
-			Log.i("iBeatCon", "Display : Phone");
+			// Device : Phone
 			if (Build.VERSION.SDK_INT >= 14) {
-				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-					Log.i("iBeatCon", "Hardware Button Phone");
+				if (hasHomeKey && hasBackKey) {
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
 				} else {
-					Log.i("iBeatCon", "No Hardware Button Phone");
 					hideSystemBar();
 				}
 			}
@@ -124,13 +129,11 @@ public class Controller extends Activity {
 				cs.Preset_1P_S();
 			}
 		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_MEDIUM) {
-			Log.i("iBeatCon", "Display : Tablet (like Galaxy Tab 10.1)");
+			// Device : Tablet (Note 10.1 2012)
 			if (Build.VERSION.SDK_INT >= 14) {
-				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-					Log.i("iBeatCon", "Hardware Button Tablet");
+				if (hasHomeKey && hasBackKey) {
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
 				} else {
-					Log.i("iBeatCon", "No Hardware Button Tablet");
 					hideSystemBar();
 				}
 			}		
@@ -144,13 +147,11 @@ public class Controller extends Activity {
 				cs.Preset_1P_M();
 			}
 		} else if (displayMetrics.densityDpi == DisplayMetrics.DENSITY_XHIGH | displayMetrics.densityDpi <= 480) {
-			Log.i("iBeatCon", "Display : Tablet2 (like Nexus 10)");			
+			// Device : Tablet2 (Nexus 10)		
 			if (Build.VERSION.SDK_INT >= 14) {
-				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-					Log.i("iBeatCon", "Hardware Button Tablet2");
+				if (hasHomeKey && hasBackKey) {
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
 				} else {
-					Log.i("iBeatCon", "No Hardware Button Tablet2");
 					hideSystemBar();
 				}
 			}
@@ -164,13 +165,11 @@ public class Controller extends Activity {
 				cs.Preset_1P_L();
 			}
 		} else {
-			Log.i("iBeatCon", "Dispaly : Undefined (Load Default)");			
+			// Device : Unknown (Load Default)	
 			if (Build.VERSION.SDK_INT >= 14) {
-				if (ViewConfiguration.get(this).hasPermanentMenuKey()) {
-					Log.i("iBeatCon", "Hardware Button Unknown Device");
+				if (hasHomeKey && hasBackKey) {
 					requestWindowFeature(Window.FEATURE_NO_TITLE);
 				} else {
-					Log.i("iBeatCon", "No Hardware Button Default Device");
 					hideSystemBar();
 				}
 			}
@@ -218,22 +217,18 @@ public class Controller extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
     	case R.id.reconnect:
-    		Log.i("iBeatCon", "Reconnect");
     		ConClient.Close();
     		ConCommon.cc = new ConClient(ip, Integer.parseInt(port2));
     		return true;
     	case R.id.settings:
-    		Log.i("iBeatCon", "Settings");
     		startActivity(new Intent(getApplicationContext(), Settings.class));
     		return true;
     	case R.id.exit:
-    		Log.i("iBeatCon", "Exit");
     		mScratch.interrupt();
     		ConClient.Close();
     		finish();
     		return true;
     	case R.id.info:
-    		Log.i("iBeatCon", "Info");
     		startActivity(new Intent(getApplicationContext(), Info.class));
     		return true;
     	default:
@@ -389,16 +384,13 @@ public class Controller extends Activity {
 			Vibrator v = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 			v.vibrate(100);
 			SendData(pressKey[i]);
-			Log.i("iBeatCon", "Button " + i + " Pressed with Vibe");
 		} else {
 			SendData(pressKey[i]);
-			Log.i("iBeatCon", "Button " + i + " Pressed");
 		}
 	}
 	
 	public void ReleaseButton(int i) {
 		SendData(releaseKey[i]);
-		Log.i("iBeatCon", "Button " + i + " Released");
 	}
 	
 	public void CmpPrs(boolean[] org, boolean[] diff) {
@@ -413,9 +405,7 @@ public class Controller extends Activity {
 	public void StaBtn(boolean org, boolean diff) {
 		if (!org && diff) {
 			SendData(42);
-			Log.i("iBeatCon", "Start Button Pressed");
 		} else if (org && !diff) {
-			Log.i("iBeatCon", "Start Button Released");
 			SendData(74);
 		}
 	}
@@ -423,19 +413,15 @@ public class Controller extends Activity {
 	public void VefxBtn(boolean org, boolean diff) {
 		if (!org && diff) {
 			SendData(43);
-			Log.i("iBeatCon", "Vefx Button Pressed");
 		} else if (org && !diff) {
 			SendData(75);
-			Log.i("iBeatCon", "Vefx Button Released");
 		}
 	}
 	
 	public void ScrBtn(boolean org, boolean diff) {
 		if (!org && diff) {
 			SendData(9);
-			Log.i("iBeatCon", "Scratch Pressed");
 		} else if (org && !diff) {
-			Log.i("iBeatCon", "Scratch Released");
 			SendData(8);
 		}
 	}
@@ -476,17 +462,14 @@ public class Controller extends Activity {
 						// check scratch
 						if (mScratchSpeed < -1) {
 							SendData(7);
-							Log.i("iBeatCon", "Scracth : Up");
 							isScrkeyPressed = true;
 						}
 						if (mScratchSpeed > 1) {
 							SendData(8);
-							Log.i("iBeatCon", "Scratch : Down");
 							isScrkeyPressed = true;
 						}						
 						if (mScratchSpeed < 1 && mScratchSpeed > -1 && isScrkeyPressed) {
 							SendData(9);
-							Log.i("iBeatCon", "Scratch : Stopped");
 							isScrkeyPressed = false;
 						}
 
@@ -526,7 +509,7 @@ public class Controller extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);		
 		if (Build.VERSION.SDK_INT >= 14) {
-			if (ViewConfiguration.get(this).hasPermanentMenuKey() == false | hasFocus) {
+			if (KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME) == false | hasFocus) {
 				hideSystemBar();
 			}
 		}

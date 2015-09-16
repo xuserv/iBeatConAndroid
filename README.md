@@ -29,7 +29,7 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 * 140318 - Add Socket Timed out. (@xuserv)
 * 140319 - Add Screen Size Detect Feature, Turntable is now complete, Start button added but not gonna work. (@xuserv)
 * 140320 - Turntable is now *fully* functional! Start button is now works! Start button available only on Tablet. (Thx to @Harunene) (@xuserv)
-* 140320-a - Fix Screen Size Detect Problem and Start button appear on 2P Mode and Key-only Mode (not yet on Phone.) (@xuserv)
+* 140320-a - Fix Screen Size Detect Problem and Start button appear on 2P Mode and Keyonly Mode (not yet on Phone.) (@xuserv)
 * 140322 - Change IP Input Text Box as Phone (in Settings) (@xuserv)
 * 140322-a - Add Force Fullscreen Mode Feature (@xuserv)
 * 140323 - Remove Force Fullscreen Mode and Replace Automatic Fullscreen Feature, No Longer Support Under 4.0 (@xuserv)
@@ -56,3 +56,4 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 * v1.1 - Revert normal turntable code and it's working normally! (@xuserv)
 * v1.2 - Change connection failed alert type. (@xuserv)
 * v1.3 - Add VEFX Button. (@xuserv)
+* v1.4 - Fix hardware button detection for prevent crashing layouts [Galaxy S5], remove debug information (@xuserv)
