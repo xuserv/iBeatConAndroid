@@ -56,4 +56,4 @@ Manual available on http://xuserv.net/ibc [ENG/KOR Only].
 * v1.1 - Revert normal turntable code and it's working normally! (@xuserv)
 * v1.2 - Change connection failed alert type. (@xuserv)
 * v1.3 - Add VEFX Button. (@xuserv)
-* v1.4 - Fix hardware button detection for prevent crashing layouts [Galaxy S5], remove debug information (@xuserv)
+* v1.4 - Fix hardware button detection for prevent crashing layouts [Galaxy S5], remove debug information. (@xuserv)

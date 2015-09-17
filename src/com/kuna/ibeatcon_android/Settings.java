@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,11 +36,9 @@ public class Settings extends PreferenceActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
     	case R.id.help:
-    		Log.i("iBeatCon", "Help");
     		startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://xuserv.net/ibc/")));
     		return true;
     	case R.id.reset:
-    		Log.i("iBeatCon", "Restore to Default");
     		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
     		SharedPreferences.Editor editor = settings.edit();
     		editor.clear();
